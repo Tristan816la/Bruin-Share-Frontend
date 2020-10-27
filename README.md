@@ -2,7 +2,7 @@
 
 ### How to run
 
-### First time running this repo
+### First time running this project
 Run
 ```
 npm install
