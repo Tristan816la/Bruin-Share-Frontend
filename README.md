@@ -9,7 +9,8 @@ npm install
 ```
 to install all the dependencies
 
-Then
+
 ```
 npm start
 ```
+If you've installed all the dependencies
