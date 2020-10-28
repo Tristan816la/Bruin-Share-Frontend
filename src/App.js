@@ -11,12 +11,14 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div className="App">
-          <NavBar></NavBar>
-          <Route path="/login" component={Login}></Route>
-          <Route path="/signup" component={Signup}></Route>
-          <Route path="/" exact component={Home}></Route>
-        </div>
+        <Switch>
+          <div className="App">
+            <NavBar></NavBar>
+            <Route path="/login" component={Login}></Route>
+            <Route path="/signup" component={Signup}></Route>
+            <Route path="/" exact component={Home}></Route>
+          </div>
+        </Switch>
       </Router>
     </ThemeProvider>
   );
