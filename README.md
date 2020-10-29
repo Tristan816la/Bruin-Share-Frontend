@@ -1,6 +1,6 @@
 # Bruin Share
 
-### How to run
+## Get Started
 
 ### First time running this project
 Run
