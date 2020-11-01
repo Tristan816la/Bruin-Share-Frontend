@@ -9,8 +9,8 @@ npm install
 ```
 to install all the dependencies
 \
-\
-Then,
+
+### Run this project
 ```
 npm start
 ```
