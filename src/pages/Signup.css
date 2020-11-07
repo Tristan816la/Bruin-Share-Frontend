@@ -1,0 +1,12 @@
+.form {
+    position: absolute;
+    width: 535px;
+    min-height: 50%;
+    left: 60%;
+    right: 10%;
+    top: 30%;
+
+    background: lightblue;
+    border-radius: 30px;
+}
+
