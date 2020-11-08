@@ -1,9 +1,19 @@
 import React from "react";
 import { Container, Grid, Button, Typography, 
-  makeStyles, CssBaseline, TextField, Link } 
+  makeStyles, CssBaseline, TextField, Link, Box } 
   from "@material-ui/core";
-import './Signup.css'
+
 const useStyles = makeStyles((theme) => ({
+    page: {
+      position: "absolute",
+      padding: theme.spacing(3),
+      marginRight: "5%",
+      marginTop: "10%",
+      marginLeft: "60%", 
+      borderRadius: "30px",
+      backgroundColor: "lightBlue"
+    },
+
     paper: {
       display: 'flex',
       flexDirection: 'column',
@@ -12,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
     form:{
       width: '100%',
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(2),
     },
 
     submit: {
@@ -23,7 +33,7 @@ const Login = () => {
   const classes = useStyles();
 
   return (
-    <Container className='form' maxWidth='xs'>
+    <Box className={classes.page} maxWidth='xs'>
       <CssBaseline/>
         <div className={classes.paper}>
           <form className={classes.form}>
@@ -59,6 +69,7 @@ const Login = () => {
 
           <Button
             className={classes.submit}
+            color="primary"
             variant="contained"
             fullWidth
             type="submit"
@@ -68,7 +79,7 @@ const Login = () => {
           </Button>
           </form>
         </div>
-    </Container>
+    </Box>
   )
 };
 
