@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) =>({
       position: "absolute",
       padding: theme.spacing(3),
       marginRight: "8%",
-      marginTop: "5%",
+      marginTop: "3.5%",
       marginLeft: "60%",
       borderRadius: "30px",
       backgroundColor: "lightBlue"
@@ -84,8 +84,8 @@ const Signup = () => {
     return expression.test(prop);
   }
 
-  const validateNotEmpty = (prop) => {
-    const expression = /^.+$/;
+  const validatePassword = (prop) => {
+    const expression = /^.{6,}/;
     return expression.test(prop);
   }
 
@@ -100,15 +100,15 @@ const Signup = () => {
     var validEmail = true;
     var validPassword = true;
     var validConfirmPassword = true;
-    if(!validateNotEmpty(values.name)) validaName = false;
+    if(values.name === '') validaName = false;
     if(!validateEmail(values.email)) validEmail = false;
-    if(!validateNotEmpty(values.password)) validPassword = false;
+    if((!validatePassword(values.password))) validPassword = false;
     if(!validateConfirmPassword(values.confirmPassword)) validConfirmPassword = false;
     setErrors({...errors,
-                name: (validaName? '' : "This name is not valid"),
+                name: (validaName? '' : "Please enter a name"),
                 email: (validEmail? '' : "This email address is invalid"),
-                password: (validPassword? '' : "This password is not valid"),
-                confirmPassword: (validConfirmPassword? '' : "The password does not match")
+                password: (validPassword? '' : "You have to enter at least 6 characters"),
+                confirmPassword: (validConfirmPassword? '' : "Password does not match")
               });
   }
 

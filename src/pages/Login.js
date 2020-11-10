@@ -87,8 +87,8 @@ const Login = () => {
     return expression.test(prop);
   }
 
-  const validateNotEmpty = (prop) => {
-    const expression = /^.+$/;
+  const validatePassword = (prop) => {
+    const expression = /^.{6,}$/;
     return expression.test(prop);
   }
 
@@ -97,10 +97,10 @@ const Login = () => {
     var validEmail = true;
     var validPassword = true;
     if(!validateEmail(values.email)) validEmail = false;
-    if(!validateNotEmpty(values.password)) validPassword = false;
+    if(!validatePassword(values.password)) validPassword = false;
     setErrors({...errors,
                 email: (validEmail? '' : "This email address is invalid"),
-                password: (validPassword? '' : "This password is not valid")});
+                password: (validPassword? '' : "You have to enter at least 6 characters")});
   }
 
   return (
