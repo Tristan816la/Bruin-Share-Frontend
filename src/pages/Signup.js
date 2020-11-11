@@ -1,15 +1,17 @@
 import React from "react";
-import { Container, Grid, Button, Typography, 
-  makeStyles, CssBaseline, TextField, Link, Box} 
+import { Grid, Button, Typography, 
+  makeStyles, CssBaseline, Link, Box, InputAdornment, IconButton, OutlinedInput, InputLabel, FormControl, FormHelperText, TextField } 
   from "@material-ui/core";
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const useStyles = makeStyles((theme) =>({
     page: {
       position: "absolute",
       padding: theme.spacing(3),
-      marginRight: "5%",
-      marginTop: "10%",
-      marginLeft: "60%", 
+      marginRight: "8%",
+      marginTop: "3.5%",
+      marginLeft: "60%",
       borderRadius: "30px",
       backgroundColor: "lightBlue"
     },
@@ -22,51 +24,184 @@ const useStyles = makeStyles((theme) =>({
 
     form:{
       width: '100%',
-      marginTop: theme.spacing(1),
+      marginTop: theme.spacing(2),
+      
+    },
+
+    textField: {
+      margin: theme.spacing(2, 0, 2)
     },
 
     submit: {
-      margin: theme.spacing(3, 0, 2)
+      margin: theme.spacing(3, 0, 2),
+      width: "60%"
     }
 }));
 const Signup = () => {
   const classes = useStyles();
 
+  const [values, setValues] = React.useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    showPassword: false
+  });
+  
+  const [errors, setErrors] = React.useState({})
+
+  
+
+  const handleChange = (prop) => (event) => {
+    setValues({...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({...values, showPassword: !values.showPassword });
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const PasswordAdornment = () => {
+    return(
+      <InputAdornment position="end">
+        <IconButton
+          aria-label="toggle password visibility"
+          onClick={handleClickShowPassword}
+          onMouseDown={handleMouseDownPassword}
+          edge="end"
+          >
+          {values.showPassword ? <Visibility /> : <VisibilityOff />}
+          </IconButton>
+    </InputAdornment>
+    )
+  }
+
+  const validateEmail = (prop) => {
+    const expression = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
+    return expression.test(prop);
+  }
+
+  const validatePassword = (prop) => {
+    const expression = /^.{6,}/;
+    return expression.test(prop);
+  }
+
+  const validateConfirmPassword = (prop) => {
+    const pw = values.password;
+    return (prop === pw);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    var validaName = true;
+    var validEmail = true;
+    var validPassword = true;
+    var validConfirmPassword = true;
+    if(values.name === '') validaName = false;
+    if(!validateEmail(values.email)) validEmail = false;
+    if((!validatePassword(values.password))) validPassword = false;
+    if(!validateConfirmPassword(values.confirmPassword)) validConfirmPassword = false;
+    setErrors({...errors,
+                name: (validaName? '' : "Please enter a name"),
+                email: (validEmail? '' : "This email address is invalid"),
+                password: (validPassword? '' : "You have to enter at least 6 characters"),
+                confirmPassword: (validConfirmPassword? '' : "Password does not match")
+              });
+  }
+
   return (
     <Box className={classes.page} maxWidth='xs'>
       <CssBaseline /> 
         <div className={classes.paper}>
-          <form className={classes.form}>
-            <TextField
+          <form className={classes.form} onSubmit={handleSubmit} noValidate>
+          <FormControl
+            className={classes.textField}
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="name"
-            label="Name"
             name="name"
-            autoFocus
-            />
-            <TextField
+            error={errors.name? true: false}
+            >
+              <InputLabel htmlFor="Name">Name</InputLabel>
+              <OutlinedInput
+                id="name"
+                autoFocus
+                value={values.name}
+                onChange={handleChange("name")}
+                labelWidth={51}
+              />
+              <FormHelperText>{errors.name}</FormHelperText>
+            </FormControl>
+
+            <FormControl
+            className={classes.textField}
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
             name="email"
-            type="email"
-            />
-            <TextField 
-            variant="outlined"
+            error={errors.email? true: false}
+            >
+              <InputLabel htmlFor="Email-Address">Email Address</InputLabel>
+              <OutlinedInput
+                id="email"
+                value={values.email}
+                onChange={handleChange("email")}
+                labelWidth={112}
+              />
+              <FormHelperText>{errors.email}</FormHelperText>
+            </FormControl>
+
+            <FormControl 
+            className={classes.textField} 
+            variant="outlined" 
             margin="normal"
-            required
+            required 
             fullWidth
-            id="password"
-            label="Password"
-            name="password"
-            type="password"
-            />
+            error={errors.password? true: false}
+            name="password">
+              <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+              <OutlinedInput
+              id="password"
+              value={values.password}
+              onChange={handleChange("password")}
+              type={values.showPassword ? 'text' : 'password'}
+              endAdornment={
+                <PasswordAdornment>
+                </PasswordAdornment>
+              }
+              labelWidth={80}
+              />
+              <FormHelperText>{errors.password}</FormHelperText>
+            </FormControl>
+            
+            <FormControl 
+            className={classes.textField} 
+            variant="outlined" 
+            margin="normal"
+            required 
+            fullWidth
+            error={errors.confirmPassword? true: false}
+            name="confirm-password">
+              <InputLabel htmlFor="outlined-confirm-password">Confirm Password</InputLabel>
+              <OutlinedInput
+              id="confirm-password"
+              value={values.confirmPassword}
+              onChange={handleChange("confirmPassword")}
+              type={values.showPassword ? 'text' : 'password'}
+              endAdornment={
+                <PasswordAdornment>
+                </PasswordAdornment>
+              }
+              labelWidth={141}
+              />
+              <FormHelperText>{errors.confirmPassword}</FormHelperText>
+            </FormControl>
+
           <Grid item>
             <Typography align="center">
               <Link href="./Login" variant="body2">
@@ -74,16 +209,21 @@ const Signup = () => {
               </Link>
             </Typography>
           </Grid>
-          <Button
-            color="primary"
-            className={classes.submit}
-            variant="contained"
-            fullWidth
-            type="submit"
-            //return form to the server
-          >
-            {"Join now"}
-          </Button>
+          <Grid item>
+            <Typography align="center">
+              <Button
+              className={classes.submit}
+              color="primary"
+              variant="contained"
+              fullWidth
+              type="submit"
+              
+              //return form back to the server
+            >
+              Join now
+            </Button>
+            </Typography>
+          </Grid>
           </form>
         </div>
     </Box>
