@@ -24,16 +24,6 @@ function Navbar() {
             <Link to="/">
               <div className="bruinShare">BruinShare</div>
             </Link>
-            
-          </div>
-          <ul className="navbr__right">
-            <Link to="/Signup">
-              <li className="navbar__option">Sign Up</li>
-            </Link>
-            <Link to="/Login">
-              <li  className="navbar__option">Log In</li>
-            </Link>
-          </ul>
         </nav>
       )
 }
