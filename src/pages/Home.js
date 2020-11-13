@@ -1,11 +1,13 @@
 import React from "react";
+import Navbar from "../components/Navbar/Navbar";
 
 const Home = () => {
   const signoutaction = () => {
     window.localStorage.removeItem("AuthToken");
   };
   return (
-    <div style={{ display: "flex", gap: "50px" }}>
+    <div>
+      <Navbar></Navbar>
       <h1>Home</h1>
       <button onClick={signoutaction}>Sign out</button>
     </div>
