@@ -1,0 +1,72 @@
+.navbar {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
+}
+
+.navbar a {
+  text-decoration: none;
+  color: "black";
+}
+
+.navbar a:visited {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.navbar__left {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navbar__left > img {
+  height: 40px;
+}
+
+.bruinShare {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  padding: 0 10px;
+  text-shadow: 2px 2px 2px #aaa;
+  cursor: pointer;
+  color: "black";
+  text-decoration: none;
+}
+
+.navbar__right {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  list-style: none;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar__option {
+  padding: 0 30px;
+  cursor: pointer;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+
+  display: inline;
+  text-decoration: none;
+}
+
+.navbar__option:hover {
+  color: #4f86c6;
+  background-color: #eff2f5;
+  border-radius: 10px;
+  align-items: center;
+  text-align: center;
+  padding: 0 30px;
+  border-bottom: none;
+}
