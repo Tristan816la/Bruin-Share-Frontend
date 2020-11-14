@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap");
+h1 {
+  width: 300px;
+  align-self: center;
+}
+.container {
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  font-family: "Source Sans Pro", sans-serif;
+  width: 50vw;
+  left: 25vw;
+  padding: 20px max(20px, 5vw);
+  text-align: center;
+  z-index: 2;
+}
