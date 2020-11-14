@@ -1,0 +1,10 @@
+.side_bar{
+    border-right: 1px solid #5084A0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.side_bar > img{
+    height: 574px;
+    width: 338px;
+}

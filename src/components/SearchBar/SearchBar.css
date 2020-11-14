@@ -1,0 +1,11 @@
+.search_bar{
+    width: 293px;
+    height: 53px;
+    border: 1px solid rgba(0, 0, 0, 0.51);
+    box-sizing: border-box;
+    border-radius: 11px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+}
