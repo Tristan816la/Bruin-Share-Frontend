@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
 import "./SideBar.css";
-import "../SearchBar/SearchBar"
+import SearchBar from "../SearchBar/SearchBar";
 
-function Searchbar() {
-    return (
-        <div classname="side_bar">
-            <Searchbar />
-            <image src="../../public/images/sideBarImg.png" alt=""> </image>
-        </div>
-    )
+function SideBar() {
+  return (
+    <>
+      <div className="side_bar">
+        <SearchBar />
+        <img src="sideBarImg.png" alt="" />
+      </div>
+    </>
+  );
 }
 
-export default Searchbar
+export default SideBar;
