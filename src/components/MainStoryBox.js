@@ -30,9 +30,10 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2),
         borderRadius: "20px",
         width: "220px",
-        height: "235px",
+        height: "225px",
         border: "1px solid #000000", 
-        margin: theme.spacing(0.5, 0, 1)
+        margin: theme.spacing(1, 0, 1),
+        overflow: "hidden"
     },
     content: {
         overflowWrap: 'break-word',
@@ -65,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
             </Grid>
             <Box className={classes.contentBox} onClick={handleClickShowDetails} >
                 <Grid container> 
-                    <Grid item xs>
+                    <Grid item xs >
                         <Typography className={classes.content}>{props.content}</Typography>  
                     </Grid>
                 </Grid>
