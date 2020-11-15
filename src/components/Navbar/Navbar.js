@@ -19,7 +19,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar__left">
         <img
-          src="https://png.pngtree.com/png-clipart/20190603/original/pngtree-beer-label-picture-png-image_718811.jpg"
+          src="logo.png"
           alt=""
         />
         <Link to="/">
@@ -31,7 +31,7 @@ function Navbar() {
           <li className="navbar__option">Sign Up</li>
         </Link>
         <Link to="/Login">
-          <li className="navbar__option">Log In</li>
+          <li className="navbar__option" id="navbar__option2">Log In</li>
         </Link>
       </ul>
     </nav>

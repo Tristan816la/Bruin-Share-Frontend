@@ -9,8 +9,8 @@ const Home = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <h1>Home</h1>
-      <button onClick={signoutaction}>Sign out</button>
+      {/* <h1>Home</h1> */}
+      {/* <button onClick={signoutaction}>Sign out</button> */}
       <div className="home_body">
         <SideBar />
         {/*<Post />*/}
