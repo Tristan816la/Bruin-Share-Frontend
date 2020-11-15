@@ -1,0 +1,32 @@
+ .box{
+     display: inline-block;
+     position: relative;
+     border: transparent;
+     height: 31px;
+ }
+ #search{
+    position: absolute;
+
+    width: 47px;
+    height: 47px;
+}
+.search_bar{
+    margin-left: 20px;
+    margin-top: 40px;
+    display: inline-block;
+}
+
+.search_bar input {
+    width: 265px;
+    height: 47px;
+    border: 1px solid rgba(0, 0, 0, 0.51);
+    border-radius: 11px;
+    margin-top: 8px;
+    margin-left: 8px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    outline: none;
+    color: #2a2f2c;
+}
