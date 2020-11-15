@@ -20,10 +20,10 @@ function App() {
       <Router>
         <Switch>
           <AppStyle>
-            <Route path="/covermap" exact component={CoverMap}></Route>
+            <Route path="/" exact component={CoverMap}></Route>
             <Route path="/login" component={Login}></Route>
             <Route path="/signup" component={Signup}></Route>
-            <Route path="/" exact component={Home}></Route>
+            <Route path="/home" exact component={Home}></Route>
           </AppStyle>
         </Switch>
       </Router>
