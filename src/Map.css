@@ -16,10 +16,49 @@ h1 {
   line-height: 30px;
   padding: 20px max(10px, 2vw);
   text-align: left;
+  position: relative;
 }
 .mapContainer {
   display: flex;
   align-items: center;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+}
+.getstartbutton {
+  border-radius: 5px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 1);
+  border: none;
+  font-family: "Source Sans Pro", sans-serif;
+  box-shadow: 0.5px 1px;
+  font-weight: 600;
+  width: 15vw;
+  font-size: large;
+  margin-top: 20px;
+  outline: none;
+}
+.getstartbutton:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+.arrowleft {
+  transform: scale(1.5);
+  position: absolute;
+  right: 1%;
+  top: 45%;
+}
+
+.arrowleft:hover {
+  cursor: pointer;
+}
+
+.arrowright {
+  transform: scale(1.5);
+  position: absolute;
+  z-index: 100;
+}
+
+.arrowright:hover {
+  cursor: pointer;
 }
