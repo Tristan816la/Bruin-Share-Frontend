@@ -8,7 +8,7 @@ import theme from "./styled/theme";
 import styled from "styled-components";
 import axios from "axios";
 import CoverMap from "./pages/CoverMap";
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL = "https://bruin-share.herokuapp.com/";
 
 const AppStyle = styled.div`
   height: 100vh;
