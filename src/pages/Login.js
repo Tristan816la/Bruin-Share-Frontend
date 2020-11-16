@@ -89,9 +89,10 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
   const classes = useStyles();
   const history = useHistory();
+  console.log(history);
   useEffect(() => {
     if (window.localStorage.getItem("AuthToken")) {
-      history.push("/");
+      history.push("/home");
     }
   }, [history]);
 
@@ -99,12 +100,11 @@ const Login = () => {
     let body = {
       email: values.email,
       password: values.password,
-      name: "test2",
     };
     try {
       const res = await axios.post("/login", body);
       window.localStorage.setItem("AuthToken", `Bearer ${res.data.mytoken}`);
-      history.push("/");
+      history.push("/home");
     } catch (err) {
       console.error(err);
     }
