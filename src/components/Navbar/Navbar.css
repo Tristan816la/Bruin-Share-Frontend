@@ -1,5 +1,6 @@
 .navbar {
-  padding: 25px;
+  padding: 20px;
+  padding-bottom: 15px;
   display: flex;
   justify-content: space-between;
   position: sticky;
@@ -24,15 +25,15 @@
 }
 
 .navbar__left > img {
-  height: 40px;
+  height: 60px;
 }
 
 .bruinShare {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 26px;
-  padding: 0 10px;
+  font-size: 30px;
+  padding: 6px 25px;
   text-shadow: 2px 2px 2px #aaa;
   cursor: pointer;
   color: "black";
@@ -50,14 +51,14 @@
 
 .navbar__option {
   padding: 0 30px;
+  padding-top: 7px;
   cursor: pointer;
-
+  color: black;
   font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
-
-  display: inline;
+  display: inline-block;
   text-decoration: none;
 }
 
@@ -69,4 +70,8 @@
   text-align: center;
   padding: 0 30px;
   border-bottom: none;
+}
+
+#navbar__option2{
+  margin-right: 40px;
 }

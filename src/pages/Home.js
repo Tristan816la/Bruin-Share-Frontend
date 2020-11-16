@@ -1,7 +1,9 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
+
 import MainStoryBox from "../components/MainStoryBox";
 import { makeStyle, makeStyles} from "@material-ui/core";
+import SideBar from "../components/SideBar/SideBar"
 
 const useStyle = makeStyles((theme) => ({
   temp: {
@@ -13,6 +15,9 @@ const useStyle = makeStyles((theme) => ({
     },
   }
 }));
+
+
+
 
 const Home = () => {
   const signoutaction = () => {
@@ -31,8 +36,15 @@ const Home = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <h1>Home</h1>
-      <button onClick={signoutaction}>Sign out</button>
+
+
+      {/* <h1>Home</h1> */}
+      {/* <button onClick={signoutaction}>Sign out</button> */}
+      <div className="home_body">
+        <SideBar />
+        {/*<Post />*/}
+
+      </div>
       <div className={classes.temp}>
       <MainStoryBox name={name} title={title} 
       content={message}
