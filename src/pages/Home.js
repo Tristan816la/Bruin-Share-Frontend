@@ -4,7 +4,8 @@ import axios from "axios";
 import MainStoryBox from "../components/MainStoryBox";
 import { makeStyles, Box } from "@material-ui/core";
 import SideBar from "../components/SideBar/SideBar";
-import { useHistory } from "react-router-dom";
+
+
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -29,9 +30,6 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-
-
-
 const Home = () => {
   const signoutaction = () => {
     window.localStorage.removeItem("AuthToken");
@@ -54,13 +52,11 @@ const Home = () => {
   
   console.log(posts);
   
- 
 
   const classes = useStyle();
   return (
     <div className={classes.root}>
       <Navbar></Navbar>
-
 
       {/* <h1>Home</h1> */}
       {/* <button onClick={signoutaction}>Sign out</button> */}
@@ -77,6 +73,7 @@ const Home = () => {
             />)}
             
       </Box> }
+
       </div>
     </div>
   );

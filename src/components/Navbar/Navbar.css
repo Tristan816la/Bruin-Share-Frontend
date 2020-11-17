@@ -1,7 +1,7 @@
 .navbar {
+  display: flex;
   padding: 20px;
   padding-bottom: 15px;
-  display: flex;
   justify-content: space-between;
   position: sticky;
   z-index: 100;
@@ -22,6 +22,7 @@
 .navbar__left {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .navbar__left > img {
@@ -33,45 +34,64 @@
   font-style: normal;
   font-weight: normal;
   font-size: 30px;
-  padding: 6px 25px;
+  padding: 0 25px;
   text-shadow: 2px 2px 2px #aaa;
   cursor: pointer;
-  color: "black";
+  color: #000;
   text-decoration: none;
+
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .navbar__right {
+  margin-left: 60px;
   display: flex;
-  flex: 1;
-  justify-content: space-around;
-  list-style: none;
   align-items: center;
-  text-decoration: none;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .navbar__option {
-  padding: 0 30px;
-  padding-top: 7px;
+  display: flex;
+  align-items: center;
+
+  margin: 0 30px;
   cursor: pointer;
-  color: black;
+  color: #666;
   font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
-  display: inline-block;
-  text-decoration: none;
+  text-align: center;
 }
 
 .navbar__option:hover {
-  color: #4f86c6;
-  background-color: #eff2f5;
-  border-radius: 10px;
+  color: #000;
+  margin: 0 30px;
   align-items: center;
   text-align: center;
-  padding: 0 30px;
   border-bottom: none;
 }
 
-#navbar__option2{
-  margin-right: 40px;
+.loggedin__right {
+  margin-left: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.notification {
+  color: #666;
+  cursor: pointer;
+  margin: 0 20px;
+}
+
+.notification:hover {
+  color: #000;
+  margin: 0 20px;
+}
+
+.avatar {
+  margin: 0 20px;
 }

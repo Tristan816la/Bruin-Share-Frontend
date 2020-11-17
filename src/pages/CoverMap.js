@@ -12,12 +12,15 @@ import "../Map.css";
 import Typed from "react-typed";
 
 import mapStyle from "../styled/mapStyle";
+import { useHistory } from "react-router-dom";
 
 const libraries = ["places"];
 
 const mapContainerStyle = {
   width: "100vw",
   height: "100vh",
+  top: "0vh",
+  position: "absolute",
 };
 const center = {
   lat: 30.164126,
@@ -132,19 +135,23 @@ export default function CoverMap() {
   };
 
   return (
-    <div>
+    <div className="mapContainer">
       <LoadScript
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
         libraries={libraries}
       >
-        <div className="container">
+        <div
+          className="container"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+        >
           <h1>
-            <Typed strings={["Share Your Story"]} typeSpeed={150}></Typed>
+            <Typed strings={["Bruin Share"]} typeSpeed={150}></Typed>
           </h1>
           <p className="text">
-            Life these days have not been easy. The COVID-19 pandemic has
+            "Life these days have not been easy. The COVID-19 pandemic has
             impacted every Bruin's live. No matter what you're going through -
-            you're not alone.
+            you're not alone."
           </p>
           <p>
             <strong>100</strong> students have shared their stories
