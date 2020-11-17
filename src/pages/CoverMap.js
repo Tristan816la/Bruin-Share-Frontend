@@ -8,10 +8,10 @@ import {
   MarkerClusterer,
 } from "@react-google-maps/api";
 import "../Map.css";
-
 import Typed from "react-typed";
-
 import mapStyle from "../styled/mapStyle";
+import ArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import ArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import { useHistory } from "react-router-dom";
 
 const libraries = ["places"];
@@ -70,8 +70,10 @@ const locations = [
 
 export default function CoverMap() {
   const [markers, setMarkers] = useState([]);
+  const history = useHistory();
 
   const [selected, setSelected] = useState(null);
+  const [closed, setClosed] = useState(false);
 
   const panTo = useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
@@ -140,23 +142,45 @@ export default function CoverMap() {
         googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
         libraries={libraries}
       >
-        <div
-          className="container"
-          data-aos="fade-right"
-          data-aos-duration="1000"
-        >
-          <h1>
-            <Typed strings={["Bruin Share"]} typeSpeed={150}></Typed>
-          </h1>
-          <p className="text">
-            "Life these days have not been easy. The COVID-19 pandemic has
-            impacted every Bruin's live. No matter what you're going through -
-            you're not alone."
-          </p>
-          <p>
-            <strong>100</strong> students have shared their stories
-          </p>
-        </div>
+        {!closed ? (
+          <div
+            className="container"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          >
+            <h1>
+              <Typed strings={["Bruin Share"]} typeSpeed={150}></Typed>
+            </h1>
+            <p className="text">
+              "Life these days have not been easy. The COVID-19 pandemic has
+              impacted every Bruin's live. No matter what you're going through -
+              you're not alone."
+            </p>
+            <p>
+              <strong>100</strong> students have shared their stories
+            </p>
+            <button
+              className="getstartbutton"
+              onClick={() => {
+                history.push("/home");
+              }}
+            >
+              Let's get started
+            </button>
+            <ArrowLeft
+              className="arrowleft"
+              onClick={() => setClosed(true)}
+              // fontSizeLarge
+            ></ArrowLeft>
+          </div>
+        ) : (
+          <ArrowRight
+            className="arrowright"
+            onClick={() => setClosed(false)}
+            // fontSizeLarge
+          ></ArrowRight>
+        )}
+
         <GoogleMap
           mapContainerStyle={mapContainerStyle}
           zoom={2.4}
