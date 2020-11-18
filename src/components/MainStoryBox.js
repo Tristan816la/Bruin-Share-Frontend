@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography, Avatar, Box, IconButton } from "@material-ui/core";
 
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
         overflowWrap: 'break-word',
     },
     time: {
-       marginLeft: "155px"
+       marginLeft: "140px"
     }
   }));
 
@@ -71,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
                     </Grid>
                 </Grid>
             </Box>
-    <Typography className={classes.time} variant="caption">{props.time}</Typography>
+    <Typography className={classes.time} variant="caption">{moment(props.time).format(" MMM DD YYYY, h:mm a")}</Typography>
         </Box>
        
     )
