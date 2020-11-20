@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
+import Private from "./pages/Private";
 import theme from "./styled/theme";
 import styled from "styled-components";
 import axios from "axios";
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login" component={Login}></Route>
             <Route path="/signup" component={Signup}></Route>
             <Route path="/home" exact component={Home}></Route>
+            <Route path="/private" component={Private}></Route>
           </AppStyle>
         </Switch>
       </Router>
