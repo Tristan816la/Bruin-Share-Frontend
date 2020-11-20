@@ -1,5 +1,6 @@
 import React, {useEffect} from "react";
 import Navbar from "../components/Navbar/Navbar";
+import SendPost from '../components/SendPost/SendPost';
 import axios from "axios";
 import MainStoryBox from "../components/MainStoryBox";
 import { makeStyles, Box } from "@material-ui/core";
@@ -73,7 +74,7 @@ const Home = () => {
             />)}
             
       </Box> }
-
+      <SendPost/>
       </div>
     </div>
   );
