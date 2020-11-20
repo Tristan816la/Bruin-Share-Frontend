@@ -6,6 +6,7 @@ import {
     Typography,
     List,
     ListItem,
+    ListItemText,
     Divider,
     Link
 } from "@material-ui/core";
@@ -40,7 +41,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "2vh"
   },
   MessageList: {
-    margin: theme.spacing(1, 0, 0)
+    maxHeight: 100,
+    overflow: "auto",
+    position: "relative",
+    flexDirection: "column",
+    margin: theme.spacing(1, 0, 0),
+    
   },
   listItem:{
     color: "#666",
@@ -71,7 +77,7 @@ function Notification(props){
         setMessages(commentMessage) : setMessages(likeMessage);
     };
   
-    const commentMessage = [{name: "One", time: "t"}, {name: "Two", time: "s"}];
+    const commentMessage = [{name: "One", time: "t"}, {name: "Two", time: "s"}, {name: "Three", time: "r"}];
     const likeMessage = [{name: "haha", time: "z"}, {name: "hihi", time: "w"}];
     const [messages, setMessages] = React.useState(commentMessage);
 
@@ -118,7 +124,8 @@ function Notification(props){
                 messages.map((message, i) => 
                 <>
                 <ListItem>
-                  <Link className={classes.listItem} color="primary" underline='none'>
+                  {/* <ListItemText></ListItemText> */}
+                  <Link className={classes.listItem} color="primary" underline='none' >
                     <div>{`${message.name} ${messageType} your post`}</div>
                   </Link>
                 </ListItem>
