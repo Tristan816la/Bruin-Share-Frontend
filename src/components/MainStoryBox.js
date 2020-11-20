@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { makeStyles } from "@material-ui/core/styles";
 import { Grid, Typography, Avatar, Box, IconButton } from "@material-ui/core";
-
+import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 
 const useStyles = makeStyles((theme) => ({
     post: {
@@ -39,8 +39,10 @@ const useStyles = makeStyles((theme) => ({
     content: {
         overflowWrap: 'break-word',
     },
-    time: {
-       marginLeft: "140px"
+    bottom: {
+        display: "grid",
+        gridTemplateColumns: "1fr 5fr",
+        gridColumnGap: "7em"
     }
   }));
 
@@ -52,9 +54,24 @@ const useStyles = makeStyles((theme) => ({
       alert("hihi");
   }
 
+
   function MainStoryBox(props) {
     const classes = useStyles();
-
+    const [post, setPost] = React.useState({
+        title: "",
+        name: "",
+        content: "",
+        time: "",
+        likes: ""
+      });
+    
+    // setPost({
+    //     title: props.title,
+    //     name: props.name,
+    //     content: props.content,
+    //     time: props.time,
+    //     likes: props.likes
+    // })
     return(
         <Box className={classes.post}>
             <Grid className={classes.title} container >
@@ -72,7 +89,10 @@ const useStyles = makeStyles((theme) => ({
                     </Grid>
                 </Grid>
             </Box>
-    <Typography className={classes.time} variant="caption">{moment(props.time).format(" MMM DD YYYY, h:mm a")}</Typography>
+            <div className={classes.bottom}>
+                <ThumbUpAltIcon />
+                <Typography  variant="caption">{moment(props.time).format(" MMM DD YYYY, h:mm a")}</Typography>
+            </div>
         </Box>
        
     )
