@@ -1,0 +1,67 @@
+.private_side_bar{
+    width: 391px;
+    height: 795px;
+    padding-top: 52px;
+    border-right: 6px solid #4F86C6;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position:fixed;
+}
+.private_avatar {
+    margin-left: 118px;
+
+  }
+
+.user_name{
+    margin-top: 27px;
+    margin-left: 124px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+
+.user_state{
+    width: 281px;
+    height: 82px;
+    padding: 10px;
+    margin-left: 45px;
+    margin-top: 28px;
+    margin-bottom: 48px;
+    border: 1px solid grey;
+    border-radius: 10px;
+}
+
+.user_notification{
+    margin-left: 68px;
+    height: 33px;
+    width: 250px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.user_info{
+    width: 307px;
+    height:347px;
+    padding-top: 90px;
+    padding-left: 45px;
+    background-image: url('private_side_bar.png');
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.user_info > text{
+    margin-top: 24px;
+    display: block;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+}
