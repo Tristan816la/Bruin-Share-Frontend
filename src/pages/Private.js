@@ -1,21 +1,14 @@
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
-import { makeStyles } from "@material-ui/core";
-
-const useStyle = makeStyles(() => ({
-  root: {
-
-  },
-}));
-
+import PrivateSideBar from "../components/PrivateSideBar/PrivateSideBar"
 
 const Private = () => {
-  const classes = useStyle();
   return (
-    <div className={classes.root}>
+    <div >
       <Navbar></Navbar>
+      <PrivateSideBar></PrivateSideBar>
     </div>
-  );
+  )
 };
 
 export default Private;
