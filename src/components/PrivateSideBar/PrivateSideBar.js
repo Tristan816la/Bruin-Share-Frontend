@@ -11,7 +11,7 @@ function PrivateSideBar() {
                 <div className="user_state">
                     <text>I am wondering why this happened</text>
                 </div>
-                <button className="user_notification">notification</button>
+                <button className="user_notification">Notification</button>
                 <div className="user_info">
                     <text>Age:</text>
                     <text>Location:</text>
