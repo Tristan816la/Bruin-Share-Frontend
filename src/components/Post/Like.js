@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import Icon from "@material-ui/core/Icon";
 import unlikeIcon from "@material-ui/icons/FavoriteBorder";
-import IconButton from "@material-ui/core/IconButton";
 import likeIcon from "@material-ui/icons/Favorite";
 import { Typography } from "@material-ui/core";
 import { useStyles } from "../../utils/useStyles";
 import CustomButton from "../../styled/CustomButton";
 import { getUserId } from "../../utils/UserAction";
 import axios from "axios";
+import { isLoggedIn } from "../../utils/LoginActions";
+import { useHistory } from "react-router-dom";
 
 const Like = ({ likes, postId }) => {
   const classes = useStyles();
   const [likeCount, setLikeCount] = useState(likes.length);
+  const history = useHistory();
   const [liked, setLiked] = useState(() => {
     if (likes.length) {
       let likeIds = likes.map((like) => like._id);
@@ -20,11 +22,14 @@ const Like = ({ likes, postId }) => {
   });
 
   const likePost = async () => {
+    if (!isLoggedIn()) {
+      history.push("/login");
+    }
     try {
       const body = {
         postid: postId,
       };
-      const data = await axios.put("/like", body);
+      await axios.put("/like", body);
       setLiked(true);
       setLikeCount(likeCount + 1);
     } catch (err) {
@@ -33,11 +38,14 @@ const Like = ({ likes, postId }) => {
   };
 
   const unlikePost = async () => {
+    if (!isLoggedIn()) {
+      history.pushState("/login");
+    }
     try {
       const body = {
         postid: postId,
       };
-      const data = await axios.put("/unlike", body);
+      await axios.put("/unlike", body);
       setLiked(false);
       setLikeCount(likeCount - 1);
     } catch (err) {
