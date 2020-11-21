@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "30px",
         width: "269px",
         height: "362px",
-        border: "1px solid #000000"
+        border: "3px solid #379392"
     },
     title: {
         display: "flex",
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "20px",
         width: "220px",
         height: "225px",
-        border: "1px solid #000000", 
+        border: "3px solid #379392", 
         margin: theme.spacing(1, 0, 1),
         overflow: "hidden"
     },
