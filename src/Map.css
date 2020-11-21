@@ -31,16 +31,18 @@ h1 {
   background-color: rgba(255, 255, 255, 1);
   border: none;
   font-family: "Source Sans Pro", sans-serif;
-  box-shadow: 0.5px 1px;
+  box-shadow: 0.5px 1px #000000;
   font-weight: 600;
   width: 15vw;
   font-size: large;
+  transition: 0.5s;
   margin-top: 20px;
   outline: none;
 }
 .getstartbutton:hover {
   cursor: pointer;
   transform: scale(1.02);
+  box-shadow: 0.5px 2px #000000;
 }
 .arrowleft {
   transform: scale(1.5);

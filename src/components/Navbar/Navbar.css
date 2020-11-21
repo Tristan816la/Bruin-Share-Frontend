@@ -3,8 +3,8 @@
   padding: 20px;
   padding-bottom: 15px;
   justify-content: space-between;
-  position: sticky;
-  z-index: 100;
+  /* z-index: 1000; */
+  /* height: 200px; */
   top: 0;
   box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
 }

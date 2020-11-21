@@ -1,31 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import { Element } from "react-scroll";
 import Avatar from "@material-ui/core/Avatar";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-  },
-}));
-
-function Navbar() {
-  const [loggedIn, setLoggedIn] = useState(false);
+function Navbar({ loggedIn }) {
   const signoutaction = () => {
-    window.localStorage.removeItem("AuthToken");
+    window.localStorage.clear();
     window.location.reload();
   };
-  useEffect(() => {
-    if (window.localStorage.getItem("AuthToken")) {
-      setLoggedIn(true);
-    }
-  }, []);
 
   return !loggedIn ? (
     <nav className="navbar">
@@ -63,7 +46,11 @@ function Navbar() {
           </div>
         </Link>
         <Link to="/Private">
-          <Avatar className="avatar" />
+          <Avatar
+            className="avatar"
+            src={window.localStorage.UserImage}
+            alt="avatar"
+          />
         </Link>
       </div>
     </nav>
