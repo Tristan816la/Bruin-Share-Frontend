@@ -16,6 +16,13 @@ const AppStyle = styled.div`
   height: 100vh;
 `;
 
+const token = window.localStorage.getItem("AuthToken");
+if (token) {
+  axios.defaults.headers.common["authorization"] = token;
+} else {
+  axios.defaults.headers.common["authorization"] = null;
+}
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -26,8 +33,8 @@ function App() {
             <Route path="/login" component={Login}></Route>
             <Route path="/signup" component={Signup}></Route>
             <Route path="/home" exact component={Home}></Route>
-            <Route path="/private" exact component={Private}></Route>
-            <Route path="/profile" exact component={Profile}></Route>
+            <Route exact path="/posts/:postId"></Route>
+
           </AppStyle>
         </Switch>
       </Router>

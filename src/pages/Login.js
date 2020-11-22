@@ -17,70 +17,8 @@ import {
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import axios from "axios";
-
-const bg = "cover_bg_test2.png";
-
-const useStyles = makeStyles((theme) => ({
-  passwordHide: {
-    height: "50px",
-    paddingRight: "20px",
-  },
-  loginContainer: {
-    display: "flex",
-    height: "100vh",
-  },
-  loginTitle: {
-    fontFamily: "Poppins",
-    fontWeight: "800",
-    fontSize: "30px",
-    textAlign: "center",
-  },
-  loginLeft: {
-    justifyContent: "center",
-    background: `linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url(${bg}) fixed center center no-repeat`,
-    backgroundSize: "cover",
-    flex: "2 0 auto",
-    display: "flex",
-    alignItems: "center",
-  },
-  loginRight: {
-    flex: "1 0 auto",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  coverImg: {
-    width: "35vw",
-    maxWidth: "800px",
-  },
-  page: {
-    padding: "100px 50px",
-    borderRadius: "30px",
-    width: "500px",
-  },
-
-  paper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: "30px 10px",
-  },
-
-  form: {
-    width: "100%",
-    marginTop: theme.spacing(2),
-  },
-
-  textField: {
-    margin: theme.spacing(4, 0, 2),
-  },
-
-  submit: {
-    margin: theme.spacing(6, 0, 2),
-    width: "60%",
-  },
-}));
+import { isLoggedIn, logginUser } from "../utils/LoginActions";
+import { useStyles } from "../utils/useStyles";
 
 //spacing larger
 //confirm password, error -> box red, textfield attribute
@@ -89,21 +27,15 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
   const classes = useStyles();
   const history = useHistory();
-  console.log(history);
   useEffect(() => {
-    if (window.localStorage.getItem("AuthToken")) {
+    if (isLoggedIn()) {
       history.push("/home");
     }
   }, [history]);
 
   const loginaction = async () => {
-    let body = {
-      email: values.email,
-      password: values.password,
-    };
     try {
-      const res = await axios.post("/login", body);
-      window.localStorage.setItem("AuthToken", `Bearer ${res.data.mytoken}`);
+      logginUser(values.email, values.password);
       history.push("/home");
     } catch (err) {
       console.error(err);
@@ -151,7 +83,7 @@ const Login = () => {
   };
 
   const validatePassword = (prop) => {
-    const expression = /^.{6,}$/;
+    const expression = /^.{4,}$/;
     return expression.test(prop);
   };
 
@@ -164,7 +96,7 @@ const Login = () => {
     setErrors({
       ...errors,
       email: validEmail ? "" : "This email address is invalid",
-      password: validPassword ? "" : "You have to enter at least 6 characters",
+      password: validPassword ? "" : "You have to enter at least 4 characters",
     });
     if (validEmail && validPassword) loginaction();
   };
