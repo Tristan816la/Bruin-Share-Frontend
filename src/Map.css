@@ -11,8 +11,10 @@ h1 {
   flex-direction: column;
   gap: 20px;
   font-family: "Source Sans Pro", sans-serif;
-  height: 35vh;
-  width: 17vw;
+  font-size: min(20px, 1.2vw);
+  height: 40vh;
+  font-weight: 200;
+  width: 19vw;
   line-height: 30px;
   padding: 20px max(10px, 2vw);
   text-align: left;
@@ -28,19 +30,22 @@ h1 {
 .getstartbutton {
   border-radius: 5px;
   height: 30px;
+  position: absolute;
   background-color: rgba(255, 255, 255, 1);
   border: none;
   font-family: "Source Sans Pro", sans-serif;
-  box-shadow: 0.5px 1px;
+  box-shadow: 0.5px 1px #000000;
   font-weight: 600;
   width: 15vw;
   font-size: large;
-  margin-top: 20px;
+  transition: 0.5s;
   outline: none;
+  bottom: 15px;
 }
 .getstartbutton:hover {
   cursor: pointer;
   transform: scale(1.02);
+  box-shadow: 0.5px 2px #000000;
 }
 .arrowleft {
   transform: scale(1.5);

@@ -1,81 +1,57 @@
-import React, {useEffect} from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
+import SendPost from "../components/SendPost/SendPost";
 import axios from "axios";
 import MainStoryBox from "../components/MainStoryBox";
-import { makeStyles, Box } from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import SideBar from "../components/SideBar/SideBar";
-
-
-
-const useStyle = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexDirection: "column"
-  },
-  body: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  sideBar: {
-  },
-
-  posts: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr 1fr",
-    padding: theme.spacing(1, 2, 2),
-    gridColumnGap: "1em",
-    gridRowGap: "1em",
-    overflow: "scroll",
-    height: "830px",
-  },
-}));
+import { useStyles } from "../utils/useStyles";
+import { isLoggedIn } from "../utils/LoginActions";
+import { Height } from "@material-ui/icons";
 
 const Home = () => {
-  const signoutaction = () => {
-    window.localStorage.removeItem("AuthToken");
-  };
-
-  
-  
-  const [posts, setPosts] = React.useState({
-
-  });
+  const [posts, setPosts] = useState({});
+  const [loggedIn, setLoggedIn] = useState(isLoggedIn());
 
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get("/publicposts")
-    .then(res => res.data);
+    const fetchPosts = async () => {
+      const result = await axios.get("/publicposts").then((res) => res.data);
       setPosts(result);
-    }
-    fetchData();
+    };
+    fetchPosts();
   }, []);
-  
-  console.log(posts);
-  
 
-  const classes = useStyle();
+  const classes = useStyles();
+
   return (
-    <div className={classes.root}>
-      <Navbar></Navbar>
-
-      {/* <h1>Home</h1> */}
-      {/* <button onClick={signoutaction}>Sign out</button> */}
-      <div className={classes.body}>
-        <Box><SideBar className={classes.sideBar} /></Box>
-        
-        {posts.length && <Box className={classes.posts}>
-            {posts.map((post, i) => <MainStoryBox 
-            key={i}
-            name={post.postBy.name}
-            title={post.topic}
-            content={post.content}
-            time={post.updatedAt}
-            />)}
-            
-      </Box> }
-
+    <>
+      <div style={{ overflow: "hidden" }}>
+        <Navbar loggedIn={loggedIn} />
+        <div className={classes.homebody}>
+          <SideBar className={classes.homesideBar} />
+          <div className={classes.homeposts}>
+            {posts.length && (
+              <>
+                {posts.map((post, i) => (
+                  <MainStoryBox
+                    key={i}
+                    name={post.postBy.name}
+                    title={post.topic}
+                    content={post.content}
+                    time={post.updatedAt}
+                    likes={post.likes}
+                    comments={post.comments}
+                    id={post._id}
+                    image={post.postBy.image}
+                  />
+                ))}
+              </>
+            )}
+          </div>
+        </div>
+        <SendPost />
       </div>
-    </div>
+    </>
   );
 };
 
