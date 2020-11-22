@@ -135,7 +135,7 @@ export default function CoverMap() {
               you're not alone."
             </p>
             <p>
-              <strong>100</strong> students have shared their stories
+              <strong>{posts.length}</strong> students have shared their stories
             </p>
             <button
               className="getstartbutton"
