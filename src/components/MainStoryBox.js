@@ -10,9 +10,11 @@ const handleClickShowDetails = () => {
   alert("haha");
 };
 
+
 const handleClickShowProfile = () => {
   alert("hihi");
 };
+
 
 const MainStoryBox = ({
   name,

@@ -8,6 +8,8 @@ import theme from "./styled/theme";
 import styled from "styled-components";
 import axios from "axios";
 import CoverMap from "./pages/CoverMap";
+import Private from "./pages/Private";
+import Profile from "./pages/Profile";
 axios.defaults.baseURL = "https://bruin-share.herokuapp.com/";
 
 const AppStyle = styled.div`
@@ -32,6 +34,7 @@ function App() {
             <Route path="/signup" component={Signup}></Route>
             <Route path="/home" exact component={Home}></Route>
             <Route exact path="/posts/:postId"></Route>
+
           </AppStyle>
         </Switch>
       </Router>

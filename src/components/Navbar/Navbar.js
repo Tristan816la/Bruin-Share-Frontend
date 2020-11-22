@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import Notification from '../Notification';
 
 function Navbar({ loggedIn }) {
   const signoutaction = () => {
@@ -39,7 +39,7 @@ function Navbar({ loggedIn }) {
       </div>
 
       <div className="loggedin__right">
-        <NotificationsIcon className="notification" />
+        <Notification className="notification" />
         <Link to="/Home">
           <div className="navbar__option" onClick={signoutaction}>
             Sign Out
