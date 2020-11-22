@@ -5,15 +5,9 @@ import Like from "./Post/Like";
 import Comment from "./Post/Comment";
 import { useStyles } from "../utils/useStyles";
 import CustomButton from "../styled/CustomButton";
-
-const handleClickShowDetails = () => {
-  alert("haha");
-};
+import { useHistory } from "react-router-dom";
 
 
-const handleClickShowProfile = () => {
-  alert("hihi");
-};
 
 
 const MainStoryBox = ({
@@ -25,8 +19,28 @@ const MainStoryBox = ({
   likes,
   id,
   image,
+  postById
 }) => {
   const classes = useStyles();
+  const history = useHistory();
+ 
+  
+  const handleClickShowDetails = () => {
+    try {
+      history.push(`/posts/${postById}`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  
+  
+  const handleClickShowProfile = () => {
+    try {
+      history.push(`/profile/${postById}`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <Box className={classes.post}>
       <Grid className={classes.title} container>
