@@ -33,8 +33,9 @@ function App() {
             <Route path="/login" component={Login}></Route>
             <Route path="/signup" component={Signup}></Route>
             <Route path="/home" exact component={Home}></Route>
-            <Route exact path="/posts/:postId"></Route>
-
+            <Route exact path="/posts/:postId" component={Profile}></Route>
+            <Route exact path="/private/:userId" component={Private}></Route>
+            <Route exact path="/profile/:postById" component={Profile}></Route>
           </AppStyle>
         </Switch>
       </Router>

@@ -43,6 +43,7 @@ const Home = () => {
                     comments={post.comments}
                     id={post._id}
                     image={post.postBy.image}
+                    postById={post.postBy._id}
                   />
                 ))}
               </>
