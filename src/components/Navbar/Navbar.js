@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
-import Notification from '../Notification';
+import Notification from "../Notification";
+import SendPost from "../SendPost/SendPost";
 
 function Navbar({ loggedIn }) {
   const signoutaction = () => {
@@ -39,6 +40,7 @@ function Navbar({ loggedIn }) {
       </div>
 
       <div className="loggedin__right">
+        <SendPost></SendPost>
         <Notification className="notification" />
         <Link to="/Home">
           <div className="navbar__option" onClick={signoutaction}>

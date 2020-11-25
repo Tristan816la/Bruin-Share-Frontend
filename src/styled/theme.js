@@ -12,6 +12,9 @@ const theme = createMuiTheme({
       main: pink[500],
     },
   },
+  typography: {
+    fontFamily: "verdana, arial, helvetica, sans-serif",
+  },
 });
 
 export default theme;

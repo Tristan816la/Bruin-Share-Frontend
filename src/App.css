@@ -1,6 +1,7 @@
 * {
   margin: 0;
+  /* font-family: cursive; */
 }
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
