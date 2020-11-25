@@ -5,61 +5,64 @@ import ProfileSideBar from "../components/ProfileSideBar/ProfileSideBar";
 import MainStoryBox from "../components/MainStoryBox";
 import { isLoggedIn } from "../utils/LoginActions";
 import { useStyles } from "../utils/useStyles";
-
+import { useParams } from "react-router-dom";
 
 const Profile = () => {
   // Need to be changed
-  const userId = "5fabc74c55ca9811782b5f3e";
+  const userId = useParams().postById;
   const classes = useStyles();
-  const [posts, setPosts] = useState({});
+  const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
-
-  const getPosts = async () => {
-    const user = {
-      _id: userId,
-    };
-    try {
-      const data = await axios.get("/myposts", user).then((res) => res.data);
-      setPosts(data);
-      console.log(posts);
-    } catch(err) {
-      console.error(err);
-    }
-  }
-
+  const profileUser = posts[0].postBy;
   useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const res = await axios.get(`/userposts/${userId}`);
+        setPosts(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
     getPosts();
   }, []);
-
-
+  console.log(profileUser);
   return (
-    <div >
+    <div>
       <Navbar loggedIn={loggedIn} />
-      <div className={classes.homebody}>
-        <ProfileSideBar className={classes.homesideBar}/>
-        <div className={classes.homeposts}>
-              {posts.length && (
-                <>
-                  {posts.map((post, i) => (
-                    <MainStoryBox
-                      key={i}
-                      name={post.postBy.name}
-                      title={post.topic}
-                      content={post.content}
-                      time={post.updatedAt}
-                      likes={post.likes}
-                      comments={post.comments}
-                      id={post._id}
-                      image={post.postBy.image}
-                      postById={post.postBy._id}
-                    />
-                  ))}
-                </>
-              )}
+      <div className={classes.profilebody}>
+        {posts.length && (
+          <ProfileSideBar
+            profileAvatar={profileUser.image}
+            user={profileUser.name}
+            email={profileUser.email}
+          ></ProfileSideBar>
+        )}
+
+        <div className={classes.profileposts}>
+          <div>
+            {posts.length > 0 && (
+              <>
+                {posts.map((post, i) => (
+                  <MainStoryBox
+                    key={i}
+                    name={post.postBy.name}
+                    title={post.topic}
+                    content={post.content}
+                    time={post.updatedAt}
+                    likes={post.likes}
+                    comments={post.comments}
+                    id={post._id}
+                    image={post.postBy.image}
+                    postById={post.postBy._id}
+                  />
+                ))}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Profile;

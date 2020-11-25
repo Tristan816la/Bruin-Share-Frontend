@@ -41,6 +41,7 @@ const Home = () => {
                       <MainStoryBox
                         key={i}
                         name={post.postBy.name}
+                        postById={post.postBy._id}
                         title={post.topic}
                         content={post.content}
                         time={post.updatedAt}
