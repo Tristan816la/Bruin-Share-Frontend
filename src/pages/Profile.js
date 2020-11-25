@@ -13,7 +13,8 @@ const Profile = () => {
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
-  const profileUser = posts[0].postBy;
+  let profileUser;
+  if (posts.length) profileUser = posts[0].postBy;
   useEffect(() => {
     const getPosts = async () => {
       try {
