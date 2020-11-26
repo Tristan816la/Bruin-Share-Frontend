@@ -5,29 +5,29 @@ import ProfileSideBar from "../components/ProfileSideBar/ProfileSideBar";
 import MainStoryBox from "../components/MainStoryBox";
 import { isLoggedIn } from "../utils/LoginActions";
 import { useStyles } from "../utils/useStyles";
-
+import {useParams} from 'react-router-dom';
 
 const Profile = () => {
-  // Need to be changed
-  const userId = "5fabc74c55ca9811782b5f3e";
+ 
+  const {postById} = useParams();
+  console.log(typeof(postById));
+
   const classes = useStyles();
   const [posts, setPosts] = useState({});
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
 
-  const getPosts = async () => {
-    const user = {
-      _id: userId,
-    };
-    try {
-      const data = await axios.get("/myposts", user).then((res) => res.data);
-      setPosts(data);
-      console.log(posts);
-    } catch(err) {
-      console.error(err);
-    }
-  }
 
   useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const res = await axios.get(`/userposts/${postById}`);
+        console.log(res);
+        setPosts(res.data);
+        console.log(posts);
+      } catch(err) {
+        console.error(err);
+      }
+    }  
     getPosts();
   }, []);
 
