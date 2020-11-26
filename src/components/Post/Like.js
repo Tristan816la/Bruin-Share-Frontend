@@ -56,20 +56,12 @@ const Like = ({ likes, postId }) => {
   return (
     <>
       {!liked ? (
-        <CustomButton tip="like">
-          <Icon
-            component={unlikeIcon}
-            className={classes.iconbtn}
-            onClick={likePost}
-          />
+        <CustomButton tip="like" onClick={likePost}>
+          <Icon component={unlikeIcon} className={classes.iconbtn} />
         </CustomButton>
       ) : (
-        <CustomButton tip="unlike">
-          <Icon
-            component={likeIcon}
-            className={classes.iconbtn}
-            onClick={unlikePost}
-          ></Icon>
+        <CustomButton tip="unlike" onClick={unlikePost}>
+          <Icon component={likeIcon} className={classes.iconbtn}></Icon>
         </CustomButton>
       )}
       <Typography className={classes.likecommenttext}>{likeCount}</Typography>

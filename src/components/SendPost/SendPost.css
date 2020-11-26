@@ -1,5 +1,3 @@
-.fab {
-  position: fixed;
-  left: 90vw;
-  bottom: 10vh;
+.fab:hover {
+  cursor: pointer;
 }

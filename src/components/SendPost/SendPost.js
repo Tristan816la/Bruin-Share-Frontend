@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SendPost.css";
-
 
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -11,43 +10,32 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import { Typography } from "@material-ui/core";
+import CreateIcon from "@material-ui/icons/Create";
 
 import { isLoggedIn } from "../../utils/LoginActions";
 import axios from "axios";
-import SeparateLine from "../../styled/SeparateLine";
 import { useStyles } from "../../utils/useStyles";
+import CustomButton from "../../styled/CustomButton";
+import { Tooltip } from "@material-ui/core";
 
-
-
-
-
-
-
-
-const MultilineTextFields = () => {
+const MultilineTextFields = ({ onChange }) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('Controlled');
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
 
   return (
-    <form className={classes.root} noValidate autoComplete="off">
+    <form className={classes.sendPostBox} noValidate autoComplete="off">
       <div>
         <TextField
-          id="outlined-textarea"
           label="Your Post"
           multiline
           variant="outlined"
           rows={5}
+          onChange={(e) => onChange(e)}
+          fullWidth
         />
       </div>
     </form>
   );
-}
-
+};
 
 export default function SendPost() {
   const classes = useStyles();
@@ -55,6 +43,23 @@ export default function SendPost() {
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
   const [content, setContent] = useState("");
   const [topic, setTopic] = useState("");
+  const [lat, setLat] = useState("34.068920");
+  const [lng, setLng] = useState("-118.445183");
+
+  useEffect(() => {
+    const getLocation = async () => {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLat(position.coords.latitude);
+          setLng(position.coords.longitude);
+        },
+        () => {
+          console.error("Fail to get location");
+        }
+      );
+    };
+    getLocation();
+  }, [lat, lng]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -71,14 +76,16 @@ export default function SendPost() {
   const handleContentChange = (e) => {
     setContent(e.target.value);
   };
+
   const handleSubmit = async () => {
+    const body = {
+      topic,
+      content,
+      lat,
+      lng,
+    };
     try {
-      const body = {
-        topic,
-        content,
-      };
-      console.log(axios.defaults);
-      const data = await axios.post("/createpost", body);
+      await axios.post("/createpost", body);
       handleClose();
       window.location.reload();
     } catch (err) {
@@ -89,14 +96,10 @@ export default function SendPost() {
   return (
     loggedIn && (
       <div>
-        <Fab
-          className="fab"
-          color="primary"
-          aria-label="add"
-          onClick={handleClickOpen}
-        >
-          <AddIcon />
-        </Fab>
+        <CustomButton tip="Create a new Post!" onClick={handleClickOpen}>
+          <CreateIcon />
+        </CustomButton>
+
         <Dialog
           open={open}
           onClose={handleClose}
@@ -109,7 +112,6 @@ export default function SendPost() {
             it together.
           </DialogContentText>
           <DialogContent>
-
             <TextField
               autoFocus
               margin="dense"
@@ -117,17 +119,10 @@ export default function SendPost() {
               label="Topic:"
               multiline
               onChange={(e) => handleTitleChange(e)}
+              className={classes.sendPostTopic}
             />
-          
 
-
-            <DialogContentText>
-            Life these days have not been easy. The COVID-19 pandemic has impacted every Bruin's live. Share your story and let us get it through together. 
-            </DialogContentText>
-
-            <MultilineTextFields/>
-
-
+            <MultilineTextFields onChange={handleContentChange} />
           </DialogContent>
 
           <DialogActions>
