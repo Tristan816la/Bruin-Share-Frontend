@@ -1,12 +1,16 @@
 .navbar {
   display: flex;
-  padding: 20px;
-  padding-bottom: 15px;
+  height: 8vh;
   justify-content: space-between;
-  /* z-index: 1000; */
+  padding-left: 50px;
+  position: fixed;
+  width: 100vw;
+  z-index: 1000;
+  background-color: #ffffff;
   /* height: 200px; */
   top: 0;
-  border-bottom: 6px solid #4FB0CF;
+  /* background-color: #4fb0cf; */
+  border-bottom: 6px solid #4fb0cf;
   box-shadow: 0px 5px 8px -9px rgba(0, 0, 0, 0.75);
 }
 
@@ -27,14 +31,14 @@
 }
 
 .navbar__left > img {
-  height: 60px;
+  height: 50px;
 }
 
 .bruinShare {
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 30px;
+  font-size: 25px;
   padding: 0 25px;
   text-shadow: 2px 2px 2px #aaa;
   cursor: pointer;
@@ -46,11 +50,12 @@
 }
 
 .navbar__right {
-  margin-left: 60px;
+  /* margin-left: 60px; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   align-items: center;
+  /* margin-right: 50px; */
 }
 
 .navbar__option {
@@ -63,7 +68,7 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: normal;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
 }
 
@@ -94,5 +99,5 @@
 }
 
 .avatar {
-  margin: 0 20px;
+  margin: 0 110px 0 20px;
 }

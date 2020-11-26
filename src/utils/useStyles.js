@@ -3,15 +3,17 @@ import { makeStyles } from "@material-ui/core/styles";
 const loginbg = "cover_bg_test2.png";
 
 export const useStyles = makeStyles((theme) => ({
+  /**<--------------Main Story Box ----------------------------------------------------> */
   post: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: "20px 20px",
-    borderRadius: "30px",
-    width: "min(300px, 20vw)",
-    height: "min(500px, 50vh)",
-    border: "1px solid #000000",
+    padding: "10px 20px",
+    borderRadius: "5px",
+    height: "20vh",
+    border: "1px solid silver",
+    position: "relative",
+    direction: "ltr",
   },
   title: {
     display: "flex",
@@ -21,26 +23,26 @@ export const useStyles = makeStyles((theme) => ({
   profile: {
     padding: theme.spacing(0, 1, 0),
   },
-  contentBox: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    padding: theme.spacing(2),
-    borderRadius: "20px",
-    width: "min(290px, 18vw)",
-    height: "min(500px, 45vh)",
-    border: "1px solid #000000",
-    margin: theme.spacing(1, 0, 1),
-    overflow: "hidden",
-    position: "relative",
-  },
+  // contentBox: {
+  //   display: "flex",
+  //   flexDirection: "column",
+  //   alignItems: "center",
+  //   padding: theme.spacing(2),
+  //   borderRadius: "20px",
+  //   width: "min(290px, 18vw)",
+  //   height: "min(500px, 45vh)",
+  //   border: "1px solid #000000",
+  //   margin: theme.spacing(1, 0, 1),
+  //   overflow: "hidden",
+  //   position: "relative",
+  // },
   content: {
+    padding: "15px 0 0px 10px",
     overflowWrap: "break-word",
   },
   time: {
-    position: "absolute",
-    right: "9px",
-    bottom: "8px",
+    fontSize: "12px",
+    color: "silver",
   },
   likeComment: {
     alignSelf: "flex-start",
@@ -48,34 +50,36 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     width: "100%",
     gap: "20px",
+    height: "3.5vh",
+    position: "absolute",
+    bottom: "2.5vh",
   },
   likecommenttext: {
     marginTop: "12px",
   },
 
   /**<------------------Home--------------------------------------> */
-  // homeroot: {
-  //   display: "flex",
-  //   flexDirection: "column",
-  // },
   homebody: {
-    display: "grid",
-    gridTemplateColumns: "1fr 3fr",
-    gridColumnGap: "50px",
+    width: "100vw",
+    marginLeft: "-300px",
   },
 
   homeposts: {
+    position: "absolute",
+    top: "10vh",
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
-    // padding: theme.spacing(1, 2, 2),
-    gridColumnGap: "10px",
-    gridRowGap: "30px",
-    height: "88.5vh",
-    width: "71vw",
-    overflow: "scroll",
-    paddingTop: "20px",
+    width: "40vw",
+    gridRowGap: "20px",
+    paddingLeft: "32vw",
+    paddingRight: "800px",
+    // overflowY: "scroll",
+    // direction: "rtl",
+    // paddingTop: "20px",
   },
 
+  mainStoryBox: {
+    direction: "ltr",
+  },
   /**<------------------Comment--------------------------------------> */
   dialogTitle: {
     width: "500px",
@@ -191,5 +195,45 @@ export const useStyles = makeStyles((theme) => ({
   /** <------------------ Send Post ------------------------------> */
   dialogDescription: {
     paddingLeft: "20px",
+  },
+  sendPostTopic: {
+    marginBottom: "50px",
+  },
+  sendPostBox: {
+    height: "200px",
+  },
+  /**<-------------------Notifications -----------------------------> */
+
+  notificationButton: {
+    color: "#666",
+    cursor: "pointer",
+  },
+  selectButton: {
+    display: "flex",
+    flexDirection: "row",
+    width: "300px",
+  },
+  selectComments: {
+    flex: "50%",
+  },
+  selectLikes: {
+    flex: "50%",
+  },
+  commentButton: {
+    marginRight: "1vh",
+  },
+  notificationlikeButton: {
+    marginRight: "2vh",
+  },
+  MessageList: {
+    maxHeight: 100,
+    overflow: "auto",
+    position: "relative",
+    flexDirection: "column",
+    margin: theme.spacing(1, 0, 0),
+  },
+  listItem: {
+    color: "#666",
+    cursor: "pointer",
   },
 }));

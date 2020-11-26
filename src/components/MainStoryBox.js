@@ -7,9 +7,6 @@ import { useStyles } from "../utils/useStyles";
 import CustomButton from "../styled/CustomButton";
 import { useHistory } from "react-router-dom";
 
-
-
-
 const MainStoryBox = ({
   name,
   title,
@@ -19,12 +16,11 @@ const MainStoryBox = ({
   likes,
   id,
   image,
-  postById
+  postById,
 }) => {
   const classes = useStyles();
   const history = useHistory();
- 
-  
+
   const handleClickShowDetails = () => {
     try {
       history.push(`/posts/${postById}`);
@@ -32,8 +28,7 @@ const MainStoryBox = ({
       console.error(err);
     }
   };
-  
-  
+
   const handleClickShowProfile = () => {
     try {
       history.push(`/profile/${postById}`);
@@ -53,22 +48,22 @@ const MainStoryBox = ({
             <Avatar src={image} alt="postby image"></Avatar>
           </CustomButton>
         </Grid>
-        <Grid item xs zeroMinWidth onClick={handleClickShowDetails}>
+        <Grid item xs onClick={handleClickShowDetails}>
           <Typography noWrap variant="h6">
             {title}
           </Typography>
-        </Grid>
-      </Grid>
-      <Box className={classes.contentBox} onClick={handleClickShowDetails}>
-        <Grid container>
-          <Grid item xs>
-            <Typography className={classes.content}>{content}</Typography>
-          </Grid>
           <Typography className={classes.time} variant="caption">
             {moment(time).fromNow()}
           </Typography>
         </Grid>
-      </Box>
+      </Grid>
+      {/* <Box className={classes.contentBox} onClick={handleClickShowDetails}> */}
+      <Grid container>
+        <Grid item xs>
+          <Typography className={classes.content}>{content}</Typography>
+        </Grid>
+      </Grid>
+      {/* </Box> */}
       <Box className={classes.likeComment}>
         <Grid container>
           <Grid item xs container>

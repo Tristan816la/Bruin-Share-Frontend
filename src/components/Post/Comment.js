@@ -51,7 +51,7 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
       comment: commenttext,
     };
     try {
-      const data = await axios.put("/comment", body);
+      await axios.put("/comment", body);
       handleClose();
       window.location.reload();
     } catch (err) {
