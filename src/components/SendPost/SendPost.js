@@ -48,15 +48,19 @@ export default function SendPost() {
 
   useEffect(() => {
     const getLocation = async () => {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setLat(position.coords.latitude);
-          setLng(position.coords.longitude);
-        },
-        () => {
-          console.error("Fail to get location");
-        }
-      );
+      return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setLat(position.coords.latitude);
+            setLng(position.coords.longitude);
+            resolve("success");
+          },
+          () => {
+            console.error("Fail to get location");
+            reject("failed");
+          }
+        );
+      });
     };
     getLocation();
   }, [lat, lng]);

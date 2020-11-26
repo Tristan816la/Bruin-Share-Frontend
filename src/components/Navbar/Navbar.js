@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Notification from "../Notification";
 import SendPost from "../SendPost/SendPost";
+import Logo from "./logo.png";
 
 function Navbar({ loggedIn }) {
   const signoutaction = () => {
@@ -14,8 +15,7 @@ function Navbar({ loggedIn }) {
   return !loggedIn ? (
     <nav className="navbar">
       <div className="navbar__left">
-        <img src="logo.png" alt="" />
-        <Link to="/">
+        <Link to="/home">
           <div className="bruinShare">BruinShare</div>
         </Link>
       </div>
@@ -33,8 +33,8 @@ function Navbar({ loggedIn }) {
   ) : (
     <nav className="navbar">
       <div className="navbar__left">
-        <img src="logo.png" alt="" />
-        <Link to="/">
+        <img src={Logo} alt="nav" />
+        <Link to="/home">
           <div className="bruinShare">BruinShare</div>
         </Link>
       </div>

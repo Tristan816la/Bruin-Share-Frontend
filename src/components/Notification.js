@@ -51,11 +51,8 @@ function Notification(props) {
 
   return (
     <div>
-      <CustomButton tip="Notifications">
-        <NotificationsIcon
-          className={classes.notificationButton}
-          onClick={handleClick}
-        />
+      <CustomButton tip="Notifications" onClick={handleClick}>
+        <NotificationsIcon className={classes.notificationButton} />
       </CustomButton>
 
       <Popover
@@ -74,8 +71,8 @@ function Notification(props) {
         <Paper>
           <List className={classes.MessageList}>
             {messages.map((message, i) => (
-              <>
-                <ListItem key={i}>
+              <div key={i}>
+                <ListItem>
                   <Link
                     className={classes.listItem}
                     color="primary"
@@ -85,7 +82,7 @@ function Notification(props) {
                   </Link>
                 </ListItem>
                 <Divider />
-              </>
+              </div>
             ))}
           </List>
           <ToggleButtonGroup

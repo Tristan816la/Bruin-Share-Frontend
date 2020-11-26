@@ -72,9 +72,6 @@ export const useStyles = makeStyles((theme) => ({
     gridRowGap: "20px",
     paddingLeft: "32vw",
     paddingRight: "800px",
-    // overflowY: "scroll",
-    // direction: "rtl",
-    // paddingTop: "20px",
   },
 
   mainStoryBox: {
@@ -235,5 +232,18 @@ export const useStyles = makeStyles((theme) => ({
   listItem: {
     color: "#666",
     cursor: "pointer",
+  },
+
+  /**<------------------------- Profile ------------------------------> */
+  profilebody: {
+    display: "grid",
+    margin: "0 300px",
+    gridTemplateColumns: "1fr 2fr",
+    gridColumnGap: "100px",
+  },
+  profileposts: {
+    display: "grid",
+    marginTop: "10vh",
+    // gridRowGap: "20px",
   },
 }));
