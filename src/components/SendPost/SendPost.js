@@ -8,62 +8,43 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import CreateIcon from "@material-ui/icons/Create";
 
 import { isLoggedIn } from "../../utils/LoginActions";
 import axios from "axios";
 import { useStyles } from "../../utils/useStyles";
 import CustomButton from "../../styled/CustomButton";
-import { Tooltip } from "@material-ui/core";
-
-const MultilineTextFields = ({ onChange }) => {
-  const classes = useStyles();
-
-  return (
-    <form className={classes.sendPostBox} noValidate autoComplete="off">
-      <div>
-        <TextField
-          label="Your Post"
-          multiline
-          variant="outlined"
-          rows={5}
-          onChange={(e) => onChange(e)}
-          fullWidth
-        />
-      </div>
-    </form>
-  );
-};
+import MultilineTextFields from "../../styled/MultilineTextField";
 
 export default function SendPost() {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
+  const [open, setOpen] = useState(false);
   const [content, setContent] = useState("");
   const [topic, setTopic] = useState("");
   const [lat, setLat] = useState("34.068920");
   const [lng, setLng] = useState("-118.445183");
 
   useEffect(() => {
-    const getLocation = async () => {
-      return new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            setLat(position.coords.latitude);
-            setLng(position.coords.longitude);
-            resolve("success");
-          },
-          () => {
-            console.error("Fail to get location");
-            reject("failed");
-          }
-        );
-      });
-    };
-    getLocation();
-  }, [lat, lng]);
+    if (loggedIn) {
+      const getLocation = async () => {
+        return new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              setLat(position.coords.latitude);
+              setLng(position.coords.longitude);
+              resolve("success");
+            },
+            () => {
+              console.error("Fail to get location");
+              reject("failed");
+            }
+          );
+        });
+      };
+      getLocation();
+    }
+  }, [lat, lng, loggedIn]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -101,7 +82,7 @@ export default function SendPost() {
     loggedIn && (
       <div>
         <CustomButton tip="Create a new Post!" onClick={handleClickOpen}>
-          <CreateIcon />
+          <AddIcon />
         </CustomButton>
 
         <Dialog

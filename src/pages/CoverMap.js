@@ -14,6 +14,7 @@ import ArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import ArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@material-ui/core";
 
 const libraries = ["places"];
 
@@ -115,104 +116,107 @@ export default function CoverMap() {
   };
 
   return (
-    <div className="mapContainer">
-      <LoadScript
-        googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-        libraries={libraries}
-      >
-        {!closed ? (
-          <div
-            className="container"
-            data-aos="fade-right"
-            data-aos-duration="1000"
-          >
-            <h1>
-              <Typed strings={["Bruin Share"]} typeSpeed={150}></Typed>
-            </h1>
-            <p className="text">
-              "Life these days have not been easy. The COVID-19 pandemic has
-              impacted every Bruin's live. No matter what you're going through -
-              you're not alone."
-            </p>
-            <p>
-              <strong>{posts.length}</strong> students have shared their stories
-            </p>
-            <button
-              className="getstartbutton"
-              onClick={() => {
-                history.push("/home");
-              }}
-            >
-              Let's get started
-            </button>
-            <ArrowLeft
-              className="arrowleft"
-              onClick={() => setClosed(true)}
-              // fontSizeLarge
-            ></ArrowLeft>
-          </div>
-        ) : (
-          <ArrowRight
-            className="arrowright"
-            onClick={() => setClosed(false)}
-            // fontSizeLarge
-          ></ArrowRight>
-        )}
-
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          zoom={2.4}
-          options={options}
-          center={center}
-          onLoad={onMapLoad}
+    posts.length && (
+      <div className="mapContainer">
+        <LoadScript
+          googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+          libraries={libraries}
         >
-          <MarkerClusterer options={clusteroptions}>
-            {(clusterer) =>
-              posts.map((location, i) => (
-                <Marker
-                  key={i}
-                  position={location}
-                  clusterer={clusterer}
-                  label={{
-                    fontWeight: "bold",
-                    text: "1",
-                    fontFamily: "Roboto",
-                  }}
-                  icon={{
-                    url: "whitedot.svg",
-                  }}
-                  onClick={() => {
-                    console.log(selected, location);
-                    if (
-                      !selected ||
-                      selected.lat !== location.lat ||
-                      selected.lng !== location.lng
-                    ) {
-                      setSelected(location);
-                    } else {
-                      panTo(selected);
-                    }
-                  }}
-                />
-              ))
-            }
-          </MarkerClusterer>
-          {selected ? (
-            <InfoWindow
-              position={{ lat: selected.lat, lng: selected.lng }}
-              onCloseClick={() => setSelected(null)}
-              onClick={panTo(selected)}
+          {!closed ? (
+            <div
+              className="container"
+              data-aos="fade-right"
+              data-aos-duration="1000"
             >
-              <div>
-                <h2 style={{ paddingBottom: "10px" }}>{selected.topic}</h2>
-                <p>{selected.content}</p>
-              </div>
-            </InfoWindow>
+              <h1>
+                <Typed strings={["Bruin Share"]} typeSpeed={150}></Typed>
+              </h1>
+              <p className="text">
+                "Life these days have not been easy. The COVID-19 pandemic has
+                impacted every Bruin's live. No matter what you're going through
+                - you're not alone."
+              </p>
+              <p>
+                <strong>{posts.length}</strong> students have shared their
+                stories
+              </p>
+              <Button
+                className="getstartbutton"
+                onClick={() => {
+                  history.push("/home");
+                }}
+              >
+                Let's get started
+              </Button>
+              <ArrowLeft
+                className="arrowleft"
+                onClick={() => setClosed(true)}
+                // fontSizeLarge
+              ></ArrowLeft>
+            </div>
           ) : (
-            ""
+            <ArrowRight
+              className="arrowright"
+              onClick={() => setClosed(false)}
+              // fontSizeLarge
+            ></ArrowRight>
           )}
-        </GoogleMap>
-      </LoadScript>
-    </div>
+
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={2.4}
+            options={options}
+            center={center}
+            onLoad={onMapLoad}
+          >
+            <MarkerClusterer options={clusteroptions}>
+              {(clusterer) =>
+                posts.map((location, i) => (
+                  <Marker
+                    key={i}
+                    position={location}
+                    clusterer={clusterer}
+                    label={{
+                      fontWeight: "bold",
+                      text: "1",
+                      fontFamily: "Roboto",
+                    }}
+                    icon={{
+                      url: "whitedot.svg",
+                    }}
+                    onClick={() => {
+                      console.log(selected, location);
+                      if (
+                        !selected ||
+                        selected.lat !== location.lat ||
+                        selected.lng !== location.lng
+                      ) {
+                        setSelected(location);
+                      } else {
+                        panTo(selected);
+                      }
+                    }}
+                  />
+                ))
+              }
+            </MarkerClusterer>
+            {selected ? (
+              <InfoWindow
+                position={{ lat: selected.lat, lng: selected.lng }}
+                onCloseClick={() => setSelected(null)}
+                onClick={panTo(selected)}
+              >
+                <div>
+                  <h2 style={{ paddingBottom: "10px" }}>{selected.topic}</h2>
+                  <p>{selected.content}</p>
+                </div>
+              </InfoWindow>
+            ) : (
+              ""
+            )}
+          </GoogleMap>
+        </LoadScript>
+      </div>
+    )
   );
 }

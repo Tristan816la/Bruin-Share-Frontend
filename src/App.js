@@ -1,15 +1,22 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
+// Pages
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
-import theme from "./styled/theme";
-import styled from "styled-components";
-import axios from "axios";
+import Post from "./pages/Post";
 import CoverMap from "./pages/CoverMap";
 import Private from "./pages/Private";
 import Profile from "./pages/Profile";
+
+// Styles
+import theme from "./styled/theme";
+import styled from "styled-components";
+
+// Utils
+import axios from "axios";
+import { StylesProvider } from "@material-ui/core/styles";
 axios.defaults.baseURL = "https://bruin-share.herokuapp.com/";
 
 const AppStyle = styled.div`
@@ -25,21 +32,27 @@ if (token) {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Switch>
-          <AppStyle>
-            <Route path="/" exact component={CoverMap}></Route>
-            <Route path="/login" component={Login}></Route>
-            <Route path="/signup" component={Signup}></Route>
-            <Route path="/home" exact component={Home}></Route>
-            <Route exact path="/posts/:postId" component={Profile}></Route>
-            <Route exact path="/private/:userId" component={Private}></Route>
-            <Route exact path="/profile/:postById" component={Profile}></Route>
-          </AppStyle>
-        </Switch>
-      </Router>
-    </ThemeProvider>
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Switch>
+            <AppStyle>
+              <Route path="/" exact component={CoverMap}></Route>
+              <Route path="/login" component={Login}></Route>
+              <Route path="/signup" component={Signup}></Route>
+              <Route path="/home" exact component={Home}></Route>
+              <Route exact path="/posts/:postId" component={Post}></Route>
+              <Route exact path="/private/:userId" component={Private}></Route>
+              <Route
+                exact
+                path="/profile/:postById"
+                component={Profile}
+              ></Route>
+            </AppStyle>
+          </Switch>
+        </Router>
+      </ThemeProvider>
+    </StylesProvider>
   );
 }
 

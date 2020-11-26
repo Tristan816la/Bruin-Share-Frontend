@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-import { Grid, Typography, Avatar, Box, IconButton } from "@material-ui/core";
+import { Grid, Typography, Avatar, Box } from "@material-ui/core";
 import Like from "./Post/Like";
 import Comment from "./Post/Comment";
 import { useStyles } from "../utils/useStyles";
 import CustomButton from "../styled/CustomButton";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+
+export const Title = styled(Typography)`
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+`;
 
 const MainStoryBox = ({
   name,
@@ -23,7 +31,7 @@ const MainStoryBox = ({
 
   const handleClickShowDetails = () => {
     try {
-      history.push(`/posts/${postById}`);
+      history.push(`/posts/${id}`);
     } catch (err) {
       console.error(err);
     }
@@ -49,21 +57,19 @@ const MainStoryBox = ({
           </CustomButton>
         </Grid>
         <Grid item xs onClick={handleClickShowDetails}>
-          <Typography noWrap variant="h6">
+          <Title noWrap variant="h6">
             {title}
-          </Typography>
+          </Title>
           <Typography className={classes.time} variant="caption">
             {moment(time).fromNow()}
           </Typography>
         </Grid>
       </Grid>
-      {/* <Box className={classes.contentBox} onClick={handleClickShowDetails}> */}
       <Grid container>
         <Grid item xs>
           <Typography className={classes.content}>{content}</Typography>
         </Grid>
       </Grid>
-      {/* </Box> */}
       <Box className={classes.likeComment}>
         <Grid container>
           <Grid item xs container>
