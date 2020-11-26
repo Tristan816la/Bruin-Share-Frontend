@@ -44,18 +44,16 @@
   cursor: pointer;
   color: #000;
   text-decoration: none;
-
   justify-content: space-evenly;
   align-items: center;
 }
 
 .navbar__right {
-  /* margin-left: 60px; */
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   align-items: center;
-  /* margin-right: 50px; */
+  margin-right: 80px;
 }
 
 .navbar__option {

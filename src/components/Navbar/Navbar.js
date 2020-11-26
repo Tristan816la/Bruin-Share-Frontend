@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Notification from "../Notification";
 import SendPost from "../SendPost/SendPost";
 import Logo from "./logo.png";
 
 function Navbar({ loggedIn }) {
+  const location = useLocation();
+
   const signoutaction = () => {
     window.localStorage.clear();
     window.location.reload();
@@ -15,6 +17,7 @@ function Navbar({ loggedIn }) {
   return !loggedIn ? (
     <nav className="navbar">
       <div className="navbar__left">
+        <img src={Logo} alt="nav" />
         <Link to="/home">
           <div className="bruinShare">BruinShare</div>
         </Link>
@@ -40,7 +43,7 @@ function Navbar({ loggedIn }) {
       </div>
 
       <div className="loggedin__right">
-        <SendPost></SendPost>
+        {location.pathname === "/home" && <SendPost></SendPost>}
         <Notification className="notification" />
         <Link to="/Home">
           <div className="navbar__option" onClick={signoutaction}>

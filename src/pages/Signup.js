@@ -92,9 +92,8 @@ const Signup = () => {
       const res = await axios.post("/signup", body);
       console.log(res);
       history.push("/login");
-    } catch (error) {
-      // TODO: add error handling for repetitive user
-      console.error(error);
+    } catch (err) {
+      setErrors({ ...errors, name: err.response.data.error });
     }
   };
   const [values, setValues] = React.useState({

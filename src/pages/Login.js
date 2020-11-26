@@ -17,8 +17,9 @@ import {
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { isLoggedIn, logginUser } from "../utils/LoginActions";
+import { isLoggedIn } from "../utils/LoginActions";
 import { useStyles } from "../utils/useStyles";
+import axios from "axios";
 
 //spacing larger
 //confirm password, error -> box red, textfield attribute
@@ -35,10 +36,22 @@ const Login = () => {
 
   const loginaction = async () => {
     try {
-      logginUser(values.email, values.password);
+      const body = {
+        email: values.email,
+        password: values.password,
+      };
+      const res = await axios.post("/login", body);
+      window.localStorage.setItem("AuthToken", `Bearer ${res.data.mytoken}`);
+      window.localStorage.setItem("UserId", res.data.userinfo._id);
+      window.localStorage.setItem("UserImage", res.data.userinfo.image);
+      window.location.reload(); // Add this because Nav bar needs to rerender
       history.push("/home");
     } catch (err) {
-      console.error(err);
+      const errorText = err.response.data.error;
+      if (errorText === "Invalid Email!")
+        setErrors({ ...errors, email: errorText });
+      else if (errorText === "Invalid password!")
+        setErrors({ ...errors, password: errorText });
     }
   };
 
@@ -127,7 +140,6 @@ const Login = () => {
                 name="email"
                 error={errors.email ? true : false}
               >
-                {console.log(errors.email)}
                 <InputLabel htmlFor="Email-Address">Email Address</InputLabel>
                 <OutlinedInput
                   autoFocus
