@@ -42,7 +42,7 @@ function App() {
               <Route path="/signup" component={Signup}></Route>
               <Route path="/home" exact component={Home}></Route>
               <Route exact path="/posts/:postId" component={Post}></Route>
-              <Route exact path="/private/:userId" component={Private}></Route>
+              <Route exact path="/private" component={Private}></Route>
               <Route
                 exact
                 path="/profile/:postById"

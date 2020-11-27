@@ -50,7 +50,7 @@ function Navbar({ loggedIn }) {
             Sign Out
           </div>
         </Link>
-        <Link to="/private/:userId">
+        <Link to="/private">
           <Avatar
             className="avatar"
             src={window.localStorage.UserImage}
