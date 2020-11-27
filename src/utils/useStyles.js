@@ -211,7 +211,7 @@ export const useStyles = makeStyles((theme) => ({
   selectButton: {
     display: "flex",
     flexDirection: "row",
-    width: "300px",
+    width: "100%",
   },
   selectComments: {
     flex: "50%",
@@ -225,7 +225,10 @@ export const useStyles = makeStyles((theme) => ({
   notificationlikeButton: {
     marginRight: "2vh",
   },
-  MessageList: {
+  notificationDropDown: {
+    width: "350px",
+  },
+  messageList: {
     maxHeight: 100,
     overflow: "auto",
     position: "relative",
@@ -234,6 +237,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     color: "#666",
-    cursor: "pointer",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
+  itemText: {
+    
+  },
+  deleteButton: {
+
+  }
 }));

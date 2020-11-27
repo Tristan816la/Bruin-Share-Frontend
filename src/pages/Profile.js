@@ -5,12 +5,12 @@ import ProfileSideBar from "../components/ProfileSideBar/ProfileSideBar";
 import MainStoryBox from "../components/MainStoryBox";
 import { isLoggedIn } from "../utils/LoginActions";
 import { useStyles } from "../utils/useStyles";
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const Profile = () => {
  
   const {postById} = useParams();
-  console.log(typeof(postById));
+  // console.log(typeof(postById));
 
   const classes = useStyles();
   const [posts, setPosts] = useState({});
@@ -20,9 +20,9 @@ const Profile = () => {
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const res = await axios.get(`/userposts/${postById}`);
-        console.log(res);
-        setPosts(res.data);
+        const res = await axios.get(`/userposts/${postById}`).then((res) => res.data);
+        // console.log(res);
+        setPosts(res);
         console.log(posts);
       } catch(err) {
         console.error(err);
