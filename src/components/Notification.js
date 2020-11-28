@@ -196,28 +196,8 @@ function Notification() {
           horizontal: "center",
         }}
       >
-<<<<<<< HEAD
         <Paper className={classes.notificationDropDown}>
           <MessageList />
-=======
-        <Paper>
-          <List className={classes.MessageList}>
-            {messages.map((message, i) => (
-              <div key={i}>
-                <ListItem>
-                  <Link
-                    className={classes.listItem}
-                    color="primary"
-                    underline="none"
-                  >
-                    <div>{`${message.name} ${messageType} your post`}</div>
-                  </Link>
-                </ListItem>
-                <Divider />
-              </div>
-            ))}
-          </List>
->>>>>>> main
           <ToggleButtonGroup
             className={classes.selectButton}
             value={messageType}
