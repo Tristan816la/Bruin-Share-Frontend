@@ -4,6 +4,9 @@ import "./SearchBar.css";
 function SearchBar() {
   return (
     <div>
+      <div className="drop_down">
+        <text>Type</text>
+      </div>
       <div className="search_bar">
         <input type="text" placeholder="Search stories..." />
       </div>
