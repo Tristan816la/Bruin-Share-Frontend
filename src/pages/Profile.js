@@ -13,15 +13,15 @@ const Profile = () => {
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
-
-  let profileUser;
-  if (posts.length) profileUser = posts[0].postBy;
+  const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
     const getPosts = async () => {
       try {
-        const res = await axios.get(`/userposts/${userId}`);
-        setPosts(res.data);
+        const result = await axios.get(`/userinfo/${userId}`)
+          .then((res) => res.data);
+        setPosts(result.posts);
+        setUserInfo(result.user);
       } catch (err) {
         console.error(err);
       }
@@ -29,19 +29,21 @@ const Profile = () => {
     getPosts();
   }, []);
 
-  console.log(profileUser);
+  console.log(posts);
+  console.log(userInfo);
   return (
     <div>
       <Navbar loggedIn={loggedIn} />
       <div className={classes.profilebody}>
-        {posts.length && (
+        {posts.length  && (
           <ProfileSideBar
-            profileAvatar={profileUser.image}
-            user={profileUser.name}
-            email={profileUser.email}
+            className={classes.profileSideBar}
+            profileAvatar={userInfo.image}
+            user={userInfo.name}
+            email={userInfo.email}
           ></ProfileSideBar>
         )}
-
+ 
         <div className={classes.profileposts}>
           <div>
             {posts.length > 0 && (

@@ -10,9 +10,10 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: "10px 20px",
     borderRadius: "5px",
-    height: "20vh",
+    height: "50vh",
     border: "1px solid silver",
     position: "relative",
+    overflow: "hidden",
   },
   title: {
     display: "flex",
@@ -21,6 +22,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   profile: {
     padding: theme.spacing(0, 1, 0),
+  },
+  contentContainer: {
+    height: "30vh",
+    overflow: "auto",
+    marginBottom: "20px",
   },
   content: {
     padding: "15px 0 0px 10px",
@@ -31,13 +37,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   likeComment: {
     alignSelf: "flex-start",
+    alignItems: "center",
     flexDirection: "row",
     display: "flex",
     width: "100%",
     gap: "20px",
     height: "3.5vh",
     position: "absolute",
-    bottom: "2.5vh",
+    bottom: "3vh",
   },
   likecommenttext: {
     marginTop: "12px",
@@ -187,7 +194,7 @@ export const useStyles = makeStyles((theme) => ({
   selectButton: {
     display: "flex",
     flexDirection: "row",
-    width: "300px",
+    width: "100%",
   },
   selectComments: {
     flex: "50%",
@@ -201,7 +208,10 @@ export const useStyles = makeStyles((theme) => ({
   notificationlikeButton: {
     marginRight: "2vh",
   },
-  MessageList: {
+  notificationDropDown: {
+    width: "350px",
+  },
+  messageList: {
     maxHeight: 100,
     overflow: "auto",
     position: "relative",
@@ -210,31 +220,46 @@ export const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     color: "#666",
-    cursor: "pointer",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  itemText: {
+    cursor: "pointer"
+  },
+  deleteButton: {
+
   },
 
   /**<------------------------- Profile ------------------------------> */
   profilebody: {
     display: "grid",
-    margin: "0 300px",
+    margin: "0 0 0 10vw",
     gridTemplateColumns: "1fr 2fr",
-    gridColumnGap: "100px",
+    gridColumnGap: "10vw",
+  },
+  profileSideBar: {
+    position: "relative"
   },
   profileposts: {
+    position: "relative",
+    top: "10vh",
     display: "grid",
-    marginTop: "10vh",
-    // gridRowGap: "20px",
+    width: "41vw",
   },
 
   /**<------------------------- Private ------------------------------> */
   privatebody: {
     display: "grid",
-    margin: "0 300px",
+    margin: "0 0 0 10vw",
     gridTemplateColumns: "1fr 2fr",
-    gridColumnGap: "100px",
+    gridColumnGap: "10vw",
   },
   privateposts: {
+    position: "relative",
+    top: "10vh",
     display: "grid",
     marginTop: "10vh",
+
   },
 }));
