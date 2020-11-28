@@ -236,6 +236,5 @@ export const useStyles = makeStyles((theme) => ({
   privateposts: {
     display: "grid",
     marginTop: "10vh",
-    // gridRowGap: "20px",
   },
 }));

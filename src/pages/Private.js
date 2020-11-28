@@ -11,8 +11,11 @@ import { useStyles } from "../utils/useStyles";
 const Private = () => {
   const userId = getUserId();
   const classes = useStyles();
-  const [posts, setPosts] = useState({});
+  const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
+  
+  let currentUser; 
+  if (posts.length) currentUser = posts[0].postBy;
 
   const getPosts = async () => {
     const user = {
@@ -36,8 +39,13 @@ const Private = () => {
     <div>
       <Navbar loggedIn={loggedIn} />
       <div className={classes.privatebody}>
+        {posts.length && (
           <PrivateSideBar
-            ></PrivateSideBar>
+            name={currentUser.name}
+            email={currentUser.email}
+          ></PrivateSideBar>
+        )}
+          
 
         
         <div className={classes.privateposts}>
