@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
-import SendPost from "../components/SendPost/SendPost";
 import axios from "axios";
 import MainStoryBox from "../components/MainStoryBox";
 import SideBar from "../components/SideBar/SideBar";
@@ -20,7 +19,6 @@ const Home = () => {
   }, []);
 
   const classes = useStyles();
-
   return (
     <>
       <div>
@@ -41,9 +39,10 @@ const Home = () => {
                       <MainStoryBox
                         key={i}
                         name={post.postBy.name}
+                        postById={post.postBy._id}
                         title={post.topic}
                         content={post.content}
-                        time={post.updatedAt}
+                        time={post.createdAt}
                         likes={post.likes}
                         comments={post.comments}
                         id={post._id}

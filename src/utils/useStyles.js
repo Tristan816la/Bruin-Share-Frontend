@@ -13,7 +13,6 @@ export const useStyles = makeStyles((theme) => ({
     height: "20vh",
     border: "1px solid silver",
     position: "relative",
-    direction: "ltr",
   },
   title: {
     display: "flex",
@@ -23,22 +22,8 @@ export const useStyles = makeStyles((theme) => ({
   profile: {
     padding: theme.spacing(0, 1, 0),
   },
-  // contentBox: {
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   alignItems: "center",
-  //   padding: theme.spacing(2),
-  //   borderRadius: "20px",
-  //   width: "min(290px, 18vw)",
-  //   height: "min(500px, 45vh)",
-  //   border: "1px solid #000000",
-  //   margin: theme.spacing(1, 0, 1),
-  //   overflow: "hidden",
-  //   position: "relative",
-  // },
   content: {
     padding: "15px 0 0px 10px",
-    overflowWrap: "break-word",
   },
   time: {
     fontSize: "12px",
@@ -61,25 +46,16 @@ export const useStyles = makeStyles((theme) => ({
   /**<------------------Home--------------------------------------> */
   homebody: {
     width: "100vw",
-    marginLeft: "-300px",
   },
 
   homeposts: {
     position: "absolute",
     top: "10vh",
     display: "grid",
-    width: "40vw",
-    gridRowGap: "20px",
-    paddingLeft: "32vw",
-    paddingRight: "800px",
-    // overflowY: "scroll",
-    // direction: "rtl",
-    // paddingTop: "20px",
+    width: "41vw",
+    paddingLeft: "22vw",
   },
 
-  mainStoryBox: {
-    direction: "ltr",
-  },
   /**<------------------Comment--------------------------------------> */
   dialogTitle: {
     width: "500px",
@@ -244,7 +220,36 @@ export const useStyles = makeStyles((theme) => ({
   itemText: {
     cursor: "pointer"
   },
+<<<<<<< HEAD
   deleteButton: {
 
   }
+=======
+
+  /**<------------------------- Profile ------------------------------> */
+  profilebody: {
+    display: "grid",
+    margin: "0 300px",
+    gridTemplateColumns: "1fr 2fr",
+    gridColumnGap: "100px",
+  },
+  profileposts: {
+    display: "grid",
+    marginTop: "10vh",
+    // gridRowGap: "20px",
+  },
+
+  /**<------------------------- Private ------------------------------> */
+  privatebody: {
+    display: "grid",
+    margin: "0 300px",
+    gridTemplateColumns: "1fr 2fr",
+    gridColumnGap: "100px",
+  },
+  privateposts: {
+    display: "grid",
+    marginTop: "10vh",
+    // gridRowGap: "20px",
+  },
+>>>>>>> main
 }));

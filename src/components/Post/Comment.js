@@ -25,11 +25,11 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
   const [commenttext, setCommenttext] = useState("");
   const history = useHistory();
   const classes = useStyles();
-
-  if (comments.length > 5) {
-    comments = comments.slice(-5);
+  let displayComments = [...comments];
+  if (displayComments.length > 5) {
+    displayComments = displayComments.slice(-5);
   }
-
+  console.log(displayComments);
   const handleOpen = () => {
     if (isLoggedIn()) {
       setOpen(true);
@@ -95,7 +95,7 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
         </DialogContent>
 
         <DialogContent>
-          {comments.map((c, i) => (
+          {displayComments.map((c, i) => (
             <div
               style={{
                 display: "flex",

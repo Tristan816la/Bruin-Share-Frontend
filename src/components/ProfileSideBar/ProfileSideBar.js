@@ -1,27 +1,27 @@
-import React from 'react'
-import "./ProfileSideBar.css"
+import React from "react";
+import "./ProfileSideBar.css";
 import Avatar from "@material-ui/core/Avatar";
+import ProfileImg from "./profile.png";
 
-function ProfileSideBar() {
-    return (
-        <div>
-            <div className="profile_side_bar">
-                <Avatar className="profile_avatar" style={{ height: '158px', width: '147px', borderRadius: '20px' }} alt="profile_img" src="" />
-                <h2 className="other_user_name">User Name</h2>
-                <div className="other_user_state">
-                    <text>I am wondering why this happened</text>
-                </div>
-                <div className="other_user_info">
-                    <text>Age:</text>
-                    <text>Location:</text>
-                    <text>XXX:</text>
-                </div>
-                <img src="profile_side_bar.png" width="380px"></img>
+function ProfileSideBar({ profileAvatar, user, email }) {
+  return (
+    <div>
+      <div className="profile_side_bar">
+        <Avatar
+          className="profile_avatar"
+          style={{ height: "158px", width: "147px", borderRadius: "20px" }}
+          alt="profile_img"
+          src={profileAvatar}
+        />
 
-            </div>
-
+        <div className="other_user_info">
+          <div className="profiletext">User: {user}</div>
+          <div className="profiletext">Email: {email}</div>
         </div>
-    )
+        <img src={ProfileImg} alt="profile" />
+      </div>
+    </div>
+  );
 }
 
-export default ProfileSideBar
+export default ProfileSideBar;

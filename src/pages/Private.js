@@ -31,11 +31,14 @@ const Private = () => {
 
 
   return (
-    <div >
+    <div>
       <Navbar loggedIn={loggedIn} />
-      <div className={classes.homebody}>
-        <PrivateSideBar className={classes.homesideBar}/>
-        <div className={classes.homeposts}>
+      <div className={classes.privatebody}>
+          <PrivateSideBar
+            ></PrivateSideBar>
+
+        
+        <div className={classes.privateposts}>
               {posts.length && (
                 <>
                   {posts.map((post, i) => (
