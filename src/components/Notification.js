@@ -1,15 +1,13 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import {
-  makeStyles,
   Popover,
   Paper,
   Typography,
   List,
   ListItem,
-  ListItemText,
   Divider,
-  Link,
 } from "@material-ui/core";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
@@ -34,7 +32,7 @@ function Notification() {
   const [reload, setReload] = React.useState();
 
   const open = Boolean(anchorEl);
-
+  const history = useHistory();
 
   useEffect(() => {
     const getNotifications = async () => {
@@ -105,8 +103,6 @@ function Notification() {
     setAnchorEl(null);
   };
 
-  
-
   const handleMessageType = (event, newType) => {
     setMessageType(newType);
     newType === "comments on"
@@ -114,7 +110,13 @@ function Notification() {
       : setMessages(likeMessages);
   };
 
- 
+  const handleClickShowPost = (prop) => (event) => {
+    try {
+      history.push(`/posts/${prop}`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const handleDelete = (props) => async (event) => {
     if(props.type === "like") {
@@ -159,8 +161,11 @@ function Notification() {
             { messages.map((message, i) => (
                 <div key={i}>
                 <ListItem className={classes.listItem}>
-                     <div className={classes.itemText} onClick={() => console.log("hello world")}>
-                      {`${message.name} ${messageType} your post ${message.topic}`}
+                     <div 
+                     className={classes.itemText} 
+                     onClick={handleClickShowPost(message.postId)}
+                     >
+                      {`${message.name} ${messageType} your post "${message.topic}"`}
                     </div>
                   <CustomButton tip="Delete">
                     <HighlightOffIcon 

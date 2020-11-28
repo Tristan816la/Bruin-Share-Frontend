@@ -10,9 +10,10 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: "10px 20px",
     borderRadius: "5px",
-    height: "20vh",
+    height: "50vh",
     border: "1px solid silver",
     position: "relative",
+    overflow: "hidden",
   },
   title: {
     display: "flex",
@@ -21,6 +22,11 @@ export const useStyles = makeStyles((theme) => ({
   },
   profile: {
     padding: theme.spacing(0, 1, 0),
+  },
+  contentContainer: {
+    height: "30vh",
+    overflow: "auto",
+    marginBottom: "20px",
   },
   content: {
     padding: "15px 0 0px 10px",
@@ -31,13 +37,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   likeComment: {
     alignSelf: "flex-start",
+    alignItems: "center",
     flexDirection: "row",
     display: "flex",
     width: "100%",
     gap: "20px",
     height: "3.5vh",
     position: "absolute",
-    bottom: "2.5vh",
+    bottom: "3vh",
   },
   likecommenttext: {
     marginTop: "12px",
@@ -220,23 +227,23 @@ export const useStyles = makeStyles((theme) => ({
   itemText: {
     cursor: "pointer"
   },
-<<<<<<< HEAD
   deleteButton: {
 
-  }
-=======
+  },
 
   /**<------------------------- Profile ------------------------------> */
   profilebody: {
     display: "grid",
-    margin: "0 300px",
+    margin: "0 100px",
     gridTemplateColumns: "1fr 2fr",
     gridColumnGap: "100px",
   },
   profileposts: {
+    position: "absolute",
+    top: "10vh",
     display: "grid",
-    marginTop: "10vh",
-    // gridRowGap: "20px",
+    width: "41vw",
+    paddingLeft: "22vw",
   },
 
   /**<------------------------- Private ------------------------------> */
@@ -251,5 +258,4 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "10vh",
     // gridRowGap: "20px",
   },
->>>>>>> main
 }));

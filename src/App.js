@@ -32,23 +32,6 @@ if (token) {
 
 function App() {
   return (
-<<<<<<< HEAD
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Switch>
-          <AppStyle>
-            <Route path="/" exact component={CoverMap}></Route>
-            <Route path="/login" component={Login}></Route>
-            <Route path="/signup" component={Signup}></Route>
-            <Route path="/home" exact component={Home}></Route>
-            {/* <Route exact path="/posts/:postId" component={Profile}></Route> */}
-            <Route exact path="/private" component={Private}></Route>
-            <Route exact path="/profile/:postById" component={Profile}></Route>
-          </AppStyle>
-        </Switch>
-      </Router>
-    </ThemeProvider>
-=======
     <StylesProvider injectFirst>
       <ThemeProvider theme={theme}>
         <Router>
@@ -70,7 +53,6 @@ function App() {
         </Router>
       </ThemeProvider>
     </StylesProvider>
->>>>>>> main
   );
 }
 
