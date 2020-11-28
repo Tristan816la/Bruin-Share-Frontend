@@ -197,7 +197,7 @@ const Signup = () => {
                   autoFocus
                   value={values.name}
                   onChange={handleChange("name")}
-                  labelWidth={51}
+                  labelWidth={60}
                 />
                 <FormHelperText>{errors.name}</FormHelperText>
               </FormControl>
@@ -216,7 +216,7 @@ const Signup = () => {
                   id="email"
                   value={values.email}
                   onChange={handleChange("email")}
-                  labelWidth={112}
+                  labelWidth={125}
                 />
                 <FormHelperText>{errors.email}</FormHelperText>
               </FormControl>
@@ -239,7 +239,7 @@ const Signup = () => {
                   onChange={handleChange("password")}
                   type={values.showPassword ? "text" : "password"}
                   endAdornment={<PasswordAdornment></PasswordAdornment>}
-                  labelWidth={80}
+                  labelWidth={88}
                 />
                 <FormHelperText>{errors.password}</FormHelperText>
               </FormControl>
@@ -262,7 +262,7 @@ const Signup = () => {
                   onChange={handleChange("confirmPassword")}
                   type={values.showPassword ? "text" : "password"}
                   endAdornment={<PasswordAdornment></PasswordAdornment>}
-                  labelWidth={141}
+                  labelWidth={158}
                 />
                 <FormHelperText>{errors.confirmPassword}</FormHelperText>
               </FormControl>
