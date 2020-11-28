@@ -73,6 +73,7 @@ function Notification() {
               topic: message.topic,
               postId: message._id,
               name: res2.name,
+              likeId: res2._id,
               type: "like"
             });
           console.log(likesArray);
@@ -120,6 +121,7 @@ function Notification() {
       try {
         const body = {
           postid: props.postId,
+          likeid: props.likeId,
         };
         console.log(body);
         const response = await axios.put("/deletenewlike", body)
@@ -157,7 +159,7 @@ function Notification() {
             { messages.map((message, i) => (
                 <div key={i}>
                 <ListItem className={classes.listItem}>
-                     <div className={classes.itemText}>
+                     <div className={classes.itemText} onClick={() => console.log("hello world")}>
                       {`${message.name} ${messageType} your post ${message.topic}`}
                     </div>
                   <CustomButton tip="Delete">

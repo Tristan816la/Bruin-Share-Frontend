@@ -242,7 +242,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between"
   },
   itemText: {
-    
+    cursor: "pointer"
   },
   deleteButton: {
 
