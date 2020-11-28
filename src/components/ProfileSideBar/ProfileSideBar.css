@@ -22,20 +22,21 @@
 }
 
 .other_user_info {
-  margin-left: -120px;
+  margin-left: -30px;
   padding-top: 0;
   margin-bottom: 20px;
   background-image: none;
 }
 
 .profiletext {
+  display: flex;
+  align-items: center;
   margin-top: 24px;
   display: block;
   font-family: Poppins;
   font-style: normal;
-  font-weight: lighter;
+  font-weight: normal;
+  color: #666;
   font-size: 20px;
   line-height: 27px;
-  display: flex;
-  align-items: center;
 }
