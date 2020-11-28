@@ -225,4 +225,17 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "10vh",
     // gridRowGap: "20px",
   },
+
+  /**<------------------------- Private ------------------------------> */
+  privatebody: {
+    display: "grid",
+    margin: "0 300px",
+    gridTemplateColumns: "1fr 2fr",
+    gridColumnGap: "100px",
+  },
+  privateposts: {
+    display: "grid",
+    marginTop: "10vh",
+    // gridRowGap: "20px",
+  },
 }));
