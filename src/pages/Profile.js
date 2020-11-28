@@ -37,6 +37,7 @@ const Profile = () => {
       <div className={classes.profilebody}>
         {posts.length  && (
           <ProfileSideBar
+            className={classes.profileSideBar}
             profileAvatar={userInfo.image}
             user={userInfo.name}
             email={userInfo.email}

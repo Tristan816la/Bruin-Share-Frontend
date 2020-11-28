@@ -1,5 +1,5 @@
 .profile_side_bar {
-  width: 30vw;
+  width: 320px;
   height: 90vh;
   top: 10vh;
   padding-top: 52px;
@@ -22,7 +22,7 @@
 }
 
 .other_user_info {
-  margin-left: -30px;
+  margin-left: 10px;
   padding-top: 0;
   margin-bottom: 20px;
   background-image: none;

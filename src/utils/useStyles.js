@@ -234,28 +234,31 @@ export const useStyles = makeStyles((theme) => ({
   /**<------------------------- Profile ------------------------------> */
   profilebody: {
     display: "grid",
-    margin: "0 100px",
+    margin: "0 0 0 10vw",
     gridTemplateColumns: "1fr 2fr",
-    gridColumnGap: "100px",
+    gridColumnGap: "10vw",
+  },
+  profileSideBar: {
+    position: "relative"
   },
   profileposts: {
-    position: "absolute",
+    position: "relative",
     top: "10vh",
     display: "grid",
     width: "41vw",
-    paddingLeft: "22vw",
   },
 
   /**<------------------------- Private ------------------------------> */
   privatebody: {
     display: "grid",
-    margin: "0 300px",
+    margin: "0 0 0 10vw",
     gridTemplateColumns: "1fr 2fr",
-    gridColumnGap: "100px",
+    gridColumnGap: "10vw",
   },
   privateposts: {
+    position: "relative",
+    top: "10vh",
     display: "grid",
-    marginTop: "10vh",
-    // gridRowGap: "20px",
+    width: "41vw",
   },
 }));
