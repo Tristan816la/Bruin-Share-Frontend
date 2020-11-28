@@ -1,3 +1,7 @@
+.search{
+  display: inline-block;
+}
+
 .box {
 display: inline-block;
 position: relative;
@@ -10,20 +14,26 @@ height: 28px;
 
 .drop_down{
 display: inline-block;
-position: absolute;
-left: 9px;
-top: 48px;
+position: relative;
 height:40px;
 width: 3.3vw;
-padding-top: 11px;
-padding-left: 12px;
-font-size: 18px;
-font-weight: bold;
-color:#767a78;
-border-right: 1px solid  rgba(0, 0, 0, 0.51);
-border-top-left-radius: 8px;
-border-bottom-left-radius: 8px;
+}
 
+.drop_down > button{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 11px 10px;
+    margin-left: 12px;
+    margin-top: 10px;
+    height: 5.5vh;
+    border: 1px solid rgba(0, 0, 0, 0.51);
+    color: #767a78;
+    font-family: Poppins;
+    font-size: 18px;
+    overflow:hidden;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
 }
 
 
@@ -35,25 +45,21 @@ height: 40px;
 }
 
 .search_bar {
-margin-left: -10px;
+margin-left: 0px;
 margin-top: 40px;
 display: inline-block;
-
 }
 
-
-
 .search_bar input {
-width: 12vw;
+width: 11.5vw;
 height: 5vh;
 border: 1px solid rgba(0, 0, 0, 0.51);
-border-radius: 8px;
-padding-left: 85px;
+border-top-right-radius: 8px;
+border-bottom-right-radius: 8px;
+padding-left: 20px;
 margin-top: 8px;
 margin-left: 20px;
 font-family: Poppins;
-font-style: normal;
-font-weight: normal;
 font-size: 18px;
 outline: none;
 color: #2a2f2c;
