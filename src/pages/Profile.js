@@ -51,15 +51,15 @@ const Profile = () => {
                 {posts.map((post, i) => (
                   <MainStoryBox
                     key={i}
-                    name={post.postBy.name}
+                    name={userInfo.name}
                     title={post.topic}
                     content={post.content}
                     time={post.updatedAt}
                     likes={post.likes}
                     comments={post.comments}
                     id={post._id}
-                    image={post.postBy.image}
-                    postById={post.postBy._id}
+                    image={userInfo.image}
+                    postById={userInfo._id}
                   />
                 ))}
               </>

@@ -39,6 +39,7 @@ const MainStoryBox = ({
 
   const handleClickShowProfile = () => {
     try {
+      console.log(postById);
       history.push(`/profile/${postById}`);
     } catch (err) {
       console.error(err);

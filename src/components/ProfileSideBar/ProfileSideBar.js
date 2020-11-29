@@ -9,7 +9,7 @@ function ProfileSideBar({ profileAvatar, user, email }) {
       <div className="profile_side_bar">
         <Avatar
           className="profile_avatar"
-          style={{ height: "158px", width: "158px", borderRadius: "20px" }}
+          style={{ width: "158px", height: "158px", borderRadius: "20px" }}
           alt="profile_img"
           src={profileAvatar}
         />
