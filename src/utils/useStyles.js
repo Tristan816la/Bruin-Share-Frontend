@@ -30,6 +30,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   content: {
     padding: "15px 0 0px 10px",
+    
   },
   time: {
     fontSize: "12px",
