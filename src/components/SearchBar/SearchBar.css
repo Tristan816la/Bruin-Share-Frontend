@@ -1,43 +1,43 @@
-.search{
+.search {
   display: inline-block;
 }
 
 .box {
-display: inline-block;
-position: relative;
-border: transparent;
-height: 28px;
+  display: inline-block;
+  position: relative;
+  border: transparent;
+  height: 28px;
 }
 
-
-
-.drop_down{
-display: inline-block;
-position: relative;
-margin-top: rpx;
-height:5.5vh;
-width: 3.3vw;
+.drop_down {
+  display: inline-block;
+  position: relative;
+  margin-top: rpx;
+  height: 5.5vh;
+  width: 3.3vw;
 }
 
-#drop_down_button{
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    padding: 11px 10px;
-    margin-left: 40px;
-    margin-top: 10px;
-    height: 5.5vh;
-    border: 1px solid rgba(0, 0, 0, 0.51);
-    color: #767a78;
-    font-family: Poppins;
-    font-size: 18px;
-    font-weight: bolder;
-    overflow:hidden;
-    text-align: center;
-    display: inline-block;
-    cursor: pointer;
+#drop_down_button {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding: 11px 10px;
+  margin-left: 40px;
+  margin-top: 10px;
+  height: 5.5vh;
+  border: 1px solid rgba(0, 0, 0, 0.51);
+  color: #767a78;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: bolder;
+  overflow: hidden;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
 }
 
-#drop_down_button:hover, #drop_down_button:focus {
+#drop_down_button:hover,
+#drop_down_button:focus {
   background-color: white;
 }
 
@@ -46,54 +46,54 @@ width: 3.3vw;
   position: absolute;
   background-color: #f1f1f1;
   min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-
-.dropdown_content a {
+.dropdown_content p {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
 }
 
-.drop_down:hover .dropdown_content{
-  display: block;
+.drop_down:hover .dropdown_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.dropdown_content a:hover{
+.dropdown_content p:hover {
   background-color: white;
+  cursor: pointer;
 }
 
 #search {
-position: absolute;
-width: 40px;
-height: 40px;
-
+  position: absolute;
+  width: 40px;
+  height: 40px;
 }
 
-#search:hover{
+#search:hover {
   cursor: pointer;
 }
 
 .search_bar {
-margin-left: 0px;
-margin-top: 40px;
-display: inline-block;
+  margin-left: 0px;
+  margin-top: 40px;
+  display: inline-block;
 }
 
 .search_bar input {
-width: 11.5vw;
-height: 5vh;
-border: 1px solid rgba(0, 0, 0, 0.51);
-border-top-right-radius: 8px;
-border-bottom-right-radius: 8px;
-padding-left: 20px;
-margin-left: 20px;
-font-family: Poppins;
-font-size: 18px;
-outline: none;
-color: #2a2f2c;
-
+  width: 11.5vw;
+  height: 5vh;
+  border: 1px solid rgba(0, 0, 0, 0.51);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding-left: 20px;
+  margin-left: 20px;
+  font-family: Poppins;
+  font-size: 18px;
+  outline: none;
+  color: #2a2f2c;
 }
