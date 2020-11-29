@@ -7,62 +7,67 @@ import { getUserId } from "../utils/UserAction";
 import { isLoggedIn } from "../utils/LoginActions";
 import { useStyles } from "../utils/useStyles";
 
-
 const Private = () => {
   const userId = getUserId();
   const classes = useStyles();
-  const [posts, setPosts] = useState({});
+  const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
   const [userInfo, setUserInfo] = useState({});
 
-  const getPosts = async () => {
+  let currentUser;
+  if (posts.length) currentUser = posts[0].postBy;
 
+  const getPosts = async () => {
     try {
       const data = await axios.get("/myinfo").then((res) => res.data);
       setPosts(data.posts);
       setUserInfo(data.user);
       console.log(posts);
-    } catch(err) {
+    } catch (err) {
       console.error(err);
     }
-  }
+  };
 
   useEffect(() => {
     getPosts();
   }, []);
 
-
   return (
     <div>
       <Navbar loggedIn={loggedIn} />
       <div className={classes.privatebody}>
+        {posts.length && (
           <PrivateSideBar
-            ></PrivateSideBar>
+            name={currentUser.name}
+            email={currentUser.email}
+          ></PrivateSideBar>
+        )}
 
-        
         <div className={classes.privateposts}>
-              {posts.length && (
-                <>
-                  {posts.map((post, i) => (
-                    <MainStoryBox
-                      key={i}
-                      name={userInfo.name}
-                      title={post.topic}
-                      content={post.content}
-                      time={post.updatedAt}
-                      likes={post.likes}
-                      comments={post.comments}
-                      id={post._id}
-                      image={userInfo.image}
-                      postById={userInfo._id}
-                    />
-                  ))}
-                </>
-              )}
+          {posts.length ? (
+            <>
+              {posts.map((post, i) => (
+                <MainStoryBox
+                  key={i}
+                  name={post.postBy.name}
+                  title={post.topic}
+                  content={post.content}
+                  time={post.updatedAt}
+                  likes={post.likes}
+                  comments={post.comments}
+                  id={post._id}
+                  image={post.postBy.image}
+                  postById={post.postBy._id}
+                />
+              ))}
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Private;

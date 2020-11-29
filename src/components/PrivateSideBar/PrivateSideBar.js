@@ -2,8 +2,9 @@ import React from "react";
 import "./PrivateSideBar.css";
 import Avatar from "@material-ui/core/Avatar";
 import PrivateImg from "./private_side_bar.png";
+import EditInfo from "../EditInfo/EditInfo";
 
-function PrivateSideBar() {
+function PrivateSideBar( {name, email} ) {
   return (
     <div>
       <div className="private_side_bar">
@@ -13,15 +14,15 @@ function PrivateSideBar() {
           alt="private_img"
           src=""
         />
+        <div className="change_avatar">Click image above to upload a new image</div>
   
         <div className="user_info">
-          <div className="privatetext">Name</div>
-          <div className="privatetext">Email</div>
+          <div className="privatetext">Name: {name}</div>
+          <div className="privatetext">Email: {email}</div>
         </div>
 
-        <div className="user_info">
-          <div className="privatetext">Age</div>
-          <div className="privatetext">Location</div>
+        <div>
+          <EditInfo name={name} email={email}></EditInfo>
         </div>
 
        </div>
