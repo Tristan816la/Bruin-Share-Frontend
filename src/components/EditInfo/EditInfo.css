@@ -1,0 +1,8 @@
+.edit_button {
+  font-family: "Poppins";
+  text-transform: none;
+  color: #999;
+}
+.edit_button:hover {
+  color: #666;
+}

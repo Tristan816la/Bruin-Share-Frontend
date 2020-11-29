@@ -259,6 +259,7 @@ export const useStyles = makeStyles((theme) => ({
     position: "relative",
     top: "10vh",
     display: "grid",
-    width: "41vw",
+    marginTop: "10vh",
+
   },
 }));
