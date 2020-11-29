@@ -1,26 +1,101 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import {
-  makeStyles,
   Popover,
   Paper,
   Typography,
   List,
   ListItem,
-  ListItemText,
   Divider,
-  Link,
 } from "@material-ui/core";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import ChatIcon from "@material-ui/icons/Chat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import { useStyles } from "../utils/useStyles";
 import CustomButton from "../styled/CustomButton";
 
-function Notification(props) {
+function Notification() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const [commentMessages, setCommentMessages] = React.useState([]);
+  const [likeMessages, setLikeMessages] = React.useState([]);
+  const [notifications, setNotifications] = React.useState({});
+
+  const [messages, setMessages] = React.useState(commentMessages);
+  const [messageType, setMessageType] = React.useState("comments on");
+
+  const [reload, setReload] = React.useState();
+
+  const open = Boolean(anchorEl);
+  const history = useHistory();
+
+  useEffect(() => {
+    const getNotifications = async () => {
+      try {
+        const message = await axios.get('/notifications')
+              .then((res) => res.data);
+        setNotifications(message);
+        console.log(message);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getNotifications();
+  }, [reload]);
+
+  useEffect(() => {
+    let commentsArray = [];
+    let likesArray = [];
+    const parseNotifications = async () => {
+      notifications.map((message, i) => {
+
+        message.newcomments.map((res1, j) => {
+          commentsArray.push(
+            {
+              topic: message.topic,
+              postId: message._id,
+              name: res1.commentBy.name,
+              commentId: res1._id,
+              type: "comment"
+            }); 
+          });
+        console.log(message.newlikes);
+        message.newlikes.map((res2, k) => {
+          likesArray.push(
+            {
+              topic: message.topic,
+              postId: message._id,
+              name: res2.name,
+              likeId: res2._id,
+              type: "like"
+            });
+          console.log(likesArray);
+          });
+         
+      });
+    };
+    if(notifications.length)
+    {
+      console.log(notifications);
+      parseNotifications();
+      setCommentMessages(commentsArray);
+      setLikeMessages(likesArray);
+    }
+  }, [notifications]);
+
+  useEffect(() => {
+    (messageType === "comments on") ? 
+    setMessages(commentMessages) : setMessages(likeMessages);
+  }, [commentMessages, likeMessages]);
+
+  console.log(commentMessages, likeMessages);
+
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -28,26 +103,84 @@ function Notification(props) {
     setAnchorEl(null);
   };
 
-  const open = Boolean(anchorEl);
-  const [messageType, setMessageType] = React.useState("comments on");
-
   const handleMessageType = (event, newType) => {
     setMessageType(newType);
     newType === "comments on"
-      ? setMessages(commentMessage)
-      : setMessages(likeMessage);
+      ? setMessages(commentMessages)
+      : setMessages(likeMessages);
   };
 
-  const commentMessage = [
-    { name: "One", time: "t" },
-    { name: "Two", time: "s" },
-    { name: "Three", time: "r" },
-  ];
-  const likeMessage = [
-    { name: "haha", time: "z" },
-    { name: "hihi", time: "w" },
-  ];
-  const [messages, setMessages] = React.useState(commentMessage);
+  const handleClickShowPost = (prop) => (event) => {
+    try {
+      history.push(`/posts/${prop}`);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDelete = (props) => async (event) => {
+    if(props.type === "like") {
+      try {
+        const body = {
+          postid: props.postId,
+          likeid: props.likeId,
+        };
+        console.log(body);
+        const response = await axios.put("/deletenewlike", body)
+          .then((res) => res.data);
+        setReload(props);
+        console.log(response);
+      } catch(err) {
+        console.error(err);
+      }
+    } else {
+      try {
+        const body = {
+          postid: props.postId,
+          commentid: props.commentId,
+        };
+        console.log(body);
+        const response = await axios.put("/deletenewcomment", body)
+          .then((res) => res.data);
+        setReload(props);
+        console.log(response);
+      } catch(err) {
+        console.error(err);
+      }
+    }
+    
+  };
+  
+  
+
+
+  const MessageList = () => 
+  {
+    return (
+      <List className={classes.messageList}>
+            { messages.map((message, i) => (
+                <div key={i}>
+                <ListItem className={classes.listItem}>
+                     <div 
+                     className={classes.itemText} 
+                     onClick={handleClickShowPost(message.postId)}
+                     >
+                      {`${message.name} ${messageType} your post "${message.topic}"`}
+                    </div>
+                  <CustomButton tip="Delete">
+                    <HighlightOffIcon 
+                      className={classes.deleteButton}
+                      onClick={handleDelete(message)}
+                    />
+                  </CustomButton>
+                </ListItem>
+                <Divider/>
+                </div>
+            )) } 
+          </List>
+    );
+  };
+
 
   return (
     <div>
@@ -68,23 +201,8 @@ function Notification(props) {
           horizontal: "center",
         }}
       >
-        <Paper>
-          <List className={classes.MessageList}>
-            {messages.map((message, i) => (
-              <div key={i}>
-                <ListItem>
-                  <Link
-                    className={classes.listItem}
-                    color="primary"
-                    underline="none"
-                  >
-                    <div>{`${message.name} ${messageType} your post`}</div>
-                  </Link>
-                </ListItem>
-                <Divider />
-              </div>
-            ))}
-          </List>
+        <Paper className={classes.notificationDropDown}>
+          <MessageList />
           <ToggleButtonGroup
             className={classes.selectButton}
             value={messageType}
