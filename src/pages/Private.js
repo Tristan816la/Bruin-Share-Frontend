@@ -12,14 +12,16 @@ const Private = () => {
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
+  const [userInfo, setUserInfo] = useState({});
 
   let currentUser;
   if (posts.length) currentUser = posts[0].postBy;
 
   const getPosts = async () => {
     try {
-      const data = await axios.get("/myposts").then((res) => res.data);
-      setPosts(data);
+      const data = await axios.get("/myinfo").then((res) => res.data);
+      setPosts(data.posts);
+      setUserInfo(data.user);
       console.log(posts);
     } catch (err) {
       console.error(err);
@@ -47,15 +49,15 @@ const Private = () => {
               {posts.map((post, i) => (
                 <MainStoryBox
                   key={i}
-                  name={post.postBy.name}
+                  name={userInfo.name}
                   title={post.topic}
                   content={post.content}
                   time={post.updatedAt}
                   likes={post.likes}
                   comments={post.comments}
                   id={post._id}
-                  image={post.postBy.image}
-                  postById={post.postBy._id}
+                  image={userInfo.image}
+                  postById={userInfo._id}
                 />
               ))}
             </>
