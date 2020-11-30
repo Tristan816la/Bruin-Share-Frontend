@@ -38,8 +38,8 @@ const Private = () => {
       <div className={classes.privatebody}>
         {posts.length && (
           <PrivateSideBar
-            name={currentUser.name}
-            email={currentUser.email}
+          name={userInfo.name}
+          email={userInfo.email}
           ></PrivateSideBar>
         )}
 

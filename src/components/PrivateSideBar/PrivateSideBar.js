@@ -22,9 +22,10 @@ function PrivateSideBar( {name, email} ) {
         </div>
 
         <div>
-          <EditInfo name={name} email={email}></EditInfo>
+          <EditInfo currentname={name} currentemail={email}></EditInfo>
         </div>
 
+        <img src={PrivateImg} alt="private" />
        </div>
     </div>
   )
