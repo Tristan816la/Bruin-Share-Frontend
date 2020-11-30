@@ -45,6 +45,17 @@ const MainStoryBox = ({
       console.error(err);
     }
   };
+
+  const truncateText = (prop) => {
+    const maxPos = 110;
+    let truncated = prop;
+    if(prop.length > 110)
+    {
+      truncated = prop.substr(0, 107) + "...";
+    }
+    return truncated;
+  };
+
   return (
     <Box className={classes.post}>
       <Grid className={classes.title} container>
@@ -58,7 +69,7 @@ const MainStoryBox = ({
           </CustomButton>
         </Grid>
         <Grid  item xs onClick={handleClickShowDetails}>
-          <Title noWrap variant="h6">
+          <Title noWrap style={{maxWidth: "20vw", textOverflow: "ellipsis"}} variant="h6">
             {title}
           </Title>
           <Typography className={classes.time} variant="caption">
@@ -68,7 +79,7 @@ const MainStoryBox = ({
       </Grid>
       <Grid className={classes.contentContainer} container>
         <Grid item xs>
-          <Typography className="postcontent">{content}</Typography>
+          <Typography className="postcontent">{truncateText(content)}</Typography>
         </Grid>
       </Grid>
       <Box className={classes.likeComment}>

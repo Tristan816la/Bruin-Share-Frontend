@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: "10px 20px",
     borderRadius: "5px",
-    height: "50vh",
+    height: "30vh",
     border: "1px solid silver",
     position: "relative",
     overflow: "hidden",
@@ -24,8 +24,8 @@ export const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1, 0),
   },
   contentContainer: {
-    height: "30vh",
-    overflow: "auto",
+    height: "14vh",
+    overflow: "hidden",
     marginBottom: "20px",
   },
   content: {
@@ -53,15 +53,23 @@ export const useStyles = makeStyles((theme) => ({
 
   /**<------------------Home--------------------------------------> */
   homebody: {
-    width: "100vw",
+    // width: "100vw",
+    display: "grid",
+    margin: "0 0 0 10vw",
+    gridTemplateColumns: "2fr 1fr",
+    gridColumnGap: "10vw",
   },
 
   homeposts: {
-    position: "absolute",
+    position: "relative",
     top: "10vh",
     display: "grid",
     width: "41vw",
-    paddingLeft: "22vw",
+    // paddingLeft: "22vw",
+  },
+  homesideBar: {
+    position: "relative",
+    
   },
 
   /**<------------------Comment--------------------------------------> */

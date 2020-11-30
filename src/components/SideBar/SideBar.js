@@ -10,7 +10,7 @@ function SideBar({
   sideBarHandleOptionContentClick,
   sideBarHandleOptionTopicClick }) {
   return (
-    <>
+    <div>
       <div className="side_bar">
         <SearchBar
           searchBarOnSearch={sideBarOnSearch}
@@ -22,7 +22,7 @@ function SideBar({
         />
         <img src="sideBarImg.png" alt="" />
       </div>
-    </>
+    </div>
   );
 }
 
