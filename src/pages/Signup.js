@@ -283,7 +283,7 @@ const Signup = () => {
                     fullWidth
                     type="submit"
 
-                    //return form back to the server
+                  //return form back to the server
                   >
                     Join now
                   </Button>
