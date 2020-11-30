@@ -49,3 +49,19 @@ img {
   background-color: #eeeeee17;
 
 }
+.postcontent{
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  -o-text-overflow: ellipsis;
+  white-space:nowrap;
+  width:300px;
+  display:block;
+  white-space:pre-wrap;
+  word-wrap:break-word;
+  overflow: hidden;
+  }
+
+  .postbar
+  {
+    width: 10%;
+  }

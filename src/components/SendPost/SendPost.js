@@ -69,6 +69,7 @@ export default function SendPost() {
       lat,
       lng,
     };
+    
     try {
       await axios.post("/createpost", body);
       handleClose();
