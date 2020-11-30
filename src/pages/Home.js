@@ -90,16 +90,16 @@ const Home = () => {
                   </div>
                 </>
               )}
-              <SideBar
-                className={classes.homesideBar}
-                sideBarOnSearch={handleSubmit}
-                sideBarKeyword={keyword}
-                sideBarOption={option}
-                sideBarHandleContentChange={handleContentChange}
-                sideBarHandleOptionContentClick={handleOptionContentClick}
-                sideBarHandleOptionTopicClick={handleOptionTopicClick}
-              />
             </div>
+            <SideBar
+              className={classes.homesideBar}
+              sideBarOnSearch={handleSubmit}
+              sideBarKeyword={keyword}
+              sideBarOption={option}
+              sideBarHandleContentChange={handleContentChange}
+              sideBarHandleOptionContentClick={handleOptionContentClick}
+              sideBarHandleOptionTopicClick={handleOptionTopicClick}
+            />
           </div>
         </div>
       </div>

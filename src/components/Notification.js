@@ -143,57 +143,51 @@ function Notification() {
     }
   };
 
-  const MessageList = () => 
-  {
-    if(messages.length === 0)
-    {
+  const MessageList = () => {
+    if (messages.length === 0) {
       return (
         <List className={classes.messageList}>
           <ListItem className={classes.listItem}>
-            {messageType === "comments on" ? 
-              "you have no new comments" :
-              "you have no new likes"
-            }
+            {messageType === "comments on"
+              ? "you have no new comments"
+              : "you have no new likes"}
           </ListItem>
         </List>
       );
+    } else {
+      return (
+        <List className={classes.messageList}>
+          {messages.map((message, i) => (
+            <div key={i}>
+              <ListItem className={classes.listItem}>
+                <div
+                  className={classes.itemText}
+                  onClick={handleClickShowPost(message.postId)}
+                >
+                  {`${message.name} ${messageType} your post "${message.topic}"`}
+                </div>
+                <CustomButton tip="Delete">
+                  <HighlightOffIcon
+                    className={classes.deleteButton}
+                    onClick={handleDelete(message)}
+                  />
+                </CustomButton>
+              </ListItem>
+              <Divider />
+            </div>
+          ))}
+        </List>
+      );
     }
-    else
-      {
-        return (
-          <List className={classes.messageList}>
-                {messages.map((message, i) => (
-                    <div key={i}>
-                    <ListItem className={classes.listItem}>
-                        <div 
-                        className={classes.itemText} 
-                        onClick={handleClickShowPost(message.postId)}
-                        >
-                          {`${message.name} ${messageType} your post "${message.topic}"`}
-                        </div>
-                      <CustomButton tip="Delete">
-                        <HighlightOffIcon 
-                          className={classes.deleteButton}
-                          onClick={handleDelete(message)}
-                        />
-                      </CustomButton>
-                    </ListItem>
-                    <Divider/>
-                    </div>
-                )) } 
-              </List>
-        );
-      }
+  };
 
   return (
     <div>
-      
-        <CustomButton tip="Notifications" onClick={handleClick}>
-          <Badge badgeContent={messageLength} color="primary">
-            <NotificationsIcon className={classes.notificationButton} />
-          </Badge>
-        </CustomButton>
-      
+      <CustomButton tip="Notifications" onClick={handleClick}>
+        <Badge badgeContent={messageLength} color="primary">
+          <NotificationsIcon className={classes.notificationButton} />
+        </Badge>
+      </CustomButton>
 
       <Popover
         open={open}
