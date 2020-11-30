@@ -21,18 +21,26 @@ const Home = () => {
   }, []);
 
   const handleSubmit = async () => {
-    const body = {
-      keyword,
-      option,
-    };
-    try {
-      const res =
-        await axios.post("/search", body);
-      console.log(res);
-      setPosts(res.data.posts)
-      //window.location.reload();
-    } catch (err) {
-      console.error(err);
+    if (keyword.length === 0) {
+      try {
+        const res = await axios.get("/publicposts");
+        setPosts(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      const body = {
+        keyword,
+        option,
+      };
+      try {
+        const res = await axios.post("/search", body);
+        console.log(res);
+        setPosts(res.data.posts);
+        //window.location.reload();
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 

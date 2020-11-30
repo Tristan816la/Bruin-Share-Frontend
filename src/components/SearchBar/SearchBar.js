@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./SearchBar.css";
-import axios from "axios";
 import { Typography } from "@material-ui/core";
 
 function SearchBar({
@@ -11,6 +10,18 @@ function SearchBar({
   handleOptionContentClick,
   handleOptionTopicClick,
 }) {
+  const [placeholder, setPlaceholder] = useState(() => {
+    let result;
+    option === "content"
+      ? (result = "Search content...")
+      : (result = "Search topic...");
+    return result;
+  });
+  useEffect(() => {
+    if (option === "content") setPlaceholder("Search content...");
+    else setPlaceholder("Search topic...");
+  }, [option]);
+
   return (
     <div>
       <div className="search">
@@ -28,7 +39,7 @@ function SearchBar({
           <div className="search_bar">
             <input
               type="text"
-              placeholder="Search stories..."
+              placeholder={placeholder}
               onChange={handleContentChange}
             />
           </div>
@@ -39,6 +50,7 @@ function SearchBar({
               src="search_icon.png"
               id="search"
               onClick={searchBarOnSearch}
+              alt="search"
             />
           </div>
         </form>
