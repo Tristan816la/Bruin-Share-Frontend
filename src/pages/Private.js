@@ -8,38 +8,33 @@ import { isLoggedIn } from "../utils/LoginActions";
 import { useStyles } from "../utils/useStyles";
 
 const Private = () => {
-  const userId = getUserId();
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
   const [userInfo, setUserInfo] = useState({});
 
-  let currentUser;
-  if (posts.length) currentUser = posts[0].postBy;
-
-  const getPosts = async () => {
-    try {
-      const data = await axios.get("/myinfo").then((res) => res.data);
-      setPosts(data.posts);
-      setUserInfo(data.user);
-      console.log(posts);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const data = await axios.get("/myinfo").then((res) => res.data);
+        setPosts(data.posts);
+        setUserInfo(data.user);
+        console.log(posts);
+      } catch (err) {
+        console.error(err);
+      }
+    };
     getPosts();
   }, []);
-
   return (
     <div>
       <Navbar loggedIn={loggedIn} />
       <div className={classes.privatebody}>
         {posts.length && (
           <PrivateSideBar
-            name={currentUser.name}
-            email={currentUser.email}
+            name={userInfo.name}
+            email={userInfo.email}
+            image={userInfo.image}
           ></PrivateSideBar>
         )}
 

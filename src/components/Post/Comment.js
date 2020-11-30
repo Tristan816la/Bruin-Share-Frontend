@@ -29,7 +29,6 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
   if (displayComments.length > 5) {
     displayComments = displayComments.slice(-5);
   }
-  console.log(displayComments);
   const handleOpen = () => {
     if (isLoggedIn()) {
       setOpen(true);

@@ -9,6 +9,8 @@ import { isLoggedIn } from "../utils/LoginActions";
 const Home = () => {
   const [posts, setPosts] = useState({});
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
+  const [keyword, setKeyword] = useState("");
+  const [option, setOption] = useState("content");
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -17,6 +19,42 @@ const Home = () => {
     };
     fetchPosts();
   }, []);
+
+  const handleSubmit = async () => {
+    if (keyword.length === 0) {
+      try {
+        const res = await axios.get("/publicposts");
+        setPosts(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      const body = {
+        keyword,
+        option,
+      };
+      try {
+        const res = await axios.post("/search", body);
+        console.log(res);
+        setPosts(res.data.posts);
+        //window.location.reload();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
+  const handleContentChange = (e) => {
+    setKeyword(e.target.value);
+  };
+
+  const handleOptionContentClick = (e) => {
+    setOption("content");
+  };
+
+  const handleOptionTopicClick = (e) => {
+    setOption("topic");
+  };
 
   const classes = useStyles();
   return (
@@ -52,8 +90,16 @@ const Home = () => {
                   </div>
                 </>
               )}
+              <SideBar
+                className={classes.homesideBar}
+                sideBarOnSearch={handleSubmit}
+                sideBarKeyword={keyword}
+                sideBarOption={option}
+                sideBarHandleContentChange={handleContentChange}
+                sideBarHandleOptionContentClick={handleOptionContentClick}
+                sideBarHandleOptionTopicClick={handleOptionTopicClick}
+              />
             </div>
-            <SideBar className={classes.homesideBar} />
           </div>
         </div>
       </div>

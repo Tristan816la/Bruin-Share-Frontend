@@ -15,7 +15,7 @@ import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import ChatIcon from "@material-ui/icons/Chat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import { useStyles } from "../utils/useStyles";
 import CustomButton from "../styled/CustomButton";
 
@@ -39,14 +39,14 @@ function Notification() {
   useEffect(() => {
     const getNotifications = async () => {
       try {
-        const message = await axios.get('/notifications')
-              .then((res) => res.data);
+        const message = await axios
+          .get("/notifications")
+          .then((res) => res.data);
         setNotifications(message);
-        console.log(message);
       } catch (err) {
         console.log(err);
       }
-    }
+    };
     getNotifications();
   }, [reload]);
 
@@ -55,35 +55,27 @@ function Notification() {
     let likesArray = [];
     const parseNotifications = async () => {
       notifications.map((message, i) => {
-
         message.newcomments.map((res1, j) => {
-          commentsArray.push(
-            {
-              topic: message.topic,
-              postId: message._id,
-              name: res1.commentBy.name,
-              commentId: res1._id,
-              type: "comment"
-            }); 
+          commentsArray.push({
+            topic: message.topic,
+            postId: message._id,
+            name: res1.commentBy.name,
+            commentId: res1._id,
+            type: "comment",
           });
-        console.log(message.newlikes);
+        });
         message.newlikes.map((res2, k) => {
-          likesArray.push(
-            {
-              topic: message.topic,
-              postId: message._id,
-              name: res2.name,
-              likeId: res2._id,
-              type: "like"
-            });
-          console.log(likesArray);
+          likesArray.push({
+            topic: message.topic,
+            postId: message._id,
+            name: res2.name,
+            likeId: res2._id,
+            type: "like",
           });
-         
+        });
       });
     };
-    if(notifications.length)
-    {
-      console.log(notifications);
+    if (notifications.length) {
       parseNotifications();
       setCommentMessages(commentsArray);
       setLikeMessages(likesArray);
@@ -92,12 +84,10 @@ function Notification() {
   }, [notifications]);
 
   useEffect(() => {
-    (messageType === "comments on") ? 
-    setMessages(commentMessages) : setMessages(likeMessages);
+    messageType === "comments on"
+      ? setMessages(commentMessages)
+      : setMessages(likeMessages);
   }, [commentMessages, likeMessages]);
-
-  console.log(commentMessages, likeMessages);
-
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -122,18 +112,19 @@ function Notification() {
   };
 
   const handleDelete = (props) => async (event) => {
-    if(props.type === "like") {
+    if (props.type === "like") {
       try {
         const body = {
           postid: props.postId,
           likeid: props.likeId,
         };
         console.log(body);
-        const response = await axios.put("/deletenewlike", body)
+        const response = await axios
+          .put("/deletenewlike", body)
           .then((res) => res.data);
         setReload(props);
         console.log(response);
-      } catch(err) {
+      } catch (err) {
         console.error(err);
       }
     } else {
@@ -142,24 +133,18 @@ function Notification() {
           postid: props.postId,
           commentid: props.commentId,
         };
-        console.log(body);
-        const response = await axios.put("/deletenewcomment", body)
+        const response = await axios
+          .put("/deletenewcomment", body)
           .then((res) => res.data);
         setReload(props);
-        console.log(response);
-      } catch(err) {
+      } catch (err) {
         console.error(err);
       }
     }
-    
   };
-  
-  
-
 
   const MessageList = () => 
   {
-    console.log(messages);
     if(messages.length === 0)
     {
       return (
@@ -199,8 +184,6 @@ function Notification() {
               </List>
         );
       }
-  };
-
 
   return (
     <div>
