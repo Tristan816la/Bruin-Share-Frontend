@@ -65,7 +65,7 @@ const MainStoryBox = ({
           </Typography>
         </Grid>
       </Grid>
-      <Grid container>
+      <Grid className={classes.contentContainer} container>
         <Grid item xs>
           <Typography className={classes.content}>{content}</Typography>
         </Grid>

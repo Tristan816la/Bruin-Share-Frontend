@@ -147,7 +147,7 @@ const Login = () => {
                   value={values.email}
                   onChange={handleChange("email")}
                   // type="email"
-                  labelWidth={112}
+                  labelWidth={126}
                 />
                 <FormHelperText>{errors.email}</FormHelperText>
               </FormControl>
@@ -170,7 +170,7 @@ const Login = () => {
                   onChange={handleChange("password")}
                   type={values.showPassword ? "text" : "password"}
                   endAdornment={<PasswordAdornment></PasswordAdornment>}
-                  labelWidth={80}
+                  labelWidth={88}
                 />
                 <FormHelperText>{errors.password}</FormHelperText>
               </FormControl>

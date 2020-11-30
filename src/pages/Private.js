@@ -15,11 +15,9 @@ const Private = () => {
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
 
   const getPosts = async () => {
-    const user = {
-      _id: userId,
-    };
+
     try {
-      const data = await axios.get("/myposts", user).then((res) => res.data);
+      const data = await axios.get("/myposts").then((res) => res.data);
       setPosts(data);
       console.log(posts);
     } catch(err) {
