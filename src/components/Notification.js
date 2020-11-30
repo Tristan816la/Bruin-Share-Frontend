@@ -8,6 +8,7 @@ import {
   List,
   ListItem,
   Divider,
+  Badge,
 } from "@material-ui/core";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
@@ -30,6 +31,7 @@ function Notification() {
   const [messageType, setMessageType] = React.useState("comments on");
 
   const [reload, setReload] = React.useState();
+  const [messageLength, setMessageLength] = React.useState(0);
 
   const open = Boolean(anchorEl);
   const history = useHistory();
@@ -85,6 +87,7 @@ function Notification() {
       parseNotifications();
       setCommentMessages(commentsArray);
       setLikeMessages(likesArray);
+      setMessageLength(commentsArray.length + likesArray.length);
     }
   }, [notifications]);
 
@@ -156,37 +159,58 @@ function Notification() {
 
   const MessageList = () => 
   {
-    return (
-      <List className={classes.messageList}>
-            { messages.map((message, i) => (
-                <div key={i}>
-                <ListItem className={classes.listItem}>
-                     <div 
-                     className={classes.itemText} 
-                     onClick={handleClickShowPost(message.postId)}
-                     >
-                      {`${message.name} ${messageType} your post "${message.topic}"`}
+    console.log(messages);
+    if(messages.length === 0)
+    {
+      return (
+        <List className={classes.messageList}>
+          <ListItem className={classes.listItem}>
+            {messageType === "comments on" ? 
+              "you have no new comments" :
+              "you have no new likes"
+            }
+          </ListItem>
+        </List>
+      );
+    }
+    else
+      {
+        return (
+          <List className={classes.messageList}>
+                {messages.map((message, i) => (
+                    <div key={i}>
+                    <ListItem className={classes.listItem}>
+                        <div 
+                        className={classes.itemText} 
+                        onClick={handleClickShowPost(message.postId)}
+                        >
+                          {`${message.name} ${messageType} your post "${message.topic}"`}
+                        </div>
+                      <CustomButton tip="Delete">
+                        <HighlightOffIcon 
+                          className={classes.deleteButton}
+                          onClick={handleDelete(message)}
+                        />
+                      </CustomButton>
+                    </ListItem>
+                    <Divider/>
                     </div>
-                  <CustomButton tip="Delete">
-                    <HighlightOffIcon 
-                      className={classes.deleteButton}
-                      onClick={handleDelete(message)}
-                    />
-                  </CustomButton>
-                </ListItem>
-                <Divider/>
-                </div>
-            )) } 
-          </List>
-    );
+                )) } 
+              </List>
+        );
+      }
   };
 
 
   return (
     <div>
-      <CustomButton tip="Notifications" onClick={handleClick}>
-        <NotificationsIcon className={classes.notificationButton} />
-      </CustomButton>
+      
+        <CustomButton tip="Notifications" onClick={handleClick}>
+          <Badge badgeContent={messageLength} color="primary">
+            <NotificationsIcon className={classes.notificationButton} />
+          </Badge>
+        </CustomButton>
+      
 
       <Popover
         open={open}

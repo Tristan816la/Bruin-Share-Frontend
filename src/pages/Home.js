@@ -52,8 +52,8 @@ const Home = () => {
                   </div>
                 </>
               )}
-              <SideBar className={classes.homesideBar} />
             </div>
+            <SideBar className={classes.homesideBar} />
           </div>
         </div>
       </div>

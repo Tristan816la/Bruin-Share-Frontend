@@ -10,7 +10,7 @@ function PrivateSideBar( {name, email} ) {
       <div className="private_side_bar">
         <Avatar
           className="private_avatar"
-          style={{ height: "158px", width: "158px", borderRadius: "20px" }}
+          style={{ height: "15vw", width: "15vw", borderRadius: "20px" }}
           alt="private_img"
           src=""
         />

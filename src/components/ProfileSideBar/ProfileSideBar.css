@@ -1,6 +1,6 @@
 .profile_side_bar {
+  position: fixed;
   width: 25vw;
-  min-width: 158px;
   height: 90vh;
   top: 10vh;
   padding-top: 52px;
@@ -9,7 +9,6 @@
   align-items: center;
   z-index: 1000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  position: fixed;
   background-color: #fafafa;
 }
 
@@ -22,6 +21,8 @@
   padding-top: 0;
   margin-bottom: 5vh;
   background-image: none;
+  width: 25vw;
+  overflow-wrap: break-word;
 }
 
 .profiletext {
@@ -34,5 +35,5 @@
   font-weight: normal;
   color: #666;
   font-size: 1.5vw;
-  line-height: 2vw;
+  line-height: 2vh;
 }
