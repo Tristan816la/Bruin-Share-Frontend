@@ -14,7 +14,7 @@ import CreateIcon from "@material-ui/icons/Create";
 import { useStyles } from "../../utils/useStyles";
 import axios from "axios";
 import MultilineTextFields from "../../styled/MultilineTextField";
-
+import "../../App.css"
 const EditPost = ({ topic, content, postid }) => {
   const [open, setOpen] = useState(false);
   const [editContent, setEditContent] = useState(content);
@@ -76,10 +76,10 @@ const EditPost = ({ topic, content, postid }) => {
             className={classes.sendPostTopic}
             value={editTopic}
           />
-          <MultilineTextFields
+          <MultilineTextFields className="postcontent"
             onChange={handleContentChange}
             value={editContent}
-          />
+          ></MultilineTextFields>
         </DialogContent>
 
         <DialogActions>

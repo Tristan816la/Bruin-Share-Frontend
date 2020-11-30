@@ -30,6 +30,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   content: {
     padding: "15px 0 0px 10px",
+    
   },
   time: {
     fontSize: "12px",
@@ -222,14 +223,12 @@ export const useStyles = makeStyles((theme) => ({
     color: "#666",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   itemText: {
-    cursor: "pointer"
+    cursor: "pointer",
   },
-  deleteButton: {
-
-  },
+  deleteButton: {},
 
   /**<------------------------- Profile ------------------------------> */
   profilebody: {
@@ -239,7 +238,7 @@ export const useStyles = makeStyles((theme) => ({
     gridColumnGap: "10vw",
   },
   profileSideBar: {
-    position: "relative"
+    position: "relative",
   },
   profileposts: {
     position: "relative",
@@ -257,8 +256,8 @@ export const useStyles = makeStyles((theme) => ({
   },
   privateposts: {
     position: "relative",
-    top: "10vh",
     display: "grid",
     width: "41vw",
+    marginTop: "10vh",
   },
 }));

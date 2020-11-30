@@ -9,7 +9,7 @@ import Post from "./pages/Post";
 import CoverMap from "./pages/CoverMap";
 import Private from "./pages/Private";
 import Profile from "./pages/Profile";
-
+import NotFound from "./pages/NotFound";
 // Styles
 import theme from "./styled/theme";
 import styled from "styled-components";
@@ -36,7 +36,6 @@ function App() {
       <ThemeProvider theme={theme}>
         <Router>
           <Switch>
-            <AppStyle>
               <Route path="/" exact component={CoverMap}></Route>
               <Route path="/login" component={Login}></Route>
               <Route path="/signup" component={Signup}></Route>
@@ -48,7 +47,8 @@ function App() {
                 path="/profile/:postById"
                 component={Profile}
               ></Route>
-            </AppStyle>
+              <Route  component={NotFound}></Route>
+            
           </Switch>
         </Router>
       </ThemeProvider>

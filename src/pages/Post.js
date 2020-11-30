@@ -268,7 +268,7 @@ const Post = () => {
               </SubtitleWrapper>
               <TimeWrapper>{moment(post.createdAt).fromNow()}</TimeWrapper>
             </PostHeader>
-            <PostContent>{post.content}</PostContent>
+            <PostContent className="postcontent" >{post.content}</PostContent>
             {liked ? (
               <LikeButton onClick={onLike}>Like</LikeButton>
             ) : (

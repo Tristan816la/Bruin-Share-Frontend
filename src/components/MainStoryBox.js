@@ -7,7 +7,7 @@ import { useStyles } from "../utils/useStyles";
 import CustomButton from "../styled/CustomButton";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-
+import "../App.css"
 export const Title = styled(Typography)`
   &:hover {
     cursor: pointer;
@@ -39,6 +39,7 @@ const MainStoryBox = ({
 
   const handleClickShowProfile = () => {
     try {
+      console.log(postById);
       history.push(`/profile/${postById}`);
     } catch (err) {
       console.error(err);
@@ -56,7 +57,7 @@ const MainStoryBox = ({
             <Avatar src={image} alt="postby image"></Avatar>
           </CustomButton>
         </Grid>
-        <Grid item xs onClick={handleClickShowDetails}>
+        <Grid  item xs onClick={handleClickShowDetails}>
           <Title noWrap variant="h6">
             {title}
           </Title>
@@ -67,7 +68,7 @@ const MainStoryBox = ({
       </Grid>
       <Grid className={classes.contentContainer} container>
         <Grid item xs>
-          <Typography className={classes.content}>{content}</Typography>
+          <Typography className="postcontent">{content}</Typography>
         </Grid>
       </Grid>
       <Box className={classes.likeComment}>
