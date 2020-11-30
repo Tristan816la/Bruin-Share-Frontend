@@ -24,6 +24,7 @@ export default function SendPost() {
   const [topic, setTopic] = useState("");
   const [lat, setLat] = useState("34.068920");
   const [lng, setLng] = useState("-118.445183");
+  const [topicError, setTopicError] = useState("");
 
   useEffect(() => {
     if (loggedIn) {
@@ -44,7 +45,7 @@ export default function SendPost() {
       };
       getLocation();
     }
-  }, [lat, lng, loggedIn]);
+  }, [loggedIn, lat, lng]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -52,24 +53,35 @@ export default function SendPost() {
 
   const handleClose = () => {
     setOpen(false);
+    setTopicError("");
   };
 
   const handleTitleChange = (e) => {
     setTopic(e.target.value);
+    setTopicError("");
   };
 
   const handleContentChange = (e) => {
     setContent(e.target.value);
   };
 
+  const topicCheck = () => {
+    if (topic.length > 25) {
+      setTopicError("Topic length cannot exceed 25 characters");
+      return true;
+    }
+  };
   const handleSubmit = async () => {
+    if (topicCheck()) {
+      return;
+    }
     const body = {
       topic,
       content,
       lat,
       lng,
     };
-    
+
     try {
       await axios.post("/createpost", body);
       handleClose();
@@ -103,9 +115,10 @@ export default function SendPost() {
               margin="dense"
               id="name"
               label="Topic:"
-              multiline
               onChange={(e) => handleTitleChange(e)}
               className={classes.sendPostTopic}
+              helperText={topicError}
+              error={!!topicError.length}
             />
 
             <MultilineTextFields onChange={handleContentChange} />

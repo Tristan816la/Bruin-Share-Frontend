@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -11,6 +11,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import "./EditInfo.css"
 import axios from 'axios';
+import { SettingsInputSvideoRounded, SettingsSystemDaydream } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,55 +21,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NameTextField( { username }) {
-  const [name, setName] = React.useState({username});
-  const classes = useStyles();
-
-  const handleChange = (event) => {
-    setName(event.target.value);
-  };
-
-  return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <FormControl variant="outlined" margin="dense">
-        <InputLabel htmlFor="component-outlined">Name</InputLabel>
-        <OutlinedInput id="component-outlined" defaultValue={username} onChange={handleChange} label="Name" />
-      </FormControl>
-    </form>
-  );
-}
-
-function EmailTextField( { useremail }) {
-  const [email, setEmail] = React.useState({useremail});
-  const classes = useStyles();
-
-  const handleChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const validateEmail = (prop) => {
-    const expression = /^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/;
-    return expression.test(prop);
-  };
-
-
-  return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <FormControl variant="outlined" margin="dense">
-        <InputLabel htmlFor="component-outlined">Email</InputLabel>
-        <OutlinedInput id="component-outlined" value={useremail} onChange={handleChange} label="Email" />
-      </FormControl>
-    </form>
-  );
-}
-
-
-
-function EditInfo( { name, email }) {
+function EditInfo( { currentname, currentemail }) {
   const [open, setOpen] = React.useState(false);
-  const [username, setUserame] = React.useState({name}); 
-  const [useremail, setUseremail] = React.useState({email}); 
+  const [name, setUsername] = React.useState(currentname); 
+  const [email, setUseremail] = React.useState(currentemail); 
   const [errors, setErrors] = React.useState({});
+  const classes = useStyles(); 
+
+  useEffect(() => {
+      setUsername(currentname); 
+      setUseremail(currentemail);
+  }, [currentname, currentemail]); 
+
+  console.log(currentname, currentemail);
+  console.log(name, email);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -79,7 +45,7 @@ function EditInfo( { name, email }) {
   };
 
   const handleNameChange = e => {
-    setUserame(e.target.value); 
+    setUsername(e.target.value); 
   };
 
   const handleEmailChange = e => {
@@ -91,29 +57,40 @@ function EditInfo( { name, email }) {
     return expression.test(prop);
   };
 
-  const handleSubmit = async() => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     let validName = true; 
-    let validEmail = true; 
-    if (username === "") validName = false; 
-    if (!validateEmail(useremail)) validEmail = false; 
+    let validEmail = validateEmail(email); 
+    if (name === "") validName = false; 
     setErrors({
       ...errors,
-      name: validName ? "" : "Please enter a name",
+      name: validName ? "" : "Your name can't be empty",
       email: validEmail ? "" : "This email address is invalid",
     });
+    console.log("run");
+    console.log(validName); 
+    console.log(validEmail); 
+    //console.log(email);
+
     if (validName && validEmail) {
-      const newInfo = {
-        username, 
-        useremail,
-      }; 
-      try {
-        await axios.put("/updateprofile", newInfo); 
-        handleClose(); 
-        window.location.reload(); 
-      } catch (err) {
-        console.error(err); 
-      }
+      editAction();
     } 
+  };
+
+  const editAction = async() => {
+    const newInfo = {
+      name, 
+      email,
+    }; 
+    try {
+      console.log("run");
+      await axios.put("/updateprofile", newInfo); 
+      
+      handleClose(); 
+      window.location.reload(); 
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -128,15 +105,26 @@ function EditInfo( { name, email }) {
             To update your personal information, please fill in the forms below.
           </DialogContentText>
              
-        <NameTextField username={name} onChange={handleNameChange}/> 
-        <EmailTextField useremail={email} onChange={handleEmailChange}/>
+          <form className={classes.root} noValidate autoComplete="off">
+            <FormControl variant="outlined" margin="dense">
+              <InputLabel htmlFor="component-outlined">Name</InputLabel>
+              <OutlinedInput id="component-outlined" defaultValue={name} onChange={handleNameChange} label="Name" />
+           </FormControl>
+          </form>
+
+          <form className={classes.root} noValidate autoComplete="off">
+            <FormControl variant="outlined" margin="dense">
+              <InputLabel htmlFor="component-outlined">Email</InputLabel>
+              <OutlinedInput id="component-outlined" defaultValue={email} onChange={handleEmailChange} label="Email" />
+            </FormControl>
+          </form>
 
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleSubmit} color="primary">
             Confirm Changes
           </Button>
         </DialogActions>
