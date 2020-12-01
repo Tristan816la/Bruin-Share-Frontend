@@ -6,7 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { Avatar } from '@material-ui/core';
 import axios from 'axios';
 
-export default function Updateavator( { avatar,...rest }) {
+export default function Updateavator( { avatar,setImage,...rest }) {
   const [open, setOpen] = React.useState(false);
   const [newavatar, setNewAvatar]=React.useState('')
   const [avatarr,setAvatarr]=React.useState(avatar)
@@ -32,13 +32,13 @@ export default function Updateavator( { avatar,...rest }) {
     try {
       var img=await axios.post('https://david-cors-anywhere.herokuapp.com/https://api.cloudinary.com/v1_1/dwu20/image/upload',avatardata);
       console.log(img)
-      await axios.put('http://localhost:5000/updateavatar',{
+      await axios.put('/updateavatar',{
         avatardata:img.data.secure_url
       })
       localStorage.setItem('UserImage',(img.data.secure_url))
       setAvatarr((img.data.secure_url))
+      setImage(img.data.secure_url)
       handleClose(); 
-      //window.location.reload(); 
 
     } catch (error) {
       console.log(error)
@@ -46,7 +46,7 @@ export default function Updateavator( { avatar,...rest }) {
   }
   return (
     <div>
-      <Button  startIcon={<Avatar className="private_avatar" src={avatarr}/>}  color="primary" onClick={handleClickOpen}>
+      <Button  startIcon={<Avatar className="private_avatar" src={avatarr?avatarr:avatar}/>}  color="primary" onClick={handleClickOpen}>
       </Button>
       <Dialog
         open={open}
