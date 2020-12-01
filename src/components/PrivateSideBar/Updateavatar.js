@@ -32,7 +32,7 @@ export default function Updateavator( { avatar,...rest }) {
     try {
       var img=await axios.post('https://david-cors-anywhere.herokuapp.com/https://api.cloudinary.com/v1_1/dwu20/image/upload',avatardata);
       console.log(img)
-      await axios.put('http://localhost:5000/updateavatar',{
+      await axios.put('/updateavatar',{
         avatardata:img.data.secure_url
       })
       localStorage.setItem('UserImage',(img.data.secure_url))
