@@ -13,6 +13,10 @@
   background-color: #fafafa;
 }
 
+.private_side_bar > img {
+  width: 23vw;
+}
+
 .user_name {
   font-family: Poppins;
   font-style: normal;
@@ -23,10 +27,11 @@
 }
 
 .user_info {
-  margin-left: -30px;
+  margin-left: -0.5vw;
   padding-top: 0;
   margin-bottom: 20px;
   background-image: none;
+  overflow-wrap: break-word;
 }
 
 .privatetext {
