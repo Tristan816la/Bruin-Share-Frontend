@@ -89,7 +89,7 @@ const Home = () => {
                     ))}
                   </div>
                 </>
-              ) : (<div>{"No results found"}</div>)}
+              ) : (<div>{"No posts so far, or no results found"}</div>)}
             </div>
             <SideBar
               className={classes.homesideBar}
