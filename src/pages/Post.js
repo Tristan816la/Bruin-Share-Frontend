@@ -19,6 +19,7 @@ import laptop from "../components/Post/laptop.png";
 import postBg from "../components/Post/postBg.png";
 import CustomButton from "../styled/CustomButton";
 import { Edit, Delete, Notifications } from "@material-ui/icons";
+import { StyledDeleteIcon } from "../styled/DeleteIcon";
 
 export const PostWrapper = styled.div`
   position: absolute;
@@ -46,6 +47,7 @@ export const PostHeader = styled.div`
   margin-left: 15px;
   height: 25vh;
 `;
+
 export const ClickableTypography = styled(Typography)`
   &:hover {
     text-decoration: underline;
@@ -72,6 +74,13 @@ export const PostBg = styled.img`
   bottom: 0;
   position: fixed;
   opacity: 0.8;
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 0))
+  );
   z-index: -1;
 `;
 
@@ -92,9 +101,8 @@ export const PhoneBg = styled.img`
 `;
 
 export const PostContent = styled(Typography)`
-  position: absolute;
-  left: 1vw;
-  top: 20vh;
+  align-self: flex-start;
+  padding-left: 1vw;
 `;
 
 export const PostButton = styled(Button)`
@@ -141,12 +149,17 @@ export const CommentBtnWrapper = styled.div`
 `;
 
 export const CommentCard = styled.div`
-  /* background: red; */
   width: 45vw;
   align-self: center;
   display: flex;
   gap: 30px;
+  position: relative;
   margin-top: 40px;
+`;
+
+export const CommentDeleteButton = styled(CustomButton)`
+  position: absolute;
+  right: 1px;
 `;
 
 export const CommentTextWrapper = styled.div`
@@ -168,7 +181,6 @@ const Post = () => {
   const [post, setPost] = useState({});
   const [curComment, setCurComment] = useState("");
   const [liked, setLiked] = useState(false);
-  // TODO: Delete Post
   const history = useHistory();
 
   // Get the specific post
@@ -215,7 +227,7 @@ const Post = () => {
     };
 
     try {
-      if (liked) await axios.put("like", body);
+      if (!liked) await axios.put("like", body);
       else await axios.put("unlike", body);
       setLiked(!liked);
     } catch (err) {
@@ -234,6 +246,19 @@ const Post = () => {
       history.push("/home");
     } catch (err) {
       console.error(err.response.data);
+    }
+  };
+
+  const handleDelteComment = async (commentid) => {
+    try {
+      const body = {
+        postid,
+        commentid,
+      };
+      await axios.put("/deletecomment", body);
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -268,11 +293,11 @@ const Post = () => {
               </SubtitleWrapper>
               <TimeWrapper>{moment(post.createdAt).fromNow()}</TimeWrapper>
             </PostHeader>
-            <PostContent className="postcontent" >{post.content}</PostContent>
+            <PostContent className="postcontent">{post.content}</PostContent>
             {liked ? (
-              <LikeButton onClick={onLike}>Like</LikeButton>
-            ) : (
               <LikeButton onClick={onLike}>Unlike</LikeButton>
+            ) : (
+              <LikeButton onClick={onLike}>Like</LikeButton>
             )}
             <CommentWrapper>
               <CurAvatar src={getUserImage()}></CurAvatar>
@@ -299,6 +324,15 @@ const Post = () => {
                     </ClickableTypography>
                     <Typography>{c.text}</Typography>
                   </CommentTextWrapper>
+
+                  {getUserId() === c.commentBy._id && (
+                    <CommentDeleteButton
+                      tip="Delete Comment"
+                      onClick={() => handleDelteComment(c._id)}
+                    >
+                      <StyledDeleteIcon />
+                    </CommentDeleteButton>
+                  )}
                 </CommentCard>
               ))}
             </CommentsWrapper>
