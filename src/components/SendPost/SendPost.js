@@ -109,9 +109,10 @@ export default function SendPost() {
             impacted every Bruin's live. Share your story and let us get through
             it together.
           </DialogContentText>
-          <DialogContent>
+          <DialogContent className="dialogContent">
             <TextField
               autoFocus
+              style={{width: "15vw"}}
               margin="dense"
               id="name"
               label="Topic:"
@@ -121,7 +122,9 @@ export default function SendPost() {
               error={!!topicError.length}
             />
 
-            <MultilineTextFields onChange={handleContentChange} />
+            <MultilineTextFields
+              onChange={handleContentChange} 
+            />
           </DialogContent>
 
           <DialogActions>

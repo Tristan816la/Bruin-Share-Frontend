@@ -70,7 +70,7 @@ const Home = () => {
         >
           <div className={classes.homebody}>
             <div className={classes.homeposts}>
-              {posts.length && (
+              {posts.length ? (
                 <>
                   <div>
                     {posts.map((post, i) => (
@@ -89,7 +89,7 @@ const Home = () => {
                     ))}
                   </div>
                 </>
-              )}
+              ) : (<div>{"No posts so far, or no results found"}</div>)}
             </div>
             <SideBar
               className={classes.homesideBar}

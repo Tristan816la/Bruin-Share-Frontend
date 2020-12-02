@@ -46,7 +46,7 @@ const Profile = () => {
  
         <div className={classes.profileposts}>
           <div>
-            {posts.length > 0 && (
+            {posts.length > 0 ? (
               <>
                 {posts.map((post, i) => (
                   <MainStoryBox
@@ -63,6 +63,8 @@ const Profile = () => {
                   />
                 ))}
               </>
+            ) : (
+              <></>
             )}
           </div>
         </div>
