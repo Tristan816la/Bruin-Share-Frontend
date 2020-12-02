@@ -9,13 +9,14 @@ import Updateavatar from "./Updateavatar"
 
 
 
-function PrivateSideBar({ name, email, image }) {
+function PrivateSideBar({ name, email, image, setImage }) {
   const [avatar,setAvatar]=React.useState(image)
+
   return (
     <div>
       <div className="private_side_bar">
         <div>
-          <Updateavatar avatar={image} setAvatar={setAvatar}></Updateavatar>
+          <Updateavatar avatar={image} setImage={setImage}></Updateavatar>
         </div>
         <div className="change_avatar">
           Click image above to upload a new image
