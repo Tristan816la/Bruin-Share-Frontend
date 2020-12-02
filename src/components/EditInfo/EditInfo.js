@@ -11,7 +11,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import "./EditInfo.css"
 import axios from 'axios';
-import { SettingsInputSvideoRounded, SettingsSystemDaydream } from '@material-ui/icons';
+//import { SettingsInputSvideoRounded, SettingsSystemDaydream } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,8 +33,8 @@ function EditInfo( { currentname, currentemail }) {
       setUseremail(currentemail);
   }, [currentname, currentemail]); 
 
-  console.log(currentname, currentemail);
-  console.log(name, email);
+  //console.log(currentname, currentemail);
+  //console.log(name, email);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -67,9 +67,8 @@ function EditInfo( { currentname, currentemail }) {
       name: validName ? "" : "Your name can't be empty",
       email: validEmail ? "" : "This email address is invalid",
     });
-    console.log("run");
-    console.log(validName); 
-    console.log(validEmail); 
+    //console.log(validName); 
+    //console.log(validEmail); 
     //console.log(email);
 
     if (validName && validEmail) {
@@ -83,7 +82,7 @@ function EditInfo( { currentname, currentemail }) {
       email,
     }; 
     try {
-      console.log("run");
+      //console.log("run");
       await axios.put("/updateprofile", newInfo); 
       
       handleClose(); 
