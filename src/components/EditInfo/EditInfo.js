@@ -9,9 +9,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import TextField from '@material-ui/core/TextField';
+
 import "./EditInfo.css"
 import axios from 'axios';
-//import { SettingsInputSvideoRounded, SettingsSystemDaydream } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -105,17 +107,29 @@ function EditInfo( { currentname, currentemail }) {
           </DialogContentText>
              
           <form className={classes.root} noValidate autoComplete="off">
-            <FormControl variant="outlined" margin="dense">
-              <InputLabel htmlFor="component-outlined">Name</InputLabel>
-              <OutlinedInput id="component-outlined" defaultValue={name} onChange={handleNameChange} label="Name" />
+            <FormControl variant="outlined" margin="dense" >
+              <TextField 
+              id="name" 
+              defaultValue={name} 
+              onChange={handleNameChange} 
+              variant="outlined" 
+              label="Name" 
+              helperText="Your name can't be empty." 
+              error={errors.name ? true : false}/>
            </FormControl>
           </form>
 
           <form className={classes.root} noValidate autoComplete="off">
-            <FormControl variant="outlined" margin="dense">
-              <InputLabel htmlFor="component-outlined">Email</InputLabel>
-              <OutlinedInput id="component-outlined" defaultValue={email} onChange={handleEmailChange} label="Email" />
-            </FormControl>
+            <FormControl variant="outlined" margin="dense" >
+              <TextField 
+              id="email" 
+              defaultValue={email} 
+              onChange={handleEmailChange} 
+              variant="outlined" 
+              label="Email" 
+              helperText="Please enter a valid email address." 
+              error={errors.email ? true : false}/>
+           </FormControl>
           </form>
 
         </DialogContent>
