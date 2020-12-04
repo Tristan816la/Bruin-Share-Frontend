@@ -2,21 +2,20 @@ import React from "react";
 import "./PrivateSideBar.css";
 import PrivateImg from "./private_side_bar.png";
 import EditInfo from "../EditInfo/EditInfo";
-import Updateavatar from "./Updateavatar"
-//import { Update } from "@material-ui/icons";
-
-
-
-
+import Updateavatar from "./Updateavatar";
 
 function PrivateSideBar({ name, email, image, setImage }) {
-  const [avatar,setAvatar]=React.useState(image)
+  const [avatar, setAvatar] = React.useState(image);
 
   return (
     <div>
       <div className="private_side_bar">
         <div>
-          <Updateavatar avatar={image} setImage={setImage}></Updateavatar>
+          <Updateavatar
+            avatar={image}
+            setImage={setImage}
+            currentImage={image}
+          ></Updateavatar>
         </div>
         <div className="change_avatar">
           Click image above to upload a new image

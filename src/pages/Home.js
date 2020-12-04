@@ -35,9 +35,7 @@ const Home = () => {
       };
       try {
         const res = await axios.post("/search", body);
-        console.log(res);
         setPosts(res.data.posts);
-        //window.location.reload();
       } catch (err) {
         console.error(err);
       }
@@ -89,7 +87,9 @@ const Home = () => {
                     ))}
                   </div>
                 </>
-              ) : (<div>{"No posts so far, or no results found"}</div>)}
+              ) : (
+                <div>{"No posts so far, or no results found"}</div>
+              )}
             </div>
             <SideBar
               className={classes.homesideBar}

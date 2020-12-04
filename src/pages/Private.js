@@ -12,7 +12,7 @@ const Private = () => {
   const [posts, setPosts] = useState([]);
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
   const [userInfo, setUserInfo] = useState({});
-  const [image, setImage] = useState()
+  const [image, setImage] = useState();
 
   useEffect(() => {
     const getPosts = async () => {
@@ -20,8 +20,7 @@ const Private = () => {
         const data = await axios.get("/myinfo").then((res) => res.data);
         setPosts(data.posts);
         setUserInfo(data.user);
-        setImage(data.user.image)
-        console.log(posts);
+        setImage(data.user.image);
       } catch (err) {
         console.error(err);
       }

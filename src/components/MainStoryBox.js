@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import moment from "moment";
 import { Grid, Typography, Avatar, Box } from "@material-ui/core";
 import Like from "./Post/Like";
@@ -7,7 +7,8 @@ import { useStyles } from "../utils/useStyles";
 import CustomButton from "../styled/CustomButton";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-import "../App.css"
+import "../App.css";
+
 export const Title = styled(Typography)`
   &:hover {
     cursor: pointer;
@@ -47,10 +48,8 @@ const MainStoryBox = ({
   };
 
   const truncateText = (prop) => {
-    const maxPos = 110;
     let truncated = prop;
-    if(prop.length > 110)
-    {
+    if (prop.length > 110) {
       truncated = prop.substr(0, 107) + "...";
     }
     return truncated;
@@ -68,8 +67,12 @@ const MainStoryBox = ({
             <Avatar src={image} alt="postby image"></Avatar>
           </CustomButton>
         </Grid>
-        <Grid  item xs onClick={handleClickShowDetails}>
-          <Title noWrap style={{maxWidth: "20vw", textOverflow: "ellipsis"}} variant="h6">
+        <Grid item xs onClick={handleClickShowDetails}>
+          <Title
+            noWrap
+            style={{ maxWidth: "20vw", textOverflow: "ellipsis" }}
+            variant="h6"
+          >
             {title}
           </Title>
           <Typography className={classes.time} variant="caption">
@@ -79,7 +82,9 @@ const MainStoryBox = ({
       </Grid>
       <Grid className={classes.contentContainer} container>
         <Grid item xs>
-          <Typography className="postcontent">{truncateText(content)}</Typography>
+          <Typography className="postcontent">
+            {truncateText(content)}
+          </Typography>
         </Grid>
       </Grid>
       <Box className={classes.likeComment}>

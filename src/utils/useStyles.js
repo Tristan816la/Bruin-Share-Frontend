@@ -30,7 +30,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   content: {
     padding: "15px 0 0px 10px",
-    
   },
   time: {
     fontSize: "12px",
@@ -69,7 +68,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   homesideBar: {
     position: "relative",
-    
   },
 
   /**<------------------Comment--------------------------------------> */
@@ -94,6 +92,7 @@ export const useStyles = makeStyles((theme) => ({
     fontFamily: "Roboto",
     fontSize: "25px",
     alignItems: "center",
+    marginTop: "10px",
   },
   commentPostPostBy: {
     fontSize: "20px",
@@ -111,9 +110,8 @@ export const useStyles = makeStyles((theme) => ({
     fontFamily: "Roboto",
     display: "flex",
     alignItems: "center",
-
-    margin: "10px",
-    width: "80%",
+    margin: "10px 10px 10px 15px",
+    width: "400px",
     paddingLeft: "10px",
   },
   passwordHide: {

@@ -19,6 +19,8 @@ import SeparateLine from "../../styled/SeparateLine";
 import { isLoggedIn } from "../../utils/LoginActions";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { StyledDeleteIcon } from "../../styled/DeleteIcon";
+import { getUserId } from "../../utils/UserAction";
 
 const Comment = ({ comments, content, postId, postImage, postBy }) => {
   const [open, setOpen] = useState(false);
@@ -51,6 +53,20 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
     };
     try {
       await axios.put("/comment", body);
+      handleClose();
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDelteComment = async (commentid) => {
+    try {
+      const body = {
+        postid: postId,
+        commentid,
+      };
+      await axios.put("/deletecomment", body);
       handleClose();
       window.location.reload();
     } catch (err) {
@@ -98,8 +114,8 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
             <div
               style={{
                 display: "flex",
-                justifyContent: "space-around",
                 alignItems: "center",
+                marginTop: "20px",
               }}
               key={i}
             >
@@ -111,6 +127,14 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
               <Card key={i} className={classes.commentCard} variant="outlined">
                 {c.text}
               </Card>
+              {getUserId() === c.commentBy._id && (
+                <CustomButton
+                  tip="Delete Comment"
+                  onClick={() => handleDelteComment(c._id)}
+                >
+                  <StyledDeleteIcon></StyledDeleteIcon>
+                </CustomButton>
+              )}
             </div>
           ))}
 
