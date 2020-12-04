@@ -54,7 +54,7 @@ const Profile = () => {
                     name={userInfo.name}
                     title={post.topic}
                     content={post.content}
-                    time={post.updatedAt}
+                    time={post.createdAt}
                     likes={post.likes}
                     comments={post.comments}
                     id={post._id}

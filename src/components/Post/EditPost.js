@@ -65,9 +65,10 @@ const EditPost = ({ topic, content, postid }) => {
           every Bruin's live. Share your story and let us get through it
           together.
         </DialogContentText>
-        <DialogContent>
+        <DialogContent className={classes.dialogContent}>
           <TextField
             autoFocus
+            style={{width: "15vw"}}
             margin="dense"
             id="name"
             label="Topic:"

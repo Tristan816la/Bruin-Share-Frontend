@@ -116,6 +116,7 @@ export default function SendPost() {
               margin="dense"
               id="name"
               label="Topic:"
+              multiline
               onChange={(e) => handleTitleChange(e)}
               className={classes.sendPostTopic}
               helperText={topicError}
