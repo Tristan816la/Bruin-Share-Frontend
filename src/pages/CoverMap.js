@@ -25,15 +25,15 @@ const mapContainerStyle = {
   position: "absolute",
 };
 const center = {
-  lat: 30.164126,
-  lng: -180.643011,
+  lat: 100.164126,
+  lng: -160.643011,
 };
 
 const options = {
   styles: mapStyle,
   disableDefaultUI: true,
   zoomControl: true,
-  minZoom: 2.8,
+  minZoom: 3.0,
   restriction: {
     latLngBounds: {
       north: 81,
@@ -137,7 +137,7 @@ export default function CoverMap() {
                   impacted every Bruin's live. No matter what you're going
                   through - you're not alone."
                 </p>
-                <p>
+                <p className="text2">
                   <strong>{posts.length}</strong> students have shared their
                   stories
                 </p>
