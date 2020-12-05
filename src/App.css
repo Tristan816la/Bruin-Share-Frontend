@@ -3,65 +3,63 @@
 }
 body {
   overflow-x: hidden;
+  background-color: #fafafa;
 }
-.wrapper404{
+.wrapper404 {
   margin: 10% 15% 15% 15%;
 }
 img {
-  float:left;
+  float: left;
 }
 .title404 {
   margin-left: 120px;
   font-size: 50px;
 }
-.info404{
+.info404 {
   padding-top: 50px;
 }
-.content404{
+.content404 {
   padding-top: 30px;
   float: right;
   padding-left: 60%px;
   font-size: 30px;
   font-style: italic;
 }
-.image404{
+.image404 {
   height: 45%;
-  width:  45%;
+  width: 45%;
 }
-.link404wrapper{
+.link404wrapper {
   margin-top: 50px;
   float: right;
 }
 
-.link404{
+.link404 {
   margin-left: 20px;
-  font-size: 30px ;
+  font-size: 30px;
   text-decoration: none;
   background-color: #eeeeeee1;
   color: #6e6d77;
   padding: 2px 6px 2px 6px;
   border-radius: 10%;
   border-style: hidden;
-  
 }
-.link404:hover{
+.link404:hover {
   transition: 10ms;
   background-color: #eeeeee17;
-
 }
-.postcontent{
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  -o-text-overflow: ellipsis;
-  white-space:nowrap;
-  width:300px;
-  display:block;
-  white-space:pre-wrap;
-  word-wrap:break-word;
+.postcontent {
   overflow: hidden;
-  }
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 300px;
+  display: block;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+}
 
-  .postbar
-  {
-    width: 10%;
-  }
+.postbar {
+  width: 10%;
+}

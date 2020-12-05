@@ -4,7 +4,6 @@ import { Typography } from "@material-ui/core";
 
 function SearchBar({
   searchBarOnSearch,
-  keyword,
   option,
   handleContentChange,
   handleOptionContentClick,

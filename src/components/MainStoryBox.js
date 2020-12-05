@@ -99,6 +99,7 @@ const MainStoryBox = ({
               postId={id}
               postImage={image}
               postBy={name}
+              postTitle={title}
             ></Comment>
           </Grid>
         </Grid>

@@ -22,7 +22,14 @@ import axios from "axios";
 import { StyledDeleteIcon } from "../../styled/DeleteIcon";
 import { getUserId } from "../../utils/UserAction";
 
-const Comment = ({ comments, content, postId, postImage, postBy }) => {
+const Comment = ({
+  comments,
+  content,
+  postId,
+  postImage,
+  postBy,
+  postTitle,
+}) => {
   const [open, setOpen] = useState(false);
   const [commenttext, setCommenttext] = useState("");
   const history = useHistory();
@@ -100,9 +107,14 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
               src={postImage}
               className={classes.commentPostImage}
             ></Avatar>
-            <Typography className={classes.commentPostPostBy}>
-              {postBy}:
-            </Typography>
+            <div
+              style={{ display: "flex", gap: "10px", flexDirection: "column" }}
+            >
+              <Typography className={classes.commentPostPostBy}>
+                {postBy}:
+              </Typography>
+              <Typography>{postTitle}</Typography>
+            </div>
             <Typography className={classes.commentPostContent}>
               {content}
             </Typography>
@@ -126,7 +138,7 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
                   alt="commentIcon"
                 />
               </CustomButton>
-              
+
               <Card key={i} className={classes.commentCard} variant="outlined">
                 {c.text}
               </Card>
@@ -158,6 +170,12 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
               id="name"
               label="New Comment"
               fullWidth
+              inputProps={{
+                autocomplete: "new-password",
+                form: {
+                  autocomplete: "off",
+                },
+              }}
               onChange={(e) => handleOnChange(e)}
             />
             <CustomButton

@@ -5,7 +5,6 @@ import MainStoryBox from "../components/MainStoryBox";
 import SideBar from "../components/SideBar/SideBar";
 import { useStyles } from "../utils/useStyles";
 import { isLoggedIn } from "../utils/LoginActions";
-import SearchBar from "../components/SearchBar/SearchBar";
 
 const Home = () => {
   const [posts, setPosts] = useState({});
@@ -37,7 +36,7 @@ const Home = () => {
       };
       try {
         const res = await axios.post("/search", body);
-        if(res.data.posts.length == 0) setResultsFound(false);
+        if (res.data.posts.length === 0) setResultsFound(false);
         setPosts(res.data.posts);
       } catch (err) {
         console.error(err);

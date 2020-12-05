@@ -18,7 +18,7 @@ import phone from "../components/Post/phone.png";
 import laptop from "../components/Post/laptop.png";
 import postBg from "../components/Post/postBg.png";
 import CustomButton from "../styled/CustomButton";
-import { Edit, Delete, Notifications } from "@material-ui/icons";
+import { Delete } from "@material-ui/icons";
 import { StyledDeleteIcon } from "../styled/DeleteIcon";
 
 export const PostWrapper = styled.div`
@@ -49,9 +49,11 @@ export const PostHeader = styled.div`
 `;
 
 export const ClickableTypography = styled(Typography)`
+  font-size: 15px;
+
   &:hover {
-    text-decoration: underline;
     cursor: pointer;
+    text-decoration: underline;
   }
 `;
 
@@ -173,6 +175,10 @@ export const EditWrapper = styled.div`
   right: 1vw;
   top: 1vh;
 `;
+export const BoldTypography = styled(Typography)`
+  font-size: 23px;
+  /* font-weight: bold; */
+`;
 
 export const CommentText = styled(Typography)``;
 
@@ -200,7 +206,7 @@ const Post = () => {
         setLiked(true);
       }
     }
-  }, []);
+  }, [liked]);
 
   const handleOnChange = (e) => {
     setCurComment(e.target.value);
@@ -271,12 +277,15 @@ const Post = () => {
             <PostHeader>
               <UserAvatar src={post.postBy.image}></UserAvatar>
               <SubtitleWrapper>
-                <ClickableTypography
-                  variant="h5"
-                  onClick={() => onName(post.postBy._id)}
-                >
-                  {post.postBy.name}
-                </ClickableTypography>
+                <div>
+                  <BoldTypography>{post.topic}</BoldTypography>
+                  <ClickableTypography
+                    variant="h5"
+                    onClick={() => onName(post.postBy._id)}
+                  >
+                    @{post.postBy.name}
+                  </ClickableTypography>
+                </div>
                 {post.postBy._id === getUserId() && (
                   <EditWrapper>
                     <EditPost
