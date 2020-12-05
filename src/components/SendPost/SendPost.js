@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./SendPost.css";
 
+// MUI
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,11 +10,17 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import AddIcon from "@material-ui/icons/Add";
 
-import { isLoggedIn } from "../../utils/LoginActions";
+// Utils
 import axios from "axios";
+import { isLoggedIn } from "../../utils/LoginActions";
 import { useStyles } from "../../utils/useStyles";
+
+// Components
 import CustomButton from "../../styled/CustomButton";
 import MultilineTextFields from "../../styled/MultilineTextField";
+
+// Styles
+import "./SendPost.css";
 
 export default function SendPost() {
   const classes = useStyles();

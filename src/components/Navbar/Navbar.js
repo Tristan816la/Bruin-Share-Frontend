@@ -1,9 +1,17 @@
 import React from "react";
-import "./Navbar.css";
-import { Link, useLocation } from "react-router-dom";
+
+// MUI
 import Avatar from "@material-ui/core/Avatar";
+
+// Utils
+import { Link, useLocation } from "react-router-dom";
+
+// Components
 import Notification from "../Notification";
 import SendPost from "../SendPost/SendPost";
+
+// Styles
+import "./Navbar.css";
 import Logo from "./logo.png";
 
 function Navbar({ loggedIn }) {

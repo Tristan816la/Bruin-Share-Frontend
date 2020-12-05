@@ -1,6 +1,10 @@
 import React from "react";
-import "./SideBar.css";
+
+// Components
 import SearchBar from "../SearchBar/SearchBar";
+
+// Styles
+import "./SideBar.css";
 
 function SideBar({
   sideBarOnSearch,

@@ -1,11 +1,15 @@
 import React from "react";
-import "./PrivateSideBar.css";
-import PrivateImg from "./private_side_bar.png";
+
+// Components
 import EditInfo from "../EditInfo/EditInfo";
 import Updateavatar from "./Updateavatar";
 
+// Styles
+import "./PrivateSideBar.css";
+import PrivateImg from "./private_side_bar.png";
+
+
 function PrivateSideBar({ name, email, image, setImage }) {
-  const [avatar, setAvatar] = React.useState(image);
 
   return (
     <div>

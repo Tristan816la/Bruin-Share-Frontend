@@ -1,14 +1,20 @@
 import React, { useState } from "react";
-import Icon from "@material-ui/core/Icon";
+
+// MUI
 import unlikeIcon from "@material-ui/icons/FavoriteBorder";
 import likeIcon from "@material-ui/icons/Favorite";
 import { Typography } from "@material-ui/core";
-import { useStyles } from "../../utils/useStyles";
-import CustomButton from "../../styled/CustomButton";
-import { getUserId } from "../../utils/UserAction";
+
+// Utils
 import axios from "axios";
+import Icon from "@material-ui/core/Icon";
+import { useStyles } from "../../utils/useStyles";
+import { getUserId } from "../../utils/UserAction";
 import { isLoggedIn } from "../../utils/LoginActions";
 import { useHistory } from "react-router-dom";
+
+// Styles
+import CustomButton from "../../styled/CustomButton";
 
 const Like = ({ likes, postId }) => {
   const classes = useStyles();
