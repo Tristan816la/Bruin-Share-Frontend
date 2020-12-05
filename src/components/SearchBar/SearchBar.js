@@ -9,7 +9,6 @@ import "./SearchBar.css";
 
 function SearchBar({
   searchBarOnSearch,
-  keyword,
   option,
   handleContentChange,
   handleOptionContentClick,

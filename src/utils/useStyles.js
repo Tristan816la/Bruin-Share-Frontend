@@ -89,20 +89,20 @@ export const useStyles = makeStyles((theme) => ({
   },
   commentPostCard: {
     minHeight: "100px",
-    paddingLeft: "15px",
+    padding: "25px",
     display: "flex",
     gap: "15px",
     fontFamily: "Roboto",
-    fontSize: "25px",
+    fontSize: "18px",
     alignItems: "center",
     marginTop: "10px",
   },
   commentPostPostBy: {
-    fontSize: "20px",
+    fontSize: "15px",
     fontWeight: "600",
   },
   commentPostContent: {
-    fontSize: "18px",
+    // fontSize: "1px",
   },
   commentPostImage: {
     width: "60px",

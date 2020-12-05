@@ -14,23 +14,23 @@ import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > *': {
+    "& > *": {
       margin: theme.spacing(1),
     },
   },
 }));
 
-function EditInfo( { currentname, currentemail }) {
+function EditInfo({ currentname, currentemail }) {
   const [open, setOpen] = React.useState(false);
-  const [name, setUsername] = React.useState(currentname); 
-  const [email, setUseremail] = React.useState(currentemail); 
+  const [name, setUsername] = React.useState(currentname);
+  const [email, setUseremail] = React.useState(currentemail);
   const [errors, setErrors] = React.useState({});
-  const classes = useStyles(); 
+  const classes = useStyles();
 
   useEffect(() => {
-      setUsername(currentname); 
-      setUseremail(currentemail);
-  }, [currentname, currentemail]); 
+    setUsername(currentname);
+    setUseremail(currentemail);
+  }, [currentname, currentemail]);
 
 
   const handleClickOpen = () => {
@@ -41,12 +41,12 @@ function EditInfo( { currentname, currentemail }) {
     setOpen(false);
   };
 
-  const handleNameChange = e => {
-    setUsername(e.target.value); 
+  const handleNameChange = (e) => {
+    setUsername(e.target.value);
   };
 
-  const handleEmailChange = e => {
-    setUseremail(e.target.value); 
+  const handleEmailChange = (e) => {
+    setUseremail(e.target.value);
   };
 
   const validateEmail = (prop) => {
@@ -56,9 +56,9 @@ function EditInfo( { currentname, currentemail }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let validName = true; 
-    let validEmail = validateEmail(email); 
-    if (name === "") validName = false; 
+    let validName = true;
+    let validEmail = validateEmail(email);
+    if (name === "") validName = false;
     setErrors({
       ...errors,
       name: validName ? "" : "Your name can't be empty",
@@ -67,14 +67,14 @@ function EditInfo( { currentname, currentemail }) {
 
     if (validName && validEmail) {
       editAction();
-    } 
+    }
   };
 
-  const editAction = async() => {
+  const editAction = async () => {
     const newInfo = {
-      name, 
+      name,
       email,
-    }; 
+    };
     try {
       await axios.put("/updateprofile", newInfo); 
       handleClose(); 
@@ -86,42 +86,51 @@ function EditInfo( { currentname, currentemail }) {
 
   return (
     <div>
-      <Button variant="outlined"  onClick={handleClickOpen} className="edit_button">
+      <Button
+        variant="outlined"
+        onClick={handleClickOpen}
+        className="edit_button"
+      >
         Edit Info
       </Button>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
         <DialogTitle id="form-dialog-title">Edit Info</DialogTitle>
         <DialogContent>
           <DialogContentText>
             To update your personal information, please fill in the forms below.
           </DialogContentText>
-             
+
           <form className={classes.root} noValidate autoComplete="off">
-            <FormControl variant="outlined" margin="dense" >
-              <TextField 
-              id="name" 
-              defaultValue={name} 
-              onChange={handleNameChange} 
-              variant="outlined" 
-              label="Name" 
-              helperText="Your name can't be empty." 
-              error={errors.name ? true : false}/>
-           </FormControl>
+            <FormControl variant="outlined" margin="dense">
+              <TextField
+                id="name"
+                defaultValue={name}
+                onChange={handleNameChange}
+                variant="outlined"
+                label="Name"
+                helperText={errors.name}
+                error={errors.name ? true : false}
+              />
+            </FormControl>
           </form>
 
           <form className={classes.root} noValidate autoComplete="off">
-            <FormControl variant="outlined" margin="dense" >
-              <TextField 
-              id="email" 
-              defaultValue={email} 
-              onChange={handleEmailChange} 
-              variant="outlined" 
-              label="Email" 
-              helperText="Please enter a valid email address." 
-              error={errors.email ? true : false}/>
-           </FormControl>
+            <FormControl variant="outlined" margin="dense">
+              <TextField
+                id="email"
+                defaultValue={email}
+                onChange={handleEmailChange}
+                variant="outlined"
+                label="Email"
+                helperText={errors.email}
+                error={errors.email ? true : false}
+              />
+            </FormControl>
           </form>
-
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

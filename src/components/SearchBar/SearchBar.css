@@ -19,21 +19,23 @@ form {
   position: relative;
   margin-top: rpx;
   height: 5.5vh;
-  width: 3.3vw;
+  margin-left: 10px;
 }
 
 #drop_down_button {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.51);
+  border: 1px solid rgba(0, 0, 0, 0.35);
   color: #767a78;
   font-family: Poppins;
-  font-size: 1.7vw;
-  line-height: 5.1vh;
+  font-size: 1.4vw;
+  padding: 0 10px;
   font-weight: bolder;
   overflow: hidden;
   text-align: center;
-  display: inline;
+  height: 5.5vh;
+  /* box-sizing: border-box; */
+  /* display: inline; */
   cursor: pointer;
   outline: none;
 }
@@ -89,8 +91,9 @@ form {
   border: 1px solid rgba(0, 0, 0, 0.51);
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  padding-left: 5px;
   font-family: Poppins;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   outline: none;
   color: #2a2f2c;
 }

@@ -57,9 +57,11 @@ export const PostHeader = styled.div`
 `;
 
 export const ClickableTypography = styled(Typography)`
+  font-size: 15px;
+
   &:hover {
-    text-decoration: underline;
     cursor: pointer;
+    text-decoration: underline;
   }
 `;
 
@@ -181,6 +183,10 @@ export const EditWrapper = styled.div`
   right: 1vw;
   top: 1vh;
 `;
+export const BoldTypography = styled(Typography)`
+  font-size: 23px;
+  /* font-weight: bold; */
+`;
 
 export const CommentText = styled(Typography)``;
 
@@ -208,7 +214,7 @@ const Post = () => {
         setLiked(true);
       }
     }
-  }, []);
+  }, [liked]);
 
   const handleOnChange = (e) => {
     setCurComment(e.target.value);
@@ -287,11 +293,16 @@ const Post = () => {
               </Tooltip>
               
               <SubtitleWrapper>
-                <Typography
-                  variant="h5"
-                >
-                  {post.topic}
-                </Typography>
+
+                <div>
+                  <BoldTypography>{post.topic}</BoldTypography>
+                  <ClickableTypography
+                    variant="h5"
+                    onClick={() => onName(post.postBy._id)}
+                  >
+                    @{post.postBy.name}
+                  </ClickableTypography>
+                </div>
                 {post.postBy._id === getUserId() && (
                   <EditWrapper>
                     <EditPost
