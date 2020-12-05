@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./SearchBar.css";
+
+// MUI
 import { Typography } from "@material-ui/core";
+
+// Styles
+import "./SearchBar.css";
+
 
 function SearchBar({
   searchBarOnSearch,

@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const loginbg = "cover_bg_test2.png";
+const signupbg = "cover_bg_test3.png";
 
 export const useStyles = makeStyles((theme) => ({
   /**<--------------Main Story Box ----------------------------------------------------> */
@@ -52,19 +53,16 @@ export const useStyles = makeStyles((theme) => ({
 
   /**<------------------Home--------------------------------------> */
   homebody: {
-    // width: "100vw",
     display: "grid",
     margin: "0 0 0 10vw",
     gridTemplateColumns: "2fr 1fr",
     gridColumnGap: "10vw",
   },
-
   homeposts: {
     position: "relative",
     top: "10vh",
     display: "grid",
     width: "41vw",
-    // paddingLeft: "22vw",
   },
   homesideBar: {
     position: "relative",
@@ -86,7 +84,6 @@ export const useStyles = makeStyles((theme) => ({
     right: "2px",
     top: "8px",
   },
-
   sendbtn: {
     marginTop: "20px",
   },
@@ -132,6 +129,56 @@ export const useStyles = makeStyles((theme) => ({
     margin: "10px 10px 0px 2px",
   },
 
+  /**<------------------Signup--------------------------------------> */
+  passwordHide: {
+    height: "50px",
+    paddingRight: "20px",
+  },
+  signupContainer: {
+    display: "flex",
+    height: "100vh",
+  },
+  signupTitle: {
+    fontFamily: "Poppins",
+    fontWeight: "800",
+    fontSize: "30px",
+    textAlign: "center",
+  },
+  signupRight: {
+    flex: "4 0 auto",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: `url(${signupbg})`,
+  },
+  signupLeft: {
+    flex: "1 0 auto",
+    justifyContent: "center",
+    display: "flex",
+    alignItems: "center",
+  },
+  signupImg: {
+    width: "35vw",
+    maxWidth: "800px",
+  },
+  signupPage: {
+    padding: "100px 50px",
+    borderRadius: "30px",
+    width: "500px",
+    flex: "1 0 auto",
+  },
+
+  formPaper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+
+  signupForm: {
+    width: "100%",
+    marginTop: theme.spacing(2),
+  },
+  
   /**<------------------Login--------------------------------------> */
   loginContainer: {
     display: "flex",
@@ -166,23 +213,19 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: "30px",
     width: "500px",
   },
-
   paper: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     padding: "30px 10px",
   },
-
   form: {
     width: "100%",
     marginTop: theme.spacing(2),
   },
-
   textField: {
     margin: theme.spacing(4, 0, 2),
   },
-
   submit: {
     margin: theme.spacing(6, 0, 2),
     width: "60%",
@@ -198,8 +241,8 @@ export const useStyles = makeStyles((theme) => ({
   sendPostBox: {
     height: "200px",
   },
-  /**<-------------------Notifications -----------------------------> */
 
+  /**<-------------------Notifications -----------------------------> */
   notificationButton: {
     color: "#666",
     cursor: "pointer",
@@ -240,7 +283,9 @@ export const useStyles = makeStyles((theme) => ({
   itemText: {
     cursor: "pointer",
   },
-  deleteButton: {},
+  deleteButton: {
+    
+  },
 
   /**<------------------------- Profile ------------------------------> */
   profilebody: {

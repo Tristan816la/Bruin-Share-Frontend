@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import { makeStyles } from "@material-ui/core/styles";
-import FormControl from "@material-ui/core/FormControl";
-import TextField from "@material-ui/core/TextField";
+import React, { useEffect } from 'react';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { makeStyles } from '@material-ui/core/styles';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
 
-import "./EditInfo.css";
-import axios from "axios";
+import "./EditInfo.css"
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,8 +32,6 @@ function EditInfo({ currentname, currentemail }) {
     setUseremail(currentemail);
   }, [currentname, currentemail]);
 
-  //console.log(currentname, currentemail);
-  //console.log(name, email);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -78,11 +76,9 @@ function EditInfo({ currentname, currentemail }) {
       email,
     };
     try {
-      //console.log("run");
-      await axios.put("/updateprofile", newInfo);
-
-      handleClose();
-      window.location.reload();
+      await axios.put("/updateprofile", newInfo); 
+      handleClose(); 
+      window.location.reload(); 
     } catch (err) {
       console.error(err);
     }

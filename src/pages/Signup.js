@@ -1,4 +1,6 @@
 import React from "react";
+
+// MUI
 import {
   Grid,
   Button,
@@ -16,69 +18,12 @@ import {
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+
+// Utils
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-const bg = "cover_bg_test3.png";
-const useStyles = makeStyles((theme) => ({
-  passwordHide: {
-    height: "50px",
-    paddingRight: "20px",
-  },
-  signupContainer: {
-    display: "flex",
-    height: "100vh",
-  },
-  signupTitle: {
-    fontFamily: "Poppins",
-    fontWeight: "800",
-    fontSize: "30px",
-    textAlign: "center",
-  },
-  signupRight: {
-    flex: "4 0 auto",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    background: `url(${bg})`,
-  },
-  signupLeft: {
-    flex: "1 0 auto",
-    justifyContent: "center",
-    display: "flex",
-    alignItems: "center",
-    // background: "red",
-  },
-  signupImg: {
-    width: "35vw",
-    maxWidth: "800px",
-  },
-  page: {
-    padding: "100px 50px",
-    borderRadius: "30px",
-    width: "500px",
-    flex: "1 0 auto",
-  },
+import { useStyles } from "../utils/useStyles";
 
-  paper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-
-  form: {
-    width: "100%",
-    marginTop: theme.spacing(2),
-  },
-
-  textField: {
-    margin: theme.spacing(4, 0, 2),
-  },
-
-  submit: {
-    margin: theme.spacing(6, 0, 2),
-    width: "60%",
-  },
-}));
 const Signup = () => {
   const classes = useStyles();
   const history = useHistory();
@@ -174,14 +119,14 @@ const Signup = () => {
   return (
     <div className={classes.signupContainer}>
       <div className={classes.signupLeft}>
-        <Box className={classes.page} maxWidth="xs">
+        <Box className={classes.signupPage} maxWidth="xs">
           <CssBaseline />
-          <div className={classes.paper}>
+          <div className={classes.formPaper}>
             <Typography className={classes.signupTitle}>
-              Join Our Community & <br />
-              Sign Up
+              {"Join Our Community &"} <br />
+              {"Sign Up"}
             </Typography>
-            <form className={classes.form} onSubmit={handleSubmit} noValidate>
+            <form className={classes.signupForm} onSubmit={handleSubmit} noValidate>
               <FormControl
                 className={classes.textField}
                 variant="outlined"
@@ -282,8 +227,6 @@ const Signup = () => {
                     variant="contained"
                     fullWidth
                     type="submit"
-
-                  //return form back to the server
                   >
                     Join now
                   </Button>

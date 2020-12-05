@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar/Navbar";
+
+// Utils
 import axios from "axios";
-import MainStoryBox from "../components/MainStoryBox";
-import SideBar from "../components/SideBar/SideBar";
 import { useStyles } from "../utils/useStyles";
 import { isLoggedIn } from "../utils/LoginActions";
 
+// Components
+import Navbar from "../components/Navbar/Navbar";
+import MainStoryBox from "../components/MainStoryBox";
+import SideBar from "../components/SideBar/SideBar";
+
 const Home = () => {
+  const classes = useStyles();
+  
   const [posts, setPosts] = useState({});
   const [loggedIn, setLoggedIn] = useState(isLoggedIn());
   const [keyword, setKeyword] = useState("");
@@ -36,7 +42,7 @@ const Home = () => {
       };
       try {
         const res = await axios.post("/search", body);
-        if (res.data.posts.length === 0) setResultsFound(false);
+        if(res.data.posts.length === 0) setResultsFound(false);
         setPosts(res.data.posts);
       } catch (err) {
         console.error(err);
@@ -56,7 +62,7 @@ const Home = () => {
     setOption("topic");
   };
 
-  const classes = useStyles();
+  
   return (
     <>
       <div>

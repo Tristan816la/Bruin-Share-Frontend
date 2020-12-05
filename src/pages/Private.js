@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+
+// Utils
 import axios from "axios";
+import { isLoggedIn } from "../utils/LoginActions";
+import { useStyles } from "../utils/useStyles";
+
+// Components
 import Navbar from "../components/Navbar/Navbar";
 import PrivateSideBar from "../components/PrivateSideBar/PrivateSideBar";
 import MainStoryBox from "../components/MainStoryBox";
-import { getUserId } from "../utils/UserAction";
-import { isLoggedIn } from "../utils/LoginActions";
-import { useStyles } from "../utils/useStyles";
 
 const Private = () => {
   const classes = useStyles();

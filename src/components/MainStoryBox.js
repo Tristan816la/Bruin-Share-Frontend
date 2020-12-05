@@ -1,11 +1,19 @@
 import React from "react";
-import moment from "moment";
+
+// MUI
 import { Grid, Typography, Avatar, Box } from "@material-ui/core";
+
+// Utils
+import moment from "moment";
+import { useStyles } from "../utils/useStyles";
+
+// Components
 import Like from "./Post/Like";
 import Comment from "./Post/Comment";
-import { useStyles } from "../utils/useStyles";
-import CustomButton from "../styled/CustomButton";
 import { useHistory } from "react-router-dom";
+
+// Styles
+import CustomButton from "../styled/CustomButton";
 import styled from "styled-components";
 import "../App.css";
 

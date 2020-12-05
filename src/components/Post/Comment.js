@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import Icon from "@material-ui/core/Icon";
-import commentIcon from "@material-ui/icons/Message";
-import SendIcon from "@material-ui/icons/Send";
 
-import { useStyles } from "../../utils/useStyles";
-import CustomButton from "../../styled/CustomButton";
+// MUI
 import {
   Dialog,
   DialogContent,
@@ -13,14 +9,24 @@ import {
   TextField,
   Typography,
   Avatar,
+  Tooltip,
 } from "@material-ui/core/";
 import CloseIcon from "@material-ui/icons/Close";
-import SeparateLine from "../../styled/SeparateLine";
-import { isLoggedIn } from "../../utils/LoginActions";
-import { useHistory } from "react-router-dom";
+import Icon from "@material-ui/core/Icon";
+import commentIcon from "@material-ui/icons/Message";
+import SendIcon from "@material-ui/icons/Send";
+
+// Utils
 import axios from "axios";
-import { StyledDeleteIcon } from "../../styled/DeleteIcon";
+import { useStyles } from "../../utils/useStyles";
+import { isLoggedIn } from "../../utils/LoginActions";
 import { getUserId } from "../../utils/UserAction";
+import { useHistory } from "react-router-dom";
+
+// Components
+import CustomButton from "../../styled/CustomButton";
+import SeparateLine from "../../styled/SeparateLine";
+import { StyledDeleteIcon } from "../../styled/DeleteIcon";
 
 const Comment = ({
   comments,
@@ -131,14 +137,13 @@ const Comment = ({
               }}
               key={i}
             >
-              <CustomButton tip={c.commentBy.name}>
+              <Tooltip title={c.commentBy.name} placement="top" arrow>
                 <img
                   src={c.commentBy.image}
                   className={classes.commentIcon}
                   alt="commentIcon"
                 />
-              </CustomButton>
-
+              </Tooltip>
               <Card key={i} className={classes.commentCard} variant="outlined">
                 {c.text}
               </Card>
@@ -155,15 +160,12 @@ const Comment = ({
 
           <SeparateLine />
           <div style={{ display: "flex" }}>
-            <CustomButton
-              tip="Go to setting page"
-              className={classes.userImage}
-            >
-              <Avatar
+            <Avatar
+                className={classes.userImage}
                 src={window.localStorage.getItem("UserImage")}
                 alt="user image"
-              ></Avatar>
-            </CustomButton>
+            ></Avatar>
+            
             <TextField
               autoFocus
               margin="dense"

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
+
+// MUI
 import {
   Popover,
   Paper,
@@ -16,7 +16,13 @@ import ChatIcon from "@material-ui/icons/Chat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+
+// Utils
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { useStyles } from "../utils/useStyles";
+
+// Styles
 import CustomButton from "../styled/CustomButton";
 
 function Notification() {

@@ -1,11 +1,13 @@
-import React from 'react'
-import Navbar from "../components/Navbar/Navbar";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import MainStoryBox from "../components/MainStoryBox";
-import SideBar from "../components/SideBar/SideBar";
-import "../App.css";
+import React, { useState } from 'react';
+
+// Utils
 import { isLoggedIn } from "../utils/LoginActions";
+
+// Components
+import Navbar from "../components/Navbar/Navbar";
+
+// Styles
+import "../App.css";
 
 export default function NotFound() {
     const [loggedIn, setLoggedIn] = useState(isLoggedIn());
