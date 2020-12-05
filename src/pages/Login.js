@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+
+// MUI
 import {
   Grid,
   Button,
   Typography,
-  makeStyles,
   CssBaseline,
   Link,
   Box,
@@ -17,13 +17,12 @@ import {
 } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+
+// Utils
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { isLoggedIn } from "../utils/LoginActions";
 import { useStyles } from "../utils/useStyles";
-import axios from "axios";
-
-//spacing larger
-//confirm password, error -> box red, textfield attribute
-//button smaller
 
 const Login = () => {
   const classes = useStyles();
@@ -127,7 +126,8 @@ const Login = () => {
         <Box className={classes.page} maxWidth="xs">
           <CssBaseline />
           <Typography className={classes.loginTitle}>
-            Login to Your Account &<br></br> Share Your Story
+            {"Login to Your Account &"}<br />
+            {"Share Your Story"}
           </Typography>
           <div className={classes.paper}>
             <form className={classes.form} onSubmit={handleSubmit} noValidate>
@@ -146,7 +146,6 @@ const Login = () => {
                   id="email"
                   value={values.email}
                   onChange={handleChange("email")}
-                  // type="email"
                   labelWidth={126}
                 />
                 <FormHelperText>{errors.email}</FormHelperText>
@@ -191,8 +190,6 @@ const Login = () => {
                     variant="contained"
                     fullWidth
                     type="submit"
-
-                    //return form back to the server
                   >
                     Log in
                   </Button>

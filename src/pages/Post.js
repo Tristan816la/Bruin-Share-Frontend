@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import Navbar from "../components/Navbar/Navbar";
-import EditPost from "../components/Post/EditPost";
 
 // MUI
-import { Avatar, Typography, Button, TextField } from "@material-ui/core";
+import { 
+  Avatar, 
+  Typography, 
+  Button, 
+  TextField, 
+  Tooltip 
+} from "@material-ui/core";
+import { Delete } from "@material-ui/icons";
 
 // Utils
 import axios from "axios";
@@ -13,13 +17,17 @@ import { isLoggedIn } from "../utils/LoginActions";
 import { useParams, useHistory } from "react-router-dom";
 import { getUserImage, getUserId } from "../utils/UserAction";
 
-// Backgrounds
+// Components
+import Navbar from "../components/Navbar/Navbar";
+import EditPost from "../components/Post/EditPost";
+
+// Styles
 import phone from "../components/Post/phone.png";
 import laptop from "../components/Post/laptop.png";
 import postBg from "../components/Post/postBg.png";
 import CustomButton from "../styled/CustomButton";
-import { Edit, Delete, Notifications } from "@material-ui/icons";
 import { StyledDeleteIcon } from "../styled/DeleteIcon";
+import styled from "styled-components";
 
 export const PostWrapper = styled.div`
   position: absolute;
@@ -183,12 +191,12 @@ const Post = () => {
   const [liked, setLiked] = useState(false);
   const history = useHistory();
 
-  // Get the specific post
   useEffect(() => {
     const fetchPost = async () => {
       try {
         const res = await axios.get(`/post/${postid}`);
         setPost(res.data);
+        console.log(res.data);
       } catch (err) {
         console.error(err);
       }
@@ -269,14 +277,21 @@ const Post = () => {
           <Navbar loggedIn={isLoggedIn()}></Navbar>
           <PostWrapper>
             <PostHeader>
-              <UserAvatar src={post.postBy.image}></UserAvatar>
-              <SubtitleWrapper>
-                <ClickableTypography
-                  variant="h5"
-                  onClick={() => onName(post.postBy._id)}
+              <Tooltip title={post.postBy.name} placement="top" arrow>
+                <UserAvatar 
+                src={post.postBy.image} 
+                onClick={() => onName(post.postBy._id)}
+                style={{cursor: "pointer"}}
                 >
-                  {post.postBy.name}
-                </ClickableTypography>
+                </UserAvatar>
+              </Tooltip>
+              
+              <SubtitleWrapper>
+                <Typography
+                  variant="h5"
+                >
+                  {post.topic}
+                </Typography>
                 {post.postBy._id === getUserId() && (
                   <EditWrapper>
                     <EditPost
@@ -289,7 +304,7 @@ const Post = () => {
                     </CustomButton>
                   </EditWrapper>
                 )}
-                <Typography>{post.postBy.email}</Typography>
+                
               </SubtitleWrapper>
               <TimeWrapper>{moment(post.createdAt).fromNow()}</TimeWrapper>
             </PostHeader>

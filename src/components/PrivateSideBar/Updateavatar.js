@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
+
+// MUI
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Avatar } from "@material-ui/core";
+
+// Utils
 import axios from "axios";
 
 export default function Updateavator({ avatar, setImage, ...rest }) {
@@ -14,7 +18,7 @@ export default function Updateavator({ avatar, setImage, ...rest }) {
   useEffect(() => {
     setAvatarr(avatar);
   }, []);
-  //setAvatarr(avatar)
+  
   const handleClickOpen = () => {
     setOpen(true);
   };

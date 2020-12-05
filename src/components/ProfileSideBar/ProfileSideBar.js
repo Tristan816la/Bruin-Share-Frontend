@@ -1,6 +1,10 @@
 import React from "react";
-import "./ProfileSideBar.css";
+
+// MUI
 import Avatar from "@material-ui/core/Avatar";
+
+// Styles
+import "./ProfileSideBar.css";
 import ProfileImg from "./profile.png";
 
 function ProfileSideBar({ profileAvatar, user, email }) {

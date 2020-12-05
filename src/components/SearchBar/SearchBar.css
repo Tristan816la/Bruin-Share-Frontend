@@ -13,11 +13,9 @@ form {
   display: inline;
   position: relative;
   border: transparent;
-  /* height: 10vh; */
 }
 
 .drop_down {
-  /* display: inline-block; */
   position: relative;
   margin-top: rpx;
   height: 5.5vh;
@@ -27,9 +25,6 @@ form {
 #drop_down_button {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  /* padding: 11px 10px;
-  margin-left: 40px;
-  margin-top: 10px; */
   border: 1px solid rgba(0, 0, 0, 0.51);
   color: #767a78;
   font-family: Poppins;
@@ -77,7 +72,6 @@ form {
 
 #search {
   position: absolute;
-  /* width: 5.5vh; */
   height: 5.5vh;
 }
 
@@ -86,9 +80,6 @@ form {
 }
 
 .search_bar {
-  /* margin-left: 0px; */
-  /* margin-top: 40px; */
-  /* width: 13vw; */
   display: inline;
 }
 
@@ -98,8 +89,6 @@ form {
   border: 1px solid rgba(0, 0, 0, 0.51);
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-  /* padding-left: 20px;
-  margin-left: 20px; */
   font-family: Poppins;
   font-size: 1.5vw;
   outline: none;

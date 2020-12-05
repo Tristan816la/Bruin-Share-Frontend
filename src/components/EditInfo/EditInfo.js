@@ -7,9 +7,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import TextField from '@material-ui/core/TextField';
 
 import "./EditInfo.css"
@@ -35,8 +32,6 @@ function EditInfo( { currentname, currentemail }) {
       setUseremail(currentemail);
   }, [currentname, currentemail]); 
 
-  //console.log(currentname, currentemail);
-  //console.log(name, email);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -69,9 +64,6 @@ function EditInfo( { currentname, currentemail }) {
       name: validName ? "" : "Your name can't be empty",
       email: validEmail ? "" : "This email address is invalid",
     });
-    //console.log(validName); 
-    //console.log(validEmail); 
-    //console.log(email);
 
     if (validName && validEmail) {
       editAction();
@@ -84,9 +76,7 @@ function EditInfo( { currentname, currentemail }) {
       email,
     }; 
     try {
-      //console.log("run");
       await axios.put("/updateprofile", newInfo); 
-      
       handleClose(); 
       window.location.reload(); 
     } catch (err) {

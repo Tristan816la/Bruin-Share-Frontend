@@ -1,5 +1,13 @@
-import "../App.css";
 import React, { useCallback, useRef, useState, useEffect } from "react";
+
+// MUI
+import ArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import ArrowRight from "@material-ui/icons/KeyboardArrowRight";
+import { Button } from "@material-ui/core";
+
+// Utils
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 import {
   GoogleMap,
   Marker,
@@ -7,14 +15,12 @@ import {
   LoadScript,
   MarkerClusterer,
 } from "@react-google-maps/api";
+
+// Styles
+import "../App.css";
 import "../Map.css";
 import Typed from "react-typed";
 import mapStyle from "../styled/mapStyle";
-import ArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
-import ArrowRight from "@material-ui/icons/KeyboardArrowRight";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
-import { Button } from "@material-ui/core";
 
 const libraries = ["places"];
 

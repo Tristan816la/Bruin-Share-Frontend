@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import CustomButton from "../../styled/CustomButton";
+
+// MUI
 import {
   Dialog,
   DialogTitle,
@@ -9,12 +10,19 @@ import {
   Button,
   TextField,
 } from "@material-ui/core";
-
 import CreateIcon from "@material-ui/icons/Create";
-import { useStyles } from "../../utils/useStyles";
+
+// Utils
 import axios from "axios";
+import { useStyles } from "../../utils/useStyles";
+
+// Components
 import MultilineTextFields from "../../styled/MultilineTextField";
+import CustomButton from "../../styled/CustomButton";
+
+// Styles
 import "../../App.css"
+
 const EditPost = ({ topic, content, postid }) => {
   const [open, setOpen] = useState(false);
   const [editContent, setEditContent] = useState(content);

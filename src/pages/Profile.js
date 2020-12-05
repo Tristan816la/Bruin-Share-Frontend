@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
+
+// Utils
 import axios from "axios";
+import { isLoggedIn } from "../utils/LoginActions";
+import { useParams } from "react-router-dom";
+import { useStyles } from "../utils/useStyles";
+
+// Components
 import Navbar from "../components/Navbar/Navbar";
 import ProfileSideBar from "../components/ProfileSideBar/ProfileSideBar";
 import MainStoryBox from "../components/MainStoryBox";
-import { isLoggedIn } from "../utils/LoginActions";
-import { useStyles } from "../utils/useStyles";
-import { useParams } from "react-router-dom";
 
 const Profile = () => {
-  // Need to be changed
   const userId = useParams().postById;
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
