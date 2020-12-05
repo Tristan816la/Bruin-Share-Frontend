@@ -119,11 +119,14 @@ const Comment = ({ comments, content, postId, postImage, postBy }) => {
               }}
               key={i}
             >
-              <img
-                src={c.commentBy.image}
-                className={classes.commentIcon}
-                alt="commentIcon"
-              />
+              <CustomButton tip={c.commentBy.name}>
+                <img
+                  src={c.commentBy.image}
+                  className={classes.commentIcon}
+                  alt="commentIcon"
+                />
+              </CustomButton>
+              
               <Card key={i} className={classes.commentCard} variant="outlined">
                 {c.text}
               </Card>

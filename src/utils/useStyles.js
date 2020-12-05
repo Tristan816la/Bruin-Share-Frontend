@@ -70,11 +70,17 @@ export const useStyles = makeStyles((theme) => ({
     position: "relative",
   },
 
-  /**<------------------Comment--------------------------------------> */
+  /**<------------------EditPost--------------------------------------> */
   dialogTitle: {
     width: "500px",
     display: "flex",
   },
+  dialogContent: {
+    display: "flex",
+    flexDirection: "column",
+  },
+
+  /**<------------------Comment--------------------------------------> */
   closebtn: {
     position: "absolute",
     right: "2px",
