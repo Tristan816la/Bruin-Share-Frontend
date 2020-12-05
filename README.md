@@ -1,17 +1,19 @@
 # Bruin Share
 
 ## Get Started
-
-### First time running this project
-Run
+1. Clone this repo
+```
+git clone https://github.com/Tristan816la/Bruin-Share-Frontend.git
+cd Bruin-Share-Frontend
+```
+2. Install all the dependencies
 ```
 npm install
 ```
-to install all the dependencies
-
-
-### Run this project
+3. Run this project
 ```
 npm start
 ```
-To see the frontend
+
+npm start
+```
