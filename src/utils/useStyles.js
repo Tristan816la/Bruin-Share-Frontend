@@ -96,8 +96,15 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "18px",
     alignItems: "center",
     marginTop: "10px",
+    textOverflow: "ellipsis",
+    whiteSpace: "pre-wrap",
+    wordWrap: "break-word",
+    lineBreak: "auto",
   },
   commentPostPostBy: {
+    fontSize: "15px",
+  },
+  commentPostPostTitle: {
     fontSize: "15px",
     fontWeight: "600",
   },
@@ -116,6 +123,7 @@ export const useStyles = makeStyles((theme) => ({
     margin: "10px 10px 10px 15px",
     width: "400px",
     paddingLeft: "10px",
+    overflow: "hidden",
   },
   passwordHide: {
     height: "50px",
@@ -178,7 +186,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginTop: theme.spacing(2),
   },
-  
+
   /**<------------------Login--------------------------------------> */
   loginContainer: {
     display: "flex",
@@ -283,9 +291,7 @@ export const useStyles = makeStyles((theme) => ({
   itemText: {
     cursor: "pointer",
   },
-  deleteButton: {
-    
-  },
+  deleteButton: {},
 
   /**<------------------------- Profile ------------------------------> */
   profilebody: {
