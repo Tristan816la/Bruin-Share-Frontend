@@ -7,7 +7,7 @@
 
 https://bruin-share.netlify.app/
 
-
+This is just the frontend repo, you can also check out our backend development repo(deployed): https://github.com/donghangwu/Bruin-Share-Backend
 
 ## Quick Start
 
