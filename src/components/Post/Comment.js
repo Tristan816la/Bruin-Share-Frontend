@@ -114,12 +114,19 @@ const Comment = ({
               className={classes.commentPostImage}
             ></Avatar>
             <div
-              style={{ display: "flex", gap: "10px", flexDirection: "column" }}
+              style={{
+                display: "flex",
+                gap: "10px",
+                flexDirection: "column",
+                marginTop: "-15px",
+              }}
             >
-              <Typography className={classes.commentPostPostBy}>
-                {postBy}:
+              <Typography className={classes.commentPostPostTitle}>
+                {postTitle}
               </Typography>
-              <Typography>{postTitle}</Typography>
+              <Typography className={classes.commentPostPostBy}>
+                @{postBy}:
+              </Typography>
             </div>
             <Typography className={classes.commentPostContent}>
               {content}
@@ -161,11 +168,11 @@ const Comment = ({
           <SeparateLine />
           <div style={{ display: "flex" }}>
             <Avatar
-                className={classes.userImage}
-                src={window.localStorage.getItem("UserImage")}
-                alt="user image"
+              className={classes.userImage}
+              src={window.localStorage.getItem("UserImage")}
+              alt="user image"
             ></Avatar>
-            
+
             <TextField
               autoFocus
               margin="dense"
