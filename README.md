@@ -1,5 +1,5 @@
 # Bruin Share
-<img src="./public/logo.png" alt="logo" style="zoom:15%;" width= "300"/>
+<img src="./public/logo.png" alt="logo" style="zoom:15%;" width= "250"/>
 
 
 
