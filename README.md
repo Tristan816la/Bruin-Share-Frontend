@@ -1,4 +1,5 @@
 # Bruin Share
+https://bruin-share.netlify.app/
 
 ## Get Started
 ### 1. Clone this repo
