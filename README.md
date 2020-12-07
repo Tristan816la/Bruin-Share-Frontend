@@ -42,45 +42,52 @@ npm start
 
 ## Features
 
-- **Automatic Location Display:** No matter where you are, you can always find fellow bruins who live near you and read their story
+- **Automatic Location Display:**  \
+No matter where you are, you can always find fellow bruins who live near you and read their story
 
   <img src="./demo/landing.gif" alt="landing" style="zoom:80%;"/>
 
 
 
-- **Minimalistic Forums:** Tired of Facebook and Reddit's forums with arbitrary ads and random tools you never used, we kept our app very simple with all necessary features
+- **Minimalistic Forums:** \
+Tired of Facebook and Reddit's forums with arbitrary ads and random tools you never used, we kept our app very simple with all necessary features
 
   <img src="./demo/public.png" alt="image-20201206105700875" style="zoom:25%;"/>
 
 
 
-- **Search the story you like:** Smart search based on topics and contents, find the post you've never forgot
+- **Search the story you like:** \
+Smart search based on topics and contents, find the post you've never forgot
 
   <img src="./demo/search.gif" alt="search" style="zoom:100%;" />
 
 
 
-- **Join Us in two steps:** Quick login and Sign up with info verification
+- **Join Us in two steps:** \
+Quick login and Sign up with info verification
 
   <p float="left">
     <img src="./demo/signup.png" alt="signup" width="300" />
     <img src="./demo/login.png" alt="login" width="300"  />
   </p>
 
-- **Endorse your peer and let them hear you**: Give quick comments and likes on posts you like
+- **Endorse your peer and let them hear you**: \
+Give quick comments and likes on posts you like
 
   <img src="./demo/post.gif" alt="post"  />
 
 
 
-- **Get to Know your peers**: Each user has a profile page and a customizable private page
+- **Get to Know your peers**: \
+Each user has a profile page and a customizable private page
 
 <p float="left">
   <img src="./demo/profile.png" width="300"/>
   <img src="./demo/private.png"  width="300"/>
 </p>
 
-- **We helped you keep track of what you might miss:** Notification reminds you of unread likes and comments
+- **We helped you keep track of what you might miss:** \
+Notification reminds you of unread likes and comments
 
 <img src="./demo/notification.png" alt="notification" width="500"/>
 
