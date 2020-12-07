@@ -36,7 +36,7 @@ npm start
 
 - Life under covid-19 hasn't been easy for everyone. With everything happening overtime, Bruins might find it difficult to share their stroies during these special days of qurantine. Everything looks nice and intact on Facebook and Instagram Stories, but it is hard to find a platform to share Bruins' unkown stories.
 
-- Bruin Share is dedicated to be a safe place for sharing covid stories. Built as an online platform specific for Bruins, Bruin Share encourages every Bruin to share their stories to their fellow schoolmates and alumni. Bruins can share posts, react to posts, get to know the Bruins around the world by using Bruin Share.
+- Bruin Share is dedicated to be a safe place for Bruins to share covid-related stories. Being an online platform specific for Bruins, Bruin Share encourages every Bruin to share their stories to their fellow schoolmates and alumni. By using Bruin Shares, Bruins can share posts, react to posts, get to know fellow Bruins around the world.
 
 
 
