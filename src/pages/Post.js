@@ -208,17 +208,21 @@ const Post = () => {
       }
     };
     fetchPost();
+  }, []);
+
+  useEffect(() => {
     if (post._id) {
       const likeIds = post.likes.map((like) => like._id);
       if (likeIds.includes(getUserId())) {
         setLiked(true);
       }
     }
-  }, [liked]);
+  }, [post]);
 
   const handleOnChange = (e) => {
     setCurComment(e.target.value);
   };
+
   const handleClear = () => {
     setCurComment("");
   };
@@ -235,11 +239,11 @@ const Post = () => {
       console.error(err);
     }
   };
+
   const onLike = async () => {
     const body = {
       postid,
     };
-
     try {
       if (!liked) await axios.put("like", body);
       else await axios.put("unlike", body);
@@ -247,6 +251,7 @@ const Post = () => {
     } catch (err) {
       console.error(err);
     }
+    console.log(post);
   };
 
   const onName = (id) => {
