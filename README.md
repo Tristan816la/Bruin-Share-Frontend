@@ -19,7 +19,13 @@ https://bruin-share.netlify.app/
 git clone https://github.com/Tristan816la/Bruin-Share-Frontend.git
 cd Bruin-Share-Frontend
 ```
-2. Install all the dependencies
+
+2. To use the Google Map API in your local host, create a .env file and add the following
+```
+REACT_APP_GOOGLE_MAPS_API_KEY="AIzaSyDArSKESXMKGWYb41JoiA1GfTiryZWNkcE"
+```
+
+3. Install all the dependencies
 
 ```
 npm install
