@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 // MUI
-import { 
-  Avatar, 
-  Typography, 
-  Button, 
-  TextField, 
-  Tooltip 
+import {
+  Avatar,
+  Typography,
+  Button,
+  TextField,
+  Tooltip,
 } from "@material-ui/core";
 import { Delete } from "@material-ui/icons";
 
@@ -185,7 +185,6 @@ export const EditWrapper = styled.div`
 `;
 export const BoldTypography = styled(Typography)`
   font-size: 23px;
-  /* font-weight: bold; */
 `;
 
 export const CommentText = styled(Typography)``;
@@ -202,18 +201,15 @@ const Post = () => {
       try {
         const res = await axios.get(`/post/${postid}`);
         setPost(res.data);
-        console.log(res.data);
+        const likeIds = res.data.likes.map((like) => like._id);
+        if (likeIds.includes(getUserId())) {
+          setLiked(true);
+        }
       } catch (err) {
         console.error(err);
       }
     };
     fetchPost();
-    if (post._id) {
-      const likeIds = post.likes.map((like) => like._id);
-      if (likeIds.includes(getUserId())) {
-        setLiked(true);
-      }
-    }
   }, [liked]);
 
   const handleOnChange = (e) => {
@@ -284,16 +280,14 @@ const Post = () => {
           <PostWrapper>
             <PostHeader>
               <Tooltip title={post.postBy.name} placement="top" arrow>
-                <UserAvatar 
-                src={post.postBy.image} 
-                onClick={() => onName(post.postBy._id)}
-                style={{cursor: "pointer"}}
-                >
-                </UserAvatar>
+                <UserAvatar
+                  src={post.postBy.image}
+                  onClick={() => onName(post.postBy._id)}
+                  style={{ cursor: "pointer" }}
+                ></UserAvatar>
               </Tooltip>
-              
-              <SubtitleWrapper>
 
+              <SubtitleWrapper>
                 <div>
                   <BoldTypography>{post.topic}</BoldTypography>
                   <ClickableTypography
@@ -315,7 +309,6 @@ const Post = () => {
                     </CustomButton>
                   </EditWrapper>
                 )}
-                
               </SubtitleWrapper>
               <TimeWrapper>{moment(post.createdAt).fromNow()}</TimeWrapper>
             </PostHeader>
