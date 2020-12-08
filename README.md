@@ -20,9 +20,9 @@ git clone https://github.com/Tristan816la/Bruin-Share-Frontend.git
 cd Bruin-Share-Frontend
 ```
 
-2. To use the Google Map API in your local host, create a .env file and add the following
+2. To use the Google Map API in your local host, create a .env file and add the API key like the following:
 ```
-REACT_APP_GOOGLE_MAPS_API_KEY="AIzaSyDArSKESXMKGWYb41JoiA1GfTiryZWNkcE"
+touch .env && echo "REACT_APP_GOOGLE_MAPS_API_KEY="AIzaSyDArSKESXMKGWYb41JoiA1GfTiryZWNkcE"" > .env
 ```
 
 3. Install all the dependencies
