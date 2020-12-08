@@ -24,7 +24,7 @@ cd Bruin-Share-Frontend
 ```
 touch .env && echo "REACT_APP_GOOGLE_MAPS_API_KEY="AIzaSyDArSKESXMKGWYb41JoiA1GfTiryZWNkcE"" > .env
 ```
-(P.s. This API key shouldn't be shown if this is a public repo)
+- (P.s. This API key shouldn't be shown if this is a public repo)
 
 
 3. Install all the dependencies
