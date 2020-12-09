@@ -46,20 +46,22 @@ const Private = () => {
         <div className={classes.privateposts}>
           {posts.length ? (
             <>
-              {posts.map((post, i) => (
-                <MainStoryBox
-                  key={i}
-                  name={userInfo.name}
-                  title={post.topic}
-                  content={post.content}
-                  time={post.createdAt}
-                  likes={post.likes}
-                  comments={post.comments}
-                  id={post._id}
-                  image={image}
-                  postById={userInfo._id}
-                />
-              ))}
+              <div>
+                {posts.map((post, i) => (
+                  <MainStoryBox
+                    key={i}
+                    name={userInfo.name}
+                    title={post.topic}
+                    content={post.content}
+                    time={post.createdAt}
+                    likes={post.likes}
+                    comments={post.comments}
+                    id={post._id}
+                    image={image}
+                    postById={userInfo._id}
+                  />
+                ))}
+              </div>
             </>
           ) : (
             <></>

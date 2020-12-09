@@ -170,12 +170,13 @@ function Notification() {
                   className={classes.itemText}
                   onClick={handleClickShowPost(message.postId)}
                 >
-                  {`${message.name} ${messageType} your post "${message.topic}"`}
+                  {messageType === "comments on" ? `${message.name} comments on your post "${message.topic}"` : 
+                    `${message.name} likes your post "${message.topic}"`}
                 </div>
-                <CustomButton tip="Delete">
+                <CustomButton tip="Delete" onClick={handleDelete(message)}>
                   <HighlightOffIcon
                     className={classes.deleteButton}
-                    onClick={handleDelete(message)}
+                    
                   />
                 </CustomButton>
               </ListItem>
