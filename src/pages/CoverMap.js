@@ -144,8 +144,7 @@ export default function CoverMap() {
                   through - you're not alone."
                 </p>
                 <p className="text2">
-                  <strong>{posts.length}</strong> students have shared their
-                  stories
+                  <strong>{posts.length}</strong> stories have been shared
                 </p>
                 <Button
                   className="getstartbutton"
